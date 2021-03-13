@@ -1,42 +1,68 @@
-import express from 'express'
-import dotenv from 'dotenv'
-import Sequelize from 'sequelize'
+import express from "express";
+import dotenv from "dotenv";
+import db from './config/database.js'
+import productsRouter from './routes/products.js'
+import usersRouter from './routes/users.js'
+import Product from './models/Product.js'
+import User from './models/User.js'
 
-const app = express()
-dotenv.config()
 
-const sequelize = new Sequelize(process.env.DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, 
-  {host: process.env.DB_HOST, dialect: 'mysql'});
+const app = express();
+dotenv.config();
 
-sequelize.authenticate().then(() => {
-    console.log('Connection has been established successfully.');
+
+
+db
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
   })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
+  .catch((err) => {
+    console.error("Unable to connect to the database:", err);
   });
 
-  const Item = sequelize.define('items', { name: Sequelize.TEXT, count: Sequelize.INTEGER });
 
-  sequelize.sync({ force: true })
-  .then(() => {
+  db.sync({ force: true }).then(() => {
     console.log(`Database & tables created!`);
 
-    Item.bulkCreate([
-      { name: 'car', count: 3 },
-      { name: 'table', count: 10 },
-      { name: 'shirt', count: 55 }
-    ]).then(function() {
-      return Item.findAll();
-    }).then(function(items) {
-      console.log(items);
-    });
+    Product.bulkCreate([
+      { name: "car", count: 3 },
+      { name: "table", count: 10 },
+      { name: "shirt", count: 55 },
+    ])
+      .then(function () {
+        return Product.findAll();
+      })
+      .then(function (products) {
+        console.log(products);
+      });
+
+      User.bulkCreate([
+        { name: "Pekka Koivu", email: "juu@mail.fi", password: "joku" },
+        { name: "Sini Mänty", email: "juu@mail.fi", password: "joku" },
+        { name: "Teppo Seppä", email: "juu@mail.fi", password: "joku" },
+        { name: "Ilmari Jaakkola", email: "juu@mail.fi", password: "joku" },
+      ])
+        .then(function () {
+          return User.findAll();
+        })
+        .then(function (users) {
+          console.log(users);
+        });
+    
   });
 
-app.get('/', (req, res) => {
-  res.send('<h1>Hello</h1>')
-})
 
-const PORT = process.env.PORT
+
+app.get("/", (req, res) => {
+  res.send("<h1>Hello</h1>");
+});
+
+app.use('/api/users', usersRouter)
+app.use('/api/products', productsRouter)
+
+
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
+  console.log(`Server running on port ${PORT}`);
+});
