@@ -1,11 +1,17 @@
-import React from 'react'
+import React from "react";
+import Navbar from "./components/Navbar";
+import Header from "./components/Header";
+import {
+  Container
+} from "@material-ui/core";
 
 const App = () => {
-    return (
-        <div>
-            <h1>Hello</h1>
-        </div>
-    )
-}
+  return (
+    <Container>
+      <Header />
+      <Navbar />
+    </Container>
+  );
+};
 
-export default App
+export default App;
