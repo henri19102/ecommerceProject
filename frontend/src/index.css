@@ -19,3 +19,21 @@ code {
 h2{
   text-align: center;
 }
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2%;
+  margin: 2%;
+  border: solid 1px lightgrey;
+  border-radius: 25px;
+  width: auto;
+}
+
+.pageStyle {
+display: flex;
+justify-content: center;
+}
+
+

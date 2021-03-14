@@ -1,21 +1,21 @@
 import React from "react";
 import {
-  FormControlLabel,
-  FormGroup,
-  Switch,
   Button,
   Grid,
   IconButton,
   ButtonGroup,
+  Typography
 } from "@material-ui/core";
-import { ShoppingCart} from "@material-ui/icons";
+import { ShoppingCart, LockOpen, Lock} from "@material-ui/icons";
 
 const Navbar = () => {
   const [auth, setAuth] = React.useState(true);
 
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
+  const handleChange = () => {
+    auth === true ? setAuth(false) : setAuth(true)
   };
+
+  
 
   return (
     <Grid className="menu">
@@ -24,25 +24,22 @@ const Navbar = () => {
         color="primary"
         aria-label="contained primary button group"
       >
-        <Button>Menu</Button>
+        <Button>Frontpage</Button>
         <Button>Products</Button>
         <Button>About</Button>
+        <Button>Sign Up</Button>
+
       </ButtonGroup>
       <IconButton color="primary" aria-label="add to shopping cart">
         <ShoppingCart fontSize="large" />
       </IconButton>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Switch
-              checked={auth}
-              onChange={handleChange}
-              aria-label="login switch"
-            />
-          }
-          label={auth ? "Logout" : "Login"}
-        />
-      </FormGroup>
+     <IconButton onClick={handleChange} >
+       {auth === true ?  
+       <Typography><LockOpen fontSize="large" style={{display: 'flex'}}  />logout</Typography>  :
+       <Typography><Lock fontSize="large" style={{display: 'flex'}}  />login</Typography> 
+       }
+      
+     </IconButton>
     </Grid>
   );
 };
