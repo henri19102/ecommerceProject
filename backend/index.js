@@ -1,16 +1,12 @@
-import express from "express";
-import dotenv from "dotenv";
-import db from './config/database.js'
-import productsRouter from './routes/products.js'
-import usersRouter from './routes/users.js'
-import Product from './models/Product.js'
-import User from './models/User.js'
-
+const express = require('express');
+const dotenv = require("dotenv") ;
+const db = require('./config/database')
+const productsRouter = require('./routes/products')
+const usersRouter = require('./routes/users') 
 
 const app = express();
+app.use(express.json())
 dotenv.config();
-
-
 
 db
   .authenticate()
@@ -20,38 +16,6 @@ db
   .catch((err) => {
     console.error("Unable to connect to the database:", err);
   });
-
-
-  db.sync({ force: true }).then(() => {
-    console.log(`Database & tables created!`);
-
-    Product.bulkCreate([
-      { name: "car", count: 3 },
-      { name: "table", count: 10 },
-      { name: "shirt", count: 55 },
-    ])
-      .then(function () {
-        return Product.findAll();
-      })
-      .then(function (products) {
-        console.log(products);
-      });
-
-      User.bulkCreate([
-        { name: "Pekka Koivu", email: "juu@mail.fi", password: "joku" },
-        { name: "Sini Mänty", email: "juu@mail.fi", password: "joku" },
-        { name: "Teppo Seppä", email: "juu@mail.fi", password: "joku" },
-        { name: "Ilmari Jaakkola", email: "juu@mail.fi", password: "joku" },
-      ])
-        .then(function () {
-          return User.findAll();
-        })
-        .then(function (users) {
-          console.log(users);
-        });
-    
-  });
-
 
 
 app.get("/", (req, res) => {

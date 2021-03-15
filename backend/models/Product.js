@@ -1,12 +1,9 @@
-import Sequelize from 'sequelize'
-import db from '../config/database.js'
+const Sequelize = require('sequelize')
+const db = require('../config/database')
 
-const Product = db.define("items", {
+const Product = db.define("products", {
     name: Sequelize.TEXT,
     count: Sequelize.INTEGER,
   });
-  
-  
-     
 
-  export default Product
+module.exports = Product

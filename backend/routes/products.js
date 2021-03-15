@@ -1,6 +1,6 @@
-import express from 'express'
-import db from '../config/database.js'
-import Product from '../models/Product.js'
+const express = require('express')
+const db = require('../config/database')
+const Product = require('../models/Product')
 
 const router = express.Router()
 
@@ -9,4 +9,4 @@ router.get('/', async (req, res) => {
     return res.json(products)
 })
 
-export default router
+module.exports = router
