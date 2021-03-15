@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require("dotenv") ;
-const db = require('./config/database')
+const { sequelize } = require('./models')
 const productsRouter = require('./routes/products')
 const usersRouter = require('./routes/users') 
 
@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json())
 dotenv.config();
 
-db
+sequelize
   .authenticate()
   .then(() => {
     console.log("Connection has been established successfully.");

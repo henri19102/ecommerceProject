@@ -1,7 +1,8 @@
 const express = require('express')
-const db = require('../config/database')
-const User = require('../models/User')
+const models = require('../models')
 const bcrypt = require('bcrypt')
+
+const User = models.User
 
 const router = express.Router()
 

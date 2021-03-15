@@ -1,6 +1,6 @@
 const express = require('express')
-const db = require('../config/database')
-const Product = require('../models/Product')
+const models = require('../models')
+const Product = models.Product
 
 const router = express.Router()
 
