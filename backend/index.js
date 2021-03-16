@@ -1,5 +1,5 @@
-const express = require('express');
 const dotenv = require("dotenv") ;
+const express = require('express');
 const { sequelize } = require('./models')
 const productsRouter = require('./routes/products')
 const usersRouter = require('./routes/users') 

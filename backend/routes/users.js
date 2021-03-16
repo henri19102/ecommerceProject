@@ -1,43 +1,61 @@
-const express = require('express')
-const models = require('../models')
-const bcrypt = require('bcrypt')
+const dotenv = require("dotenv");
+const express = require("express");
+const models = require("../models");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
-const User = models.User
+dotenv.config();
 
-const router = express.Router()
+const User = models.User;
 
-router.get('/', async (req, res) => {
-    const users = await User.findAll()
-    return res.json(users)
-})
+const router = express.Router();
 
-router.post('/', async (req, res) => {
-    try {
-        const salt = await bcrypt.genSalt()
-        const hashedPassword = await bcrypt.hash(req.body.password, salt)
-        const user = { name: req.body.name, email: req.body.email, password: hashedPassword }
-        await User.create(user)
-        console.log(user)
-        res.status(201).send()
-    } catch {
-        res.status(500).send()
+router.get("/", async (req, res) => {
+  const users = await User.findAll();
+  return res.json(users);
+});
+
+router.post("/", async (req, res) => {
+  try {
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    const user = {
+      name: req.body.name,
+      email: req.body.email,
+      password: hashedPassword,
+    };
+    await User.create(user);
+    res.status(201).send();
+  } catch {
+    res.status(500).send();
+  }
+});
+
+router.post("/login", async (req, res) => {
+  const user = await User.findOne({ where: { name: req.body.name } });
+  if (user == null) {
+    return res.status(400).send("no user found");
+  }
+  try {
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      const token = jwt.sign({ name: user.name }, process.env.TOKEN_SECRET);
+      return res.status(200).send({ token, name: user.name });
     }
-})
+    return res.status(400).send("wrong password");
+  } catch {
+    res.status(500).send();
+  }
+});
 
-router.post('/login', async (req,res) => {
-    const user = await User.findOne({where: {name: req.body.name}})
-    if (user == null){
-        return res.status(400).send('no user found')
-    } try {
-        if (await bcrypt.compare(req.body.password, user.password)){
-            res.send('logged in')
-        } else {
-            res.send('wrong password')
-        }
-    } catch {
-        res.status(500).send()
-    }
-})
+const checkToken = (req, res, next) => {
+    const token = req.headers['authorization'].split(' ')[1]
+    if (token == null) return res.sendStatus(401)
 
+    jwt.verify(token, process.env.TOKEN_SECRET, (error, user) => {
+        if (error) return res.sendStatus(403)
+        req.user = user
+        next()
+    })
+}
 
-module.exports = router
+module.exports = router;
