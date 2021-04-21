@@ -15,7 +15,13 @@ code {
 .menu {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  background-color: aqua;
 }
+.container1{
+  background-color: bisque;
+}
+
 h2{
   text-align: center;
 }

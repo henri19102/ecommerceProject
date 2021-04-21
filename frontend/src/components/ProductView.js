@@ -32,7 +32,7 @@ const ProductView = ({product}) => {
       const classes = useStyles();
 
   return (
-    <Grid item xs={3} >
+    <Grid style={{margin: "20px"}} >
     <Card className={classes.root} variant="outlined">
     <CardContent>
       <Typography className={classes.title} color="textSecondary" gutterBottom>

@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField, makeStyles, Button} from "@material-ui/core";
 
-const SignUp = () => {
+const LogIn = () => {
   const useStyles = makeStyles((theme) => ({
     root: {
       "& > *": {
@@ -18,13 +18,12 @@ const SignUp = () => {
   return (
     <div className="pageStyle">
       <form className={classes.root} noValidate autoComplete="off">
-        <TextField id="outlined-basic" label="username" variant="outlined" />
         <TextField id="outlined-basic" label="email" variant="outlined" />
         <TextField id="outlined-basic" label="password" variant="outlined" />
-        <Button variant="contained" style={{backgroundColor: 'green'}} >Sign Up</Button>
+        <Button variant="contained" style={{backgroundColor: 'green'}} >Log In</Button>
       </form>
     </div>
   );
 };
 
-export default SignUp;
+export default LogIn;

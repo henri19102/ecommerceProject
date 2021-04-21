@@ -1,13 +1,12 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import Header from "./components/Header";
-import ProductView from './components/ProductView'
-import Products from './components/Products'
-import SignUp from './components/SignUp'
-import Frontpage from './components/Frontpage'
-import {
-  Container
-} from "@material-ui/core";
+import ProductView from "./components/ProductView";
+import Products from "./components/Products";
+import SignUp from "./components/SignUp";
+import LogIn from "./components/LogIn";
+import Frontpage from "./components/Frontpage";
+import { Container, Box } from "@material-ui/core";
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,28 +14,37 @@ import {
   Link,
   useParams,
 } from "react-router-dom";
+import productsServ from './services/products'
 
 const App = () => {
+const [products, setProducts] = React.useState([])
+
+React.useEffect(()=>{
+  productsServ.getAll().then(x=>setProducts(x))
+}, [])
+ 
+
+  console.log(products)
   return (
     <Router>
-    <Container >
-      <Header />
-      <Navbar />
+      <Container maxWidth="md" className="container1">
+        <Header />
+        <Navbar />
         <Switch>
-          <Route exact path='/' >
-            <Frontpage/>
+          <Route exact path="/">
+            <Frontpage />
           </Route>
-          <Route path='/products' >
-            <Products />
+          <Route exact path="/products">
+            <Products products={products} />
           </Route>
-          <Route path='/signup' >
+          <Route exact path="/signup">
             <SignUp />
           </Route>
+          <Route exact path="/login">
+            <LogIn />
+          </Route>
         </Switch>
-    
-      
-      
-    </Container>
+      </Container >
     </Router>
   );
 };
