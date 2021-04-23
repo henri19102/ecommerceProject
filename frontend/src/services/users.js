@@ -12,4 +12,6 @@ const res = await axios.post(`${url}/login`, user);
   return res.data;
 };
 
-export default { signUp, logIn };
+const userService = { signUp, logIn };
+
+export default userService

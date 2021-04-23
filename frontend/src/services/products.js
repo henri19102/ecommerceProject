@@ -7,4 +7,6 @@ const getAll = async ()  => {
     return res.data
   };
 
-export default {getAll}
+const productService =  {getAll}
+
+export default productService

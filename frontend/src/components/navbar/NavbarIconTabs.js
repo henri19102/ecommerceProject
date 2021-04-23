@@ -1,35 +1,23 @@
 import React from "react";
-import {
-  Button,
-  Grid,
-  IconButton,
-  ButtonGroup,
-  Typography,
-  Box,
-} from "@material-ui/core";
+import { IconButton, Typography } from "@material-ui/core";
 import { ShoppingCart, LockOpen, Lock } from "@material-ui/icons";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useHistory,
-} from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useUsers } from "../AppDataContext";
 
 const NavbarIconTabs = () => {
-    const [auth, setAuth] = React.useState(true);
-    const history = useHistory()
+  const [auth, setAuth] = React.useState(true);
+  const history = useHistory();
+  const user = useUsers();
+  console.log(user);
 
-
-    const handleChange = () => {
-        if (auth){
-            return setAuth(false)
-        }
-      setAuth(true)
-      history.push('/login')
+  const handleChange = () => {
+    if (user) {
+      window.localStorage.removeItem("loggedUser");
+      setAuth(true);
     }
-
+    setAuth(false);
+    history.push("/login");
+  };
 
   return (
     <>

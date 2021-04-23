@@ -1,14 +1,14 @@
 import React from "react";
-import { Container, Grid } from "@material-ui/core";
 import ProductView from "./ProductView";
-import products from "../testProducts";
+import { useProducts } from "../components/AppDataContext";
 
-const Products = ({products}) => {
+const Products = () => {
+  const products = useProducts();
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
       {products.map((x) => (
-        <ProductView product={x} />
+        <ProductView key={x.id} product={x} />
       ))}
     </div>
   );
