@@ -15,6 +15,7 @@ import {
   useParams,
 } from "react-router-dom";
 import productsServ from './services/products'
+import { boxShadows } from '@material-ui/system';
 
 const App = () => {
 const [products, setProducts] = React.useState([])
@@ -27,7 +28,7 @@ React.useEffect(()=>{
   console.log(products)
   return (
     <Router>
-      <Container maxWidth="md" className="container1">
+      <Container   maxWidth="md" className="container1">
         <Header />
         <Navbar />
         <Switch>

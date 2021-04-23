@@ -1,12 +1,9 @@
 import React from "react";
 
-
 const Frontpage = () => {
-  
-
   return (
     <div>
-        <p>welcome</p>
+      <p>Welcome </p>
     </div>
   );
 };

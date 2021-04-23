@@ -20,7 +20,7 @@ import NavbarIconTabs from './NavbarIconTabs'
 const Navbar = () => {
 
   return (
-    <Box style={{textAlign: "center"}} >
+    <Box style={{textAlign: "center",}} >
       <ButtonGroup >
         <NavbarTab name={'Frontpage'} pathTo={'/'} />
         <NavbarTab name={'Products'} pathTo={'/products'} />
