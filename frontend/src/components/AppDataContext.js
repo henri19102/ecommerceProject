@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useReducer } from "react";
 import productService from "../services/products";
 
 export const UserContext = React.createContext();
@@ -12,15 +12,32 @@ export const useUsers = () => {
   return useContext(UserContext);
 };
 
+const USER_ACTION = {
+  LOG_IN: 'logIn',
+  LOG_OUT: 'logOut'
+}
+
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case USER_ACTION.LOG_IN:
+      return action.payload
+    case USER_ACTION.LOG_OUT:
+      return null
+    default:
+      return state
+  }
+}
+
 const AppDataContext = ({ children }) => {
-  const [loggedInUser, setLoggedInUser] = useState(null);
+  const [loggedUser, dispatch] = useReducer(reducer, null)
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    const loggedUser = window.localStorage.getItem("loggedUser");
-    if (loggedUser) {
-      const user = JSON.parse(loggedUser);
-      setLoggedInUser(user);
+    const userJSON = window.localStorage.getItem("loggedUser");
+    if (userJSON) {
+      const userObject = JSON.parse(userJSON);
+      dispatch({type: USER_ACTION.LOG_IN, payload: userObject})
     }
   }, []);
 
@@ -30,7 +47,7 @@ const AppDataContext = ({ children }) => {
 
   return (
     <>
-      <UserContext.Provider value={loggedInUser}>
+      <UserContext.Provider value={{loggedUser: loggedUser, userDispatch: dispatch}}>
         <ProductsContext.Provider value={products}>
           {children}
         </ProductsContext.Provider>

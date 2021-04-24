@@ -1,21 +1,16 @@
 import React from "react";
-import { makeStyles, Button, Box } from "@material-ui/core";
+import { Button, Box } from "@material-ui/core";
 import userService from "../services/users";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import MyTextInput from "./MyTextInput";
+import { useUsers } from "./AppDataContext";
+import { useHistory } from "react-router-dom";
+import { useStyles } from "../styles/styles";
 
 const Login = () => {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      "& > *": {
-        margin: theme.spacing(2),
-        width: "25ch",
-        marginBottom: "10%",
-      },
-    },
-  }));
-
+  const user = useUsers();
+  const history = useHistory();
   const classes = useStyles();
 
   const initialValues = {
@@ -30,8 +25,10 @@ const Login = () => {
 
   const onSubmit = async (values) => {
     try {
-      const loggedUser = await userService.logIn(values);
-      window.localStorage.setItem("loggedUser", JSON.stringify(loggedUser));
+      const loggedInUser = await userService.logIn(values);
+      window.localStorage.setItem("loggedUser", JSON.stringify(loggedInUser));
+      user.userDispatch({ type: "logIn", payload: loggedInUser });
+      history.push("/");
     } catch (e) {
       console.error(e);
     }
@@ -64,7 +61,7 @@ const Login = () => {
               variant="contained"
               type="submit"
             >
-              Sign up
+              Log In
             </Button>
           </Form>
         </Formik>

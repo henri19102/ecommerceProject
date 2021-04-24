@@ -1,21 +1,16 @@
 import React from "react";
-import { makeStyles, Button, Box } from "@material-ui/core";
-import signUpUser from "../services/users";
+import { Button, Box } from "@material-ui/core";
+import userService from "../services/users";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import MyTextInput from "./MyTextInput";
+import { useStyles } from "../styles/styles";
+import { useUsers } from "./AppDataContext";
+import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      "& > *": {
-        margin: theme.spacing(2),
-        width: "25ch",
-        marginBottom: "10%",
-      },
-    },
-  }));
-
+  const user = useUsers();
+  const history = useHistory();
   const classes = useStyles();
 
   const initialValues = {
@@ -32,9 +27,18 @@ const SignUp = () => {
     password: Yup.string().required("Required"),
   });
 
-  const onSubmit = (values) => {
-    signUpUser.signUp(values);
+  const onSubmit = async (values) => {
+    try {
+      await userService.signUp(values);
+      const loggedInUser = await userService.logIn({name: values.name, password: values.password});
+      window.localStorage.setItem("loggedUser", JSON.stringify(loggedInUser));
+      user.userDispatch({ type: "logIn", payload: loggedInUser });
+      history.push("/");
+    } catch (e) {
+      console.error(e);
+    }
   };
+
 
   return (
     <div className="pageStyle">

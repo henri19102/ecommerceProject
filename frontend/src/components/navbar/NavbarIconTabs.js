@@ -5,17 +5,14 @@ import { useHistory } from "react-router-dom";
 import { useUsers } from "../AppDataContext";
 
 const NavbarIconTabs = () => {
-  const [auth, setAuth] = React.useState(true);
   const history = useHistory();
   const user = useUsers();
-  console.log(user);
 
   const handleChange = () => {
-    if (user) {
+    if (user.loggedUser) {
       window.localStorage.removeItem("loggedUser");
-      setAuth(true);
+      user.userDispatch({type: 'logOut'})
     }
-    setAuth(false);
     history.push("/login");
   };
 
@@ -25,7 +22,7 @@ const NavbarIconTabs = () => {
         <ShoppingCart fontSize="large" />
       </IconButton>
       <IconButton onClick={handleChange}>
-        {auth === true ? (
+        {user.loggedUser ? (
           <Typography>
             <LockOpen fontSize="large" style={{ display: "flex" }} />
             logout
