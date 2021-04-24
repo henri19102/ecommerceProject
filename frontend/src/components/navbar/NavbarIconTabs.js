@@ -2,7 +2,8 @@ import React from "react";
 import { IconButton, Typography } from "@material-ui/core";
 import { ShoppingCart, LockOpen, Lock } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
-import { useUsers } from "../AppDataContext";
+import { useUsers } from "../reducers/UserReducer";
+
 
 const NavbarIconTabs = () => {
   const history = useHistory();

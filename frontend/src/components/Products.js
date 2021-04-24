@@ -1,6 +1,6 @@
 import React from "react";
 import ProductView from "./ProductView";
-import { useProducts } from "../components/AppDataContext";
+import { useProducts } from "./reducers/ProductsReducer";
 
 const Products = () => {
   const products = useProducts();

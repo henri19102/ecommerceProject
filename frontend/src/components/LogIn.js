@@ -4,7 +4,8 @@ import userService from "../services/users";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import MyTextInput from "./MyTextInput";
-import { useUsers } from "./AppDataContext";
+import { useUsers } from "./reducers/UserReducer";
+import { useNotification } from "./reducers/NotificationReducer";
 import { useHistory } from "react-router-dom";
 import { useStyles } from "../styles/styles";
 
@@ -12,6 +13,14 @@ const Login = () => {
   const user = useUsers();
   const history = useHistory();
   const classes = useStyles();
+  const message = useNotification()
+
+  const notificationMessage = (msg, isError) => {
+    message.notificationDispatch({ type: "message", message: {message: msg, isError: isError} })
+    setTimeout(()=>{
+        message.notificationDispatch({ type: "clear"})
+    }, 5000)
+  }
 
   const initialValues = {
     name: "",
@@ -29,8 +38,10 @@ const Login = () => {
       window.localStorage.setItem("loggedUser", JSON.stringify(loggedInUser));
       user.userDispatch({ type: "logIn", payload: loggedInUser });
       history.push("/");
+      notificationMessage(`Succesfully logged in as ${loggedInUser.name}!`, false)
     } catch (e) {
       console.error(e);
+      notificationMessage('Wrong name or password!', true)
     }
   };
 
@@ -44,12 +55,14 @@ const Login = () => {
         >
           <Form className={classes.root} noValidate autoComplete="off">
             <MyTextInput
+              id="nameInput"
               label="name"
               name="name"
               type="text"
               placeholder="jane@formik.com"
             />
             <MyTextInput
+              id="passwordInput"
               label="password"
               name="password"
               type="password"

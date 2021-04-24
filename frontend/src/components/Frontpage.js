@@ -1,10 +1,7 @@
 import React from "react";
-import { useUsers } from "./AppDataContext";
 
 
 const Frontpage = () => {
-  const user = useUsers()
-  console.log(user)
 
   return (
     <div>

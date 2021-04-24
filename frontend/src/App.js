@@ -7,7 +7,8 @@ import LogIn from "./components/LogIn";
 import Frontpage from "./components/Frontpage";
 import { Container } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AppDataContext from "./components/AppDataContext";
+import AppDataContext from "./components/reducers/AppDataContext";
+import Notification from './components/Notification'
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Container maxWidth="md" className="container1">
           <Header />
           <Navbar />
+          <Notification/>
           <Switch>
             <Route exact path="/">
               <Frontpage />

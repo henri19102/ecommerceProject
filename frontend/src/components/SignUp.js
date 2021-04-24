@@ -5,13 +5,23 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import MyTextInput from "./MyTextInput";
 import { useStyles } from "../styles/styles";
-import { useUsers } from "./AppDataContext";
+import { useUsers } from "./reducers/UserReducer";
+import { useNotification } from "./reducers/NotificationReducer";
 import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
   const user = useUsers();
   const history = useHistory();
   const classes = useStyles();
+  const message = useNotification()
+
+  
+const notificationMessage = (msg, isError) => {
+  message.notificationDispatch({ type: "message", message: {message: msg, isError: isError} })
+  setTimeout(()=>{
+      message.notificationDispatch({ type: "clear"})
+  }, 5000)
+}
 
   const initialValues = {
     name: "",
@@ -34,8 +44,10 @@ const SignUp = () => {
       window.localStorage.setItem("loggedUser", JSON.stringify(loggedInUser));
       user.userDispatch({ type: "logIn", payload: loggedInUser });
       history.push("/");
+      notificationMessage('Succesfully signed up!', false)
     } catch (e) {
       console.error(e);
+      notificationMessage('Invalid inputs!', true)
     }
   };
 
@@ -50,6 +62,7 @@ const SignUp = () => {
         >
           <Form className={classes.root} noValidate autoComplete="off">
             <MyTextInput
+              id="nameInput"
               label="Name"
               name="name"
               type="text"
@@ -57,6 +70,7 @@ const SignUp = () => {
             />
 
             <MyTextInput
+              id="emailInput"
               label="Email"
               name="email"
               type="email"
@@ -64,6 +78,7 @@ const SignUp = () => {
             />
 
             <MyTextInput
+              id="passwordInput"
               label="password"
               name="password"
               type="password"

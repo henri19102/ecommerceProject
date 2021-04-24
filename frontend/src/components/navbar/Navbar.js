@@ -2,7 +2,8 @@ import React from "react";
 import { ButtonGroup, Box } from "@material-ui/core";
 import NavbarTab from "./NavbarTab";
 import NavbarIconTabs from "./NavbarIconTabs";
-import {useUsers} from '../AppDataContext'
+import { useUsers } from "../reducers/UserReducer";
+
 
 const Navbar = () => {
 
