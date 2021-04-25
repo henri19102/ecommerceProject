@@ -10,6 +10,10 @@ import { useStyles } from "../styles/styles";
 const ProductView = ({ product }) => {
   const classes = useStyles();
 
+  const handleClick = () => {
+    
+  }
+
   return (
     <Grid style={{ margin: "20px" }}>
       <Card className={classes.root2} variant="outlined">
@@ -32,7 +36,7 @@ const ProductView = ({ product }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button variant="contained" size="small">
+          <Button onClick={handleClick} variant="contained" size="small">
             Add to Cart
           </Button>
         </CardActions>

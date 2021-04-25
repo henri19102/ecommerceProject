@@ -16,3 +16,18 @@ Content-Type: application/json
     "name": "teemu",
     "password": "kissa"
 }
+
+###
+
+DELETE http://localhost:3001/api/orders/delete
+
+###
+
+POST http://localhost:3001/api/orders/9
+Content-Type: application/json
+
+{
+    "id": 1
+}
+
+###

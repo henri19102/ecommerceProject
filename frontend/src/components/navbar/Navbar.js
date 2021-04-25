@@ -1,7 +1,8 @@
 import React from "react";
 import { ButtonGroup, Box } from "@material-ui/core";
 import NavbarTab from "./NavbarTab";
-import NavbarIconTabs from "./NavbarIconTabs";
+import LogInTab from "./LogInTab";
+import ShoppingCartTab from './ShoppingCartTab'
 import { useUsers } from "../reducers/UserReducer";
 
 
@@ -17,7 +18,8 @@ const Navbar = () => {
         <NavbarTab name={"About"} pathTo={"/"} />
         {!loggedUser && <NavbarTab name={"Sign up"} pathTo={"/signup"} />}
       </ButtonGroup>
-      <NavbarIconTabs />
+      <ShoppingCartTab />
+      <LogInTab />
     </Box>
   );
 };

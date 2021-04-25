@@ -9,6 +9,7 @@ import { Container } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppDataContext from "./components/reducers/AppDataContext";
 import Notification from './components/Notification'
+import ShoppingCart from './components/ShoppingCart'
 
 const App = () => {
   return (
@@ -30,6 +31,9 @@ const App = () => {
             </Route>
             <Route exact path="/login">
               <LogIn />
+            </Route>
+            <Route exact path="/shoppingcart">
+              <ShoppingCart />
             </Route>
           </Switch>
         </Container>
