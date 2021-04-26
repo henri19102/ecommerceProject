@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "./components/navbar/Navbar";
 import Header from "./components/Header";
-import Products from "./components/Products";
+import Products from "./components/products/Products";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import Frontpage from "./components/Frontpage";
@@ -9,7 +9,7 @@ import { Container } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppDataContext from "./components/reducers/AppDataContext";
 import Notification from './components/Notification'
-import ShoppingCart from './components/ShoppingCart'
+import ShoppingCart from './components/products/ShoppingCart'
 
 const App = () => {
   return (

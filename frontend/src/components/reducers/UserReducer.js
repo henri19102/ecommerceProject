@@ -33,6 +33,8 @@ const UserReducer = ({ children }) => {
     }
   }, []);
 
+  console.log(loggedUser)
+
   return (
     <>
       <UserContext.Provider value={{ loggedUser: loggedUser, userDispatch: dispatchUser }} >

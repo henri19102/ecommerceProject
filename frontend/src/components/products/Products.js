@@ -1,9 +1,9 @@
 import React from "react";
 import ProductView from "./ProductView";
-import { useProducts } from "./reducers/ProductsReducer";
+import { useProducts } from "../reducers/ProductsReducer";
 
 const Products = () => {
-  const products = useProducts();
+  const {products} = useProducts();
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>

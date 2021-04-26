@@ -15,8 +15,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'userId',
         onDelete: 'CASCADE'
       })
-      Order.hasMany(models.Product, {
+      Order.belongsTo(models.Product, {
         foreignKey: 'productId',
+        onDelete: 'CASCADE'
       })
     }
   };
