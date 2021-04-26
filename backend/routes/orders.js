@@ -18,11 +18,11 @@ router.get('/:id', async (req, res) => {
     return res.json(orders)
 })
 
-router.post('/:id', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const order = {
-            userId: req.params.id,
-            productId: req.body.id
+            userId: req.body.userId,
+            productId: req.body.productId
         };
         await Order.create(order);
         res.status(201).send();
@@ -31,12 +31,12 @@ router.post('/:id', async (req, res) => {
       }
 })
 
-router.delete('/delete', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
     await Order.destroy({
         where: {
-          userId: 9,
-          id: 3,
-          productId: 5
+          userId: req.params.id,
+          id: req.body.id,
+          productId: req.body.productId
         }
       })
       res.status(204).end()

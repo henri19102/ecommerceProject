@@ -6,23 +6,23 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 import { useStyles } from "../../styles/styles";
+import {useProducts} from '../reducers/ProductsReducer'
 import {useOrders} from '../reducers/OrdersReducer'
-import orderService from '../../services/orders'
-import {useUsers} from '../reducers/UserReducer'
 
-const ProductView = ({ product }) => {
+const CartProductView = ({order}) => {
   const classes = useStyles();
-  const newOrder = useOrders()
-  const {loggedUser} = useUsers()
+  const {products} = useProducts()
+const orders = useOrders()
+  const product = products.find(x=>x.id === Number(order[0]) )
+  
+  const handleClick2 = () => {
+    
+}
+  
 
-  const handleClick = async () => {
-    try {
-      const createOrder = await orderService.addToCart(product.id, loggedUser.id)
-      newOrder.ordersDispatch({type: 'add', payload: createOrder})
 
-    } catch (e){
-      console.log(e)
-    }
+  const handleClick = () => {
+    
   }
 
   return (
@@ -43,12 +43,15 @@ const ProductView = ({ product }) => {
             Price:
           </Typography>
           <Typography variant="body2" component="p">
-            {`${product.price} €`}
+            {`${product.price} €  count: ${order[1]}`}
           </Typography>
         </CardContent>
         <CardActions>
-          <Button onClick={handleClick} variant="contained" size="small">
+          <Button onClick={handleClick} color="primary" variant="contained" size="small">
             Add to Cart
+          </Button>
+          <Button onClick={handleClick2} color="secondary" variant="contained" size="small">
+            Remove from cart
           </Button>
         </CardActions>
       </Card>
@@ -56,4 +59,4 @@ const ProductView = ({ product }) => {
   );
 };
 
-export default ProductView;
+export default CartProductView;
