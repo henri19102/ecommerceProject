@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -7,16 +7,27 @@ import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 import { useStyles } from "../../styles/styles";
 import {useProducts} from '../reducers/ProductsReducer'
+import {useUsers} from '../reducers/UserReducer'
 import {useOrders} from '../reducers/OrdersReducer'
+import orderService from '../../services/orders'
 
-const CartProductView = ({order}) => {
+
+const CartProductView = ({value}) => {
   const classes = useStyles();
   const {products} = useProducts()
+  const {loggedUser} = useUsers()
+
 const orders = useOrders()
-  const product = products.find(x=>x.id === Number(order[0]) )
+  const product = products.find(x=>x.id === Number(value[0]) )
+
+
   
-  const handleClick2 = () => {
-    
+  const handleClick2 = async () => {
+     const deleteObj = orders.orders.find(x => x.userId === loggedUser.id && x.productId === product.id)
+     const id = deleteObj.id
+     console.log(id)
+     await orderService.removeProductFromCart(id)
+     orders.dispatchOrders({ type: "delete", deleteId: id })
 }
   
 
@@ -43,7 +54,7 @@ const orders = useOrders()
             Price:
           </Typography>
           <Typography variant="body2" component="p">
-            {`${product.price} €  count: ${order[1]}`}
+            {`${product.price} €  count: ${value[1]}`}
           </Typography>
         </CardContent>
         <CardActions>
