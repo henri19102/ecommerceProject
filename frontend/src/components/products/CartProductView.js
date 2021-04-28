@@ -16,18 +16,21 @@ const CartProductView = ({value}) => {
   const classes = useStyles();
   const {products} = useProducts()
   const {loggedUser} = useUsers()
+  const orders = useOrders()
 
-const orders = useOrders()
+  if (!products) return null
+  
+
+
   const product = products.find(x=>x.id === Number(value[0]) )
 
 
   
   const handleClick2 = async () => {
-     const deleteObj = orders.orders.find(x => x.userId === loggedUser.id && x.productId === product.id)
-     const id = deleteObj.id
-     console.log(id)
+     const id = orders.orders.find(x => x.userId === loggedUser.id && x.productId === product.id).id
+    
      await orderService.removeProductFromCart(id)
-     orders.dispatchOrders({ type: "delete", deleteId: id })
+     orders.ordersDispatch({ type: "delete", deleteId: id })
 }
   
 

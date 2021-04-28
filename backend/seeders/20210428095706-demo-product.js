@@ -22,6 +22,13 @@ module.exports = {
       count: 145,
       createdAt: new Date(),
       updatedAt: new Date()
+    },
+    {
+      name: 'auto',
+      price: 30,
+      count: 145,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }
   ]);
   },

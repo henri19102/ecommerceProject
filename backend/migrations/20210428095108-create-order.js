@@ -12,22 +12,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       userId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Users',
-          key: 'id',
-          as: 'userId',
-        }
+        type: Sequelize.INTEGER
       },
       productId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Products',
-          key: 'id',
-          as: 'productId',
-        }
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

@@ -15,6 +15,8 @@ const ProductView = ({ product }) => {
   const newOrder = useOrders()
   const {loggedUser} = useUsers()
 
+  if (!newOrder || !loggedUser) return null
+
   const handleClick = async () => {
     try {
       const createOrder = await orderService.addToCart(product.id, loggedUser.id)

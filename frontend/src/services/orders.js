@@ -8,7 +8,7 @@ const getAll = async ()  => {
 };
 
 const getUsersOrders = async (id)  => {
-  const res = await axios.get(`${url}/user`, {id: id});
+  const res = await axios.get(`${url}/${id}`);
   return res.data
 };
 
@@ -18,7 +18,7 @@ const addToCart = async (productId, userId) => {
 };
 
 const removeProductFromCart = async (id) => {
-  await axios.delete(`${url}/delete`, {id: id})
+  const res = await axios.delete(`${url}/delete/${id}`)
 }
 
 

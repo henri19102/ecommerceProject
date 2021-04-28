@@ -9,10 +9,10 @@ router.get('/', async (req, res) => {
     return res.json(orders)
 })
 
-router.get('/user', async (req, res) => {
+router.get('/:id', async (req, res) => {
     const orders = await Order.findAll({
         where: {
-          userId: req.body.id
+          userId: req.params.id
         }
       })
     return res.json(orders)
@@ -31,11 +31,11 @@ router.post('/', async (req, res) => {
       }
 })
 
-router.delete('/delete', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
   console.log(req.body)
     await Order.destroy({
         where: {
-          id: req.body.id,
+          id: req.params.id
         }
       })
       res.status(204).end()
