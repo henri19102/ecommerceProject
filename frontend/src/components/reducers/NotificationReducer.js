@@ -27,7 +27,7 @@ const NotificationReducer = ( {children}) => {
 
     return (
         <>
-        <NotificationContext.Provider value={{notification: notification, notificationDispatch: dispatchNotification}} >
+        <NotificationContext.Provider value={{notification: notification, dispatchNotification: dispatchNotification}} >
         {children}
         </NotificationContext.Provider>
         </>

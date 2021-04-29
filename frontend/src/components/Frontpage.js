@@ -1,7 +1,21 @@
 import React from "react";
+import orderService from "../services/orders";
+import {useProducts} from './reducers/ProductsReducer'
+import {useOrders} from './reducers/OrdersReducer'
+import {useUsers} from './reducers/UserReducer'
 
 
 const Frontpage = () => {
+
+  const {user} = useUsers()
+  const {products} = useProducts()
+  const {orders} = useOrders()
+  if(!user || !products || !orders)return null
+
+
+  const joku = orderService.getProductCount(user.id)
+
+  console.log(joku)
 
   return (
     <div>

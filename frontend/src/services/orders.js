@@ -12,6 +12,11 @@ const getUsersOrders = async (id)  => {
   return res.data
 };
 
+const getProductCount = async (id)  => {
+  const res = await axios.get(`${url}/user/${id}`);
+  return res.data
+};
+
 const addToCart = async (productId, userId) => {
   const res = await axios.post(url, {productId, userId});
   return res.data;
@@ -22,6 +27,6 @@ const removeProductFromCart = async (id) => {
 }
 
 
-const orderService = { addToCart, getAll, removeProductFromCart, getUsersOrders };
+const orderService = { addToCart, getAll, removeProductFromCart, getUsersOrders, getProductCount };
 
 export default orderService

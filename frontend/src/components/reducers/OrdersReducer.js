@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useReducer } from "react";
 import orderService from "../../services/orders";
-import {useUsers} from './UserReducer'
 
 export const OrdersContext = React.createContext();
 
@@ -12,6 +11,8 @@ const orderReducer = (state, action) => {
   switch (action.type) {
     case "getAll":
         return action.payload;
+    case "userOrders":
+        return [...state.filter(x=>x.userId === action.payload)];
     case "add":
         return [...state, action.payload];
     case "delete":
@@ -29,11 +30,9 @@ const OrdersReducer = ( {children}) => {
     orderService.getAll().then((x) => dispatchOrders({ type: "getAll", payload: x }));
   }, []);
 
-  console.log(orders)
-
   return (
     <>
-      <OrdersContext.Provider value={{ orders: orders, ordersDispatch: dispatchOrders }}>
+      <OrdersContext.Provider value={{ orders: orders, dispatchOrders: dispatchOrders }}>
         {children}
       </OrdersContext.Provider>
     </>

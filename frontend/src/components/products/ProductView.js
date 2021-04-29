@@ -12,15 +12,15 @@ import {useUsers} from '../reducers/UserReducer'
 
 const ProductView = ({ product }) => {
   const classes = useStyles();
-  const newOrder = useOrders()
-  const {loggedUser} = useUsers()
+  const order = useOrders()
+  const {user} = useUsers()
 
-  if (!newOrder || !loggedUser) return null
+  if (!order || !user) return null
 
   const handleClick = async () => {
     try {
-      const createOrder = await orderService.addToCart(product.id, loggedUser.id)
-      newOrder.ordersDispatch({type: 'add', payload: createOrder})
+      const createOrder = await orderService.addToCart(product.id, user.id)
+      order.dispatchOrders({type: 'add', payload: createOrder})
 
     } catch (e){
       console.log(e)

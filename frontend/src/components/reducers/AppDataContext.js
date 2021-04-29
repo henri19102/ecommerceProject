@@ -4,14 +4,19 @@ import ProductsReducer from "./ProductsReducer";
 import UserReducer from "./UserReducer";
 import OrdersReducer from './OrdersReducer'
 
+
 const AppDataContext = ({ children }) => {
+
+
   return (
     <>
       <UserReducer>
         <ProductsReducer>
           <NotificationReducer>
             <OrdersReducer>
-            {children}
+            
+                {children}
+            
             </OrdersReducer>
           </NotificationReducer>
         </ProductsReducer>

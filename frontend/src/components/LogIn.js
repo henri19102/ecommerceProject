@@ -16,9 +16,9 @@ const Login = () => {
   const message = useNotification()
 
   const notificationMessage = (msg, isError) => {
-    message.notificationDispatch({ type: "message", message: {message: msg, isError: isError} })
+    message.dispatchNotification({ type: "message", message: {message: msg, isError: isError} })
     setTimeout(()=>{
-        message.notificationDispatch({ type: "clear"})
+        message.dispatchNotification({ type: "clear"})
     }, 5000)
   }
 
@@ -36,7 +36,7 @@ const Login = () => {
     try {
       const loggedInUser = await userService.logIn(values);
       window.localStorage.setItem("loggedUser", JSON.stringify(loggedInUser));
-      user.userDispatch({ type: "logIn", payload: loggedInUser });
+      user.dispatchUser({ type: "logIn", payload: loggedInUser });
       history.push("/");
       notificationMessage(`Succesfully logged in as ${loggedInUser.name}!`, false)
     } catch (e) {

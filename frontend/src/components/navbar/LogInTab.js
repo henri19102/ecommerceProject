@@ -9,9 +9,9 @@ const LogInTab = () => {
   const user = useUsers();
 
   const handleChange = () => {
-    if (user.loggedUser) {
+    if (user.user) {
       window.localStorage.removeItem("loggedUser");
-      user.userDispatch({ type: "logOut" });
+      user.dispatchUser({ type: "logOut" });
     }
     history.push("/login");
   };
@@ -19,7 +19,7 @@ const LogInTab = () => {
   return (
     <>
       <IconButton onClick={handleChange}>
-        {user.loggedUser ? (
+        {user.user ? (
           <Typography>
             <LockOpen fontSize="large" style={{ display: "flex" }} />
             logout

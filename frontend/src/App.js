@@ -12,6 +12,9 @@ import Notification from './components/Notification'
 import ShoppingCart from './components/products/ShoppingCart'
 
 const App = () => {
+
+
+
   return (
     <AppDataContext>
       <Router>

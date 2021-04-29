@@ -12,25 +12,24 @@ import {useOrders} from '../reducers/OrdersReducer'
 import orderService from '../../services/orders'
 
 
-const CartProductView = ({value}) => {
+const CartProductView = ({product}) => {
   const classes = useStyles();
   const {products} = useProducts()
-  const {loggedUser} = useUsers()
-  const orders = useOrders()
+  const {user} = useUsers()
+  const {orders} = useOrders()
 
+  if (!orders) return null
   if (!products) return null
-  
-
-
-  const product = products.find(x=>x.id === Number(value[0]) )
-
 
   
-  const handleClick2 = async () => {
-     const id = orders.orders.find(x => x.userId === loggedUser.id && x.productId === product.id).id
-    
-     await orderService.removeProductFromCart(id)
-     orders.ordersDispatch({ type: "delete", deleteId: id })
+  console.log(products)
+
+console.log(product)
+
+const prods = products.find(x=>x.id === product.productId)
+  
+  const handleClick2 =  () => {
+
 }
   
 
@@ -51,13 +50,13 @@ const CartProductView = ({value}) => {
             Product:
           </Typography>
           <Typography variant="h5" component="h2">
-            {`${product.name}`}
+            {`${prods.name}`}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
             Price:
           </Typography>
           <Typography variant="body2" component="p">
-            {`${product.price} €  count: ${value[1]}`}
+            {`${prods.price} €  count: ${product.productCount}`}
           </Typography>
         </CardContent>
         <CardActions>

@@ -1,4 +1,5 @@
 const express = require('express')
+const { sequelize } = require('../models')
 const models = require('../models')
 const Order = models.Order
 
@@ -6,6 +7,18 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
     const orders = await Order.findAll()
+    return res.json(orders)
+})
+
+router.get('/user/:id', async (req, res) => {
+  const orders = await Order.findAll({
+    attributes: [
+      'userId', 'productId',
+      [sequelize.fn('COUNT', sequelize.col('*')), 'productCount']
+    ],
+    where: {userId: req.params.id},
+    group: ["productId", "userId"]
+  })
     return res.json(orders)
 })
 
@@ -17,6 +30,9 @@ router.get('/:id', async (req, res) => {
       })
     return res.json(orders)
 })
+
+
+
 
 router.post('/', async (req, res) => {
     try {

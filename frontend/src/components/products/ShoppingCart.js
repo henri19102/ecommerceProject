@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button, Box } from "@material-ui/core";
-
+import orderService from "../../services/orders";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { useOrders } from "../reducers/OrdersReducer";
@@ -8,27 +8,23 @@ import { useUsers } from "../reducers/UserReducer";
 import CartProductView from "./CartProductView";
 
 const ShoppingCart = () => {
-  const userOrd = useOrders();
-  const { loggedUser } = useUsers();
+  const {orders} = useOrders();
+  const { user } = useUsers();
 
-  if (!userOrd.orders) return null;
+  if (!orders) return null;
+  if (!user) return null;
 
-  const filteredOrders = userOrd.orders.filter(
-    (x) => x.userId === loggedUser.id
-  );
-  const joku = filteredOrders.map((x) => x.productId);
-  let counts = {};
-  joku.forEach((x) => {
-    counts[x] = (counts[x] || 0) + 1;
-  });
-  const product = Object.entries(counts);
+
+
 
   return (
     <div>
       <Box borderRadius={16} className="box" boxShadow="10">
-        {product.map((x) => (
-          <CartProductView key={x} value={x} />
-        ))}
+        {orders.map(x=>(
+          <CartProductView key={x} product={x}  />
+          ))}
+          
+      
       </Box>
     </div>
   );
