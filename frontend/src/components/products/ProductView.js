@@ -9,23 +9,24 @@ import { useStyles } from "../../styles/styles";
 import {useOrders} from '../reducers/OrdersReducer'
 import orderService from '../../services/orders'
 import {useUsers} from '../reducers/UserReducer'
+import {useCart} from '../reducers/CartReducer'
 
 const ProductView = ({ product }) => {
   const classes = useStyles();
   const order = useOrders()
+  const userCart = useCart()
   const {user} = useUsers()
 
-  if (!order || !user) return null
-
-  const handleClick = async () => {
-    try {
+  const addToUserCart = async () => {
+    
       const createOrder = await orderService.addToCart(product.id, user.id)
+      console.log(createOrder)
       order.dispatchOrders({type: 'add', payload: createOrder})
-
-    } catch (e){
-      console.log(e)
-    }
+      const userOrders = await orderService.getProductCount(user.id)
+      console.log(userOrders)
+      userCart.dispatchCart({type: "getAll", payload: userOrders})
   }
+
 
   return (
     <Grid style={{ margin: "20px" }}>
@@ -49,7 +50,7 @@ const ProductView = ({ product }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button onClick={handleClick} variant="contained" size="small">
+          <Button onClick={addToUserCart} variant="contained" size="small">
             Add to Cart
           </Button>
         </CardActions>

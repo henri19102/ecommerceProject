@@ -4,19 +4,21 @@ import { ShoppingCart } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { useUsers } from "../reducers/UserReducer";
 import {useOrders} from '../reducers/OrdersReducer'
+import {useCart} from '../reducers/CartReducer'
 import orderService from '../../services/orders'
 
 const ShoppingCartTab = () => {
-const user = useUsers()
-const orders = useOrders()
+const {user} = useUsers()
+const {orders} = useOrders()
+const userCart = useCart()
 const history = useHistory()
 
   const handleClick = async () => {
-    if (user.user && orders.orders) {
-      const userOrder = await orderService.getProductCount(user.user.id)
-      orders.dispatchOrders({type: 'getAll', payload: userOrder})
+    
+      const userOrders = await orderService.getProductCount(user.id)
+      userCart.dispatchCart({type: 'getAll', payload: userOrders})
       history.push("/shoppingcart");
-    }
+    
   };
 
   return (

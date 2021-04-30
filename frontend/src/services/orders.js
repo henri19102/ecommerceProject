@@ -18,7 +18,7 @@ const getProductCount = async (id)  => {
 };
 
 const addToCart = async (productId, userId) => {
-  const res = await axios.post(url, {productId, userId});
+  const res = await axios.post(`${url}/add`, {productId, userId});
   return res.data;
 };
 

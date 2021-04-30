@@ -34,14 +34,14 @@ router.get('/:id', async (req, res) => {
 
 
 
-router.post('/', async (req, res) => {
+router.post('/add', async (req, res) => {
     try {
         const order = {
             userId: req.body.userId,
             productId: req.body.productId
         };
-        await Order.create(order);
-        res.status(201).send();
+        const newOrder = await Order.create(order);
+        res.status(201).send(newOrder);
       } catch {
         res.status(500).send();
       }

@@ -12,11 +12,11 @@ const orderReducer = (state, action) => {
     case "getAll":
         return action.payload;
     case "userOrders":
-        return [...state.filter(x=>x.userId === action.payload)];
+        return action.userPayload;
     case "add":
         return [...state, action.payload];
     case "delete":
-        return [...state.filter(x=>x.id !== action.deleteId)];
+        return state.filter(x=>x.id !== action.deleteId)
     default:
         return state;
   }

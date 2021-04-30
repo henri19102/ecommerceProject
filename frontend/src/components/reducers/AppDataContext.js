@@ -3,6 +3,7 @@ import NotificationReducer from "./NotificationReducer";
 import ProductsReducer from "./ProductsReducer";
 import UserReducer from "./UserReducer";
 import OrdersReducer from './OrdersReducer'
+import CartReducer from './CartReducer'
 
 
 const AppDataContext = ({ children }) => {
@@ -14,9 +15,9 @@ const AppDataContext = ({ children }) => {
         <ProductsReducer>
           <NotificationReducer>
             <OrdersReducer>
-            
+              <CartReducer>
                 {children}
-            
+              </CartReducer>
             </OrdersReducer>
           </NotificationReducer>
         </ProductsReducer>

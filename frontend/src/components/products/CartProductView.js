@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -9,6 +9,7 @@ import { useStyles } from "../../styles/styles";
 import {useProducts} from '../reducers/ProductsReducer'
 import {useUsers} from '../reducers/UserReducer'
 import {useOrders} from '../reducers/OrdersReducer'
+import {useCart} from '../reducers/CartReducer'
 import orderService from '../../services/orders'
 
 
@@ -16,25 +17,37 @@ const CartProductView = ({product}) => {
   const classes = useStyles();
   const {products} = useProducts()
   const {user} = useUsers()
-  const {orders} = useOrders()
+  const orders = useOrders()
+  const userCart = useCart()
 
-  if (!orders) return null
-  if (!products) return null
 
-  
-  console.log(products)
+  // if (!orders.orders) return <div><p>loading...</p></div>
+  // if (!products) return <div><p>loading...</p></div>
+   if (!user) return <div><p>loading...</p></div>
+  // if (!userCart.cartProducts) return <div><p>loading...</p></div>
+  // if (!product) return <div><p>loading...</p></div>
 
-console.log(product)
+
 
 const prods = products.find(x=>x.id === product.productId)
-  
-  const handleClick2 =  () => {
 
+  const removeProductFromCart = async () => {
+
+
+
+    const deleteObj = orders.orders.find(x => x.userId === user.id && x.productId === product.productId)
+    console.log(orders.orders)
+    console.log(deleteObj)
+    const id = deleteObj.id
+    await orderService.removeProductFromCart(id)
+    orders.dispatchOrders({ type: "delete", deleteId: id })
+    const userOrders = await orderService.getProductCount(user.id)
+    userCart.dispatchCart({type: 'getAll', payload: userOrders})
 }
   
 
 
-  const handleClick = () => {
+  const addProductToCart = () => {
     
   }
 
@@ -60,10 +73,10 @@ const prods = products.find(x=>x.id === product.productId)
           </Typography>
         </CardContent>
         <CardActions>
-          <Button onClick={handleClick} color="primary" variant="contained" size="small">
+          <Button onClick={addProductToCart} color="primary" variant="contained" size="small">
             Add to Cart
           </Button>
-          <Button onClick={handleClick2} color="secondary" variant="contained" size="small">
+          <Button onClick={removeProductFromCart} color="secondary" variant="contained" size="small">
             Remove from cart
           </Button>
         </CardActions>
