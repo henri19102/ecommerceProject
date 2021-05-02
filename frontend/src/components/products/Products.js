@@ -3,9 +3,9 @@ import ProductView from "./ProductView";
 import { useProducts } from "../reducers/ProductsReducer";
 
 const Products = () => {
-  const {products} = useProducts();
+  const { products } = useProducts();
 
-  if (!products) return null
+  if (!products) return null;
 
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>

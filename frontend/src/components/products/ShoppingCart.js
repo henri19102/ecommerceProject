@@ -5,25 +5,24 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { useOrders } from "../reducers/OrdersReducer";
 import { useUsers } from "../reducers/UserReducer";
-import {useCart} from '../reducers/CartReducer'
+import { useCart } from "../reducers/CartReducer";
+import { useProducts } from "../reducers/ProductsReducer";
 import CartProductView from "./CartProductView";
 
 const ShoppingCart = () => {
   const { cartProducts } = useCart();
+  const { user } = useUsers();
+  const { products } = useProducts();
+  const { orders } = useOrders();
 
-  //if (!cartProducts) return <div><p>loading...</p></div>;
-
-
-
+  if (!cartProducts) return null;
 
   return (
     <div>
       <Box borderRadius={16} className="box" boxShadow="10">
-        {cartProducts.map(x=>(
-          <CartProductView key={x.productId} product={x}  />
-          ))}
-          
-      
+        {cartProducts.map((x) => (
+          <CartProductView key={x.productId} product={x} />
+        ))}
       </Box>
     </div>
   );
