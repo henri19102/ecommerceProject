@@ -36,7 +36,14 @@ const CartProductView = ({ product }) => {
     userCart.dispatchCart({ type: "getAll", payload: userOrders });
   };
 
-  const addProductToCart = () => {};
+  const addProductToCart = async () => {
+    const createOrder = await orderService.addToCart(product.productId, user.id);
+    console.log(createOrder);
+    orders.dispatchOrders({ type: "add", payload: createOrder });
+    const userOrders = await orderService.getProductCount(user.id);
+    console.log(userOrders);
+    userCart.dispatchCart({ type: "getAll", payload: userOrders });
+  };
 
   return (
     <Grid style={{ margin: "20px" }}>

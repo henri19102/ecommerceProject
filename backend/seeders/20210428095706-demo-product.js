@@ -3,33 +3,45 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Products', [{
-      name: 'lehti',
+      name: 'pallo',
       price: 15,
       count: 88,
+      category: 'urheilu',
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      name: 'tuoli',
-      price: 888,
-      count: 199,
+      name: 'maali',
+      price: 15,
+      count: 88,
+      category: 'urheilu',
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      name: 'kirja',
-      price: 30,
-      count: 145,
+      name: 'gameboy',
+      price: 15,
+      count: 88,
+      category: 'pelikoneet',
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      name: 'auto',
-      price: 30,
-      count: 145,
+      name: 'gamecube',
+      price: 15,
+      count: 88,
+      category: 'pelikoneet',
       createdAt: new Date(),
       updatedAt: new Date()
-    }
+    },
+    {
+      name: 'ps5',
+      price: 15,
+      count: 88,
+      category: 'pelikoneet',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
   ]);
   },
 
