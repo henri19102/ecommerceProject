@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppDataContext from "./components/reducers/AppDataContext";
 import Notification from './components/Notification'
 import ShoppingCart from './components/products/ShoppingCart'
+import ProductDetailView from './components/products/ProductDetailView'
 
 const App = () => {
 
@@ -28,6 +29,9 @@ const App = () => {
             </Route>
             <Route exact path="/products">
               <Products />
+            </Route>
+            <Route exact path="/products/:id">
+              <ProductDetailView />
             </Route>
             <Route exact path="/signup">
               <SignUp />

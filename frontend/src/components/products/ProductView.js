@@ -10,12 +10,21 @@ import { useOrders } from "../reducers/OrdersReducer";
 import orderService from "../../services/orders";
 import { useUsers } from "../reducers/UserReducer";
 import { useCart } from "../reducers/CartReducer";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useParams,
+  useHistory
+} from "react-router-dom";
 
 const ProductView = ({ product }) => {
   const classes = useStyles();
   const order = useOrders();
   const userCart = useCart();
   const { user } = useUsers();
+ 
+  const history = useHistory()
 
   const addToUserCart = async () => {
     const createOrder = await orderService.addToCart(product.id, user.id);
@@ -37,9 +46,10 @@ const ProductView = ({ product }) => {
           >
             Product:
           </Typography>
-          <Typography variant="h5" component="h2">
-            {`${product.name}`}
-          </Typography>
+          <Button size='large' variant="contained" onClick={() => history.push(`products/${product.id}`)}  >
+          {`${product.name}`}
+          </Button>
+            
           <Typography className={classes.pos} color="textSecondary">
             Price:
           </Typography>
@@ -48,7 +58,7 @@ const ProductView = ({ product }) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button onClick={addToUserCart} variant="contained" size="small">
+          <Button onClick={addToUserCart} variant="contained" size="small" color='primary' >
             Add to Cart
           </Button>
         </CardActions>
