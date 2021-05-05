@@ -16,14 +16,18 @@ const ShoppingCartTab = () => {
 
   if(!orders)return null
 
+
   const showShoppingCart = async () => {
-    const userOrders = await orderService.getProductCount(user.id);
-    userCart.dispatchCart({ type: "getAll", payload: userOrders });
-    history.push("/shoppingcart");
+    if (user){
+      const userOrders = await orderService.getProductCount(user.id);
+      userCart.dispatchCart({ type: "getAll", payload: userOrders });
+      history.push("/shoppingcart");
+    }
+    
   };
 
   const countContent = () => {
-    return orders.filter(x=>x.userId === user.id).length
+    if (user) return orders.filter(x=>x.userId === user.id).length
   }
 
 

@@ -10,6 +10,7 @@ import { useOrders } from "../reducers/OrdersReducer";
 import orderService from "../../services/orders";
 import { useUsers } from "../reducers/UserReducer";
 import { useCart } from "../reducers/CartReducer";
+import Rating from '@material-ui/lab/Rating';
 import {
   BrowserRouter as Router,
   Switch,
@@ -27,12 +28,14 @@ const ProductView = ({ product }) => {
   const history = useHistory()
 
   const addToUserCart = async () => {
-    const createOrder = await orderService.addToCart(product.id, user.id);
-    console.log(createOrder);
-    order.dispatchOrders({ type: "add", payload: createOrder });
-    const userOrders = await orderService.getProductCount(user.id);
-    console.log(userOrders);
-    userCart.dispatchCart({ type: "getAll", payload: userOrders });
+    if (user){
+      const createOrder = await orderService.addToCart(product.id, user.id);
+      console.log(createOrder);
+      order.dispatchOrders({ type: "add", payload: createOrder });
+      const userOrders = await orderService.getProductCount(user.id);
+      console.log(userOrders);
+      userCart.dispatchCart({ type: "getAll", payload: userOrders });
+    }
   };
 
   return (
@@ -56,6 +59,7 @@ const ProductView = ({ product }) => {
           <Typography variant="body2" component="p">
             {`${product.price} €`}
           </Typography>
+          <Rating></Rating>
         </CardContent>
         <CardActions>
           <Button onClick={addToUserCart} variant="contained" size="small" color='primary' >
