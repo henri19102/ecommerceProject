@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -10,6 +10,9 @@ import { useOrders } from "../reducers/OrdersReducer";
 import orderService from "../../services/orders";
 import { useUsers } from "../reducers/UserReducer";
 import { useCart } from "../reducers/CartReducer";
+import {useRatings} from '../reducers/RatingsReducer'
+import {useNotification} from '../reducers/NotificationReducer'
+import ratingService from '../../services/ratings'
 import Rating from '@material-ui/lab/Rating';
 import {
   BrowserRouter as Router,
@@ -20,12 +23,25 @@ import {
 } from "react-router-dom";
 
 const ProductView = ({ product }) => {
+  const [value, setValue] = useState(0)
   const classes = useStyles();
   const order = useOrders();
   const userCart = useCart();
   const { user } = useUsers();
+  const ratings = useRatings()
  
   const history = useHistory()
+  const message = useNotification()
+
+  const notificationMessage = (msg, isError) => {
+    message.dispatchNotification({ type: "message", message: {message: msg, isError: isError} })
+    setTimeout(()=>{
+        message.dispatchNotification({ type: "clear"})
+    }, 5000)
+  }
+
+  if(!ratings.ratings)return null
+  let joku
 
   const addToUserCart = async () => {
     if (user){
@@ -37,6 +53,24 @@ const ProductView = ({ product }) => {
       userCart.dispatchCart({ type: "getAll", payload: userOrders });
     }
   };
+  if(ratings.ratings.find(x=>x.productId === product.id)){
+    const filteredRatings = ratings.ratings.filter(x=>x.productId === product.id)
+    console.log(filteredRatings)
+    const average = filteredRatings.map(x=> x = x.starRating)
+    joku = average.reduce((a, b) => (a + b)) / average.length
+  }
+
+ console.log(value)
+
+ const submitRating = async (userId, productId, starRating) => {
+  if (ratings.ratings.find(x=> x.userId === userId && x.productId === productId)){
+    return notificationMessage('You have already rated this product!',true)
+  }
+  const newRating = await ratingService.addRating(userId, productId, starRating)
+  console.log(newRating)
+  ratings.dispatchRatings({type: "add", payload: newRating})
+  notificationMessage('Product rated succesfully!',false)
+ }
 
   return (
     <Grid style={{ margin: "20px" }}>
@@ -59,7 +93,18 @@ const ProductView = ({ product }) => {
           <Typography variant="body2" component="p">
             {`${product.price} €`}
           </Typography>
-          <Rating></Rating>
+
+
+          <Rating 
+          value={joku || 0} 
+          onChange={(event, newValue) => {
+            submitRating(user.id, product.id, newValue);
+          }}
+          >
+
+          </Rating>
+
+
         </CardContent>
         <CardActions>
           <Button onClick={addToUserCart} variant="contained" size="small" color='primary' >

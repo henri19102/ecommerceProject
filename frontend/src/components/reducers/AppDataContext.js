@@ -5,6 +5,7 @@ import UserReducer from "./UserReducer";
 import OrdersReducer from './OrdersReducer'
 import CartReducer from './CartReducer'
 import ReviewsReducer from './ReviewsReducer'
+import RatingReducer from './RatingsReducer'
 
 
 const AppDataContext = ({ children }) => {
@@ -18,7 +19,9 @@ const AppDataContext = ({ children }) => {
             <OrdersReducer>
               <CartReducer>
                 <ReviewsReducer>
-                  {children}
+                  <RatingReducer>
+                    {children}
+                  </RatingReducer>
                 </ReviewsReducer>
               </CartReducer>
             </OrdersReducer>
