@@ -4,7 +4,7 @@ import { ThemeProvider, createMuiTheme, Typography } from "@material-ui/core";
 const Header = () => {
   const theme = createMuiTheme({
     typography: {
-      fontFamily:  ["Helvetica"],
+      fontFamily:  ["Antonio"],
       marginBottom: 0,
     },
   });

@@ -1,9 +1,12 @@
 import React from "react";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
+import TextField from '@material-ui/core/TextField';
+
 import Typography from "@material-ui/core/Typography";
 import { useStyles } from "../../styles/styles";
 import {useProducts} from '../reducers/ProductsReducer'
+import {useReviews} from '../reducers/ReviewsReducer'
 import {
     useParams,
   } from "react-router-dom";
@@ -11,11 +14,19 @@ import {
 const ProductDetailView = () => {
   const classes = useStyles();
   const {products} = useProducts()
+  const {reviews} = useReviews()
+
   const {id} = useParams()
 
   if(!products)return null
+  if(!reviews)return null
+
+
 
   const product = products.find(x=>x.id === Number(id))
+  const someReviews = reviews.filter(x=>x.productId === Number(id))
+
+  console.log(reviews)
 
   return (
  <div>
@@ -42,6 +53,15 @@ const ProductDetailView = () => {
             Add to Cart
           </Button>
         </CardActions>
+        <div style={{backgroundColor: 'white'}} >
+        <div style={{display: 'flex', flexDirection: 'row'}} >
+          <Button variant="contained" size="small" >Add Review</Button>
+          <TextField style={{flexGrow: '3'}} ></TextField>
+        </div>
+        {someReviews.map(x=>(
+          <p key={x.id} >{x.reviewText}</p>
+        ))}
+        </div>
         </div>
   );
 };
