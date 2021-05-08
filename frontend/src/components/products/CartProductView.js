@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -27,8 +27,6 @@ const CartProductView = ({ product }) => {
     const deleteObj = orders.orders.find(
       (x) => x.userId === user.id && x.productId === product.productId
     );
-    console.log(orders.orders);
-    console.log(deleteObj);
     const id = deleteObj.id;
     await orderService.removeProductFromCart(id);
     orders.dispatchOrders({ type: "delete", deleteId: id });
@@ -37,11 +35,12 @@ const CartProductView = ({ product }) => {
   };
 
   const addProductToCart = async () => {
-    const createOrder = await orderService.addToCart(product.productId, user.id);
-    console.log(createOrder);
+    const createOrder = await orderService.addToCart(
+      product.productId,
+      user.id
+    );
     orders.dispatchOrders({ type: "add", payload: createOrder });
     const userOrders = await orderService.getProductCount(user.id);
-    console.log(userOrders);
     userCart.dispatchCart({ type: "getAll", payload: userOrders });
   };
 

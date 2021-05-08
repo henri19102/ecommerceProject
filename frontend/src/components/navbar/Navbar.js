@@ -2,13 +2,11 @@ import React from "react";
 import { ButtonGroup, Box } from "@material-ui/core";
 import NavbarTab from "./NavbarTab";
 import LogInTab from "./LogInTab";
-import ShoppingCartTab from './ShoppingCartTab'
+import ShoppingCartTab from "./ShoppingCartTab";
 import { useUsers } from "../reducers/UserReducer";
 
-
 const Navbar = () => {
-
-  const { user } = useUsers()
+  const { user } = useUsers();
 
   return (
     <Box style={{ textAlign: "center" }}>

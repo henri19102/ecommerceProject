@@ -10,29 +10,32 @@ export const useOrders = () => {
 const orderReducer = (state, action) => {
   switch (action.type) {
     case "getAll":
-        return action.payload;
+      return action.payload;
     case "userOrders":
-        return action.userPayload;
+      return action.userPayload;
     case "add":
-        return [...state, action.payload];
+      return [...state, action.payload];
     case "delete":
-        return state.filter(x=>x.id !== action.deleteId)
+      return state.filter((x) => x.id !== action.deleteId);
     default:
-        return state;
+      return state;
   }
 };
 
-const OrdersReducer = ( {children}) => {
+const OrdersReducer = ({ children }) => {
   const [orders, dispatchOrders] = useReducer(orderReducer, null);
 
-
   useEffect(() => {
-    orderService.getAll().then((x) => dispatchOrders({ type: "getAll", payload: x }));
+    orderService
+      .getAll()
+      .then((x) => dispatchOrders({ type: "getAll", payload: x }));
   }, []);
 
   return (
     <>
-      <OrdersContext.Provider value={{ orders: orders, dispatchOrders: dispatchOrders }}>
+      <OrdersContext.Provider
+        value={{ orders: orders, dispatchOrders: dispatchOrders }}
+      >
         {children}
       </OrdersContext.Provider>
     </>

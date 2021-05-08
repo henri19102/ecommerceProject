@@ -18,19 +18,20 @@ const ratingReducer = (state, action) => {
   }
 };
 
-const RatingReducer = ( {children}) => {
+const RatingReducer = ({ children }) => {
   const [ratings, dispatchRatings] = useReducer(ratingReducer, null);
 
-
   useEffect(() => {
-    ratingService.getAll().then((x) => dispatchRatings({ type: "ratings", payload: x }));
+    ratingService
+      .getAll()
+      .then((x) => dispatchRatings({ type: "ratings", payload: x }));
   }, []);
-
-  console.log(ratings)
 
   return (
     <>
-      <RatingsContext.Provider value={{ ratings: ratings, dispatchRatings: dispatchRatings }}>
+      <RatingsContext.Provider
+        value={{ ratings: ratings, dispatchRatings: dispatchRatings }}
+      >
         {children}
       </RatingsContext.Provider>
     </>

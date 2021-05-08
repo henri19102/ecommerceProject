@@ -1,6 +1,4 @@
-import React, { useContext, useEffect, useReducer } from "react";
-import {useUsers} from './UserReducer'
-import orderService from "../../services/orders";
+import React, { useContext, useReducer } from "react";
 
 export const CartContext = React.createContext();
 
@@ -11,21 +9,20 @@ export const useCart = () => {
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "getAll":
-        return action.payload;
+      return action.payload;
     default:
-        return state;
+      return state;
   }
 };
 
-const CartReducer = ( {children}) => {
+const CartReducer = ({ children }) => {
   const [cartProducts, dispatchCart] = useReducer(cartReducer, null);
-
-
-
 
   return (
     <>
-      <CartContext.Provider value={{ cartProducts: cartProducts, dispatchCart: dispatchCart }}>
+      <CartContext.Provider
+        value={{ cartProducts: cartProducts, dispatchCart: dispatchCart }}
+      >
         {children}
       </CartContext.Provider>
     </>

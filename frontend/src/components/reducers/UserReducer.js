@@ -30,8 +30,8 @@ const UserReducer = ({ children }) => {
 
   return (
     <>
-      <UserContext.Provider value={{ user: user, dispatchUser: dispatchUser }} >
-      { children }
+      <UserContext.Provider value={{ user: user, dispatchUser: dispatchUser }}>
+        {children}
       </UserContext.Provider>
     </>
   );

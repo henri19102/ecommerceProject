@@ -1,8 +1,5 @@
 import React from "react";
-import orderService from "../services/orders";
-import {useProducts} from './reducers/ProductsReducer'
-import {useOrders} from './reducers/OrdersReducer'
-import {useUsers} from './reducers/UserReducer'
+
 
 
 const Frontpage = () => {

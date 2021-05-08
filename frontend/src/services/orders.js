@@ -23,7 +23,7 @@ const addToCart = async (productId, userId) => {
 };
 
 const removeProductFromCart = async (id) => {
-  const res = await axios.delete(`${url}/delete/${id}`)
+  await axios.delete(`${url}/delete/${id}`)
 }
 
 

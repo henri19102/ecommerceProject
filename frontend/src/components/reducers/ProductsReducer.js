@@ -16,19 +16,20 @@ const productReducer = (state, action) => {
   }
 };
 
-const ProductsReducer = ( {children}) => {
+const ProductsReducer = ({ children }) => {
   const [products, dispatchProducts] = useReducer(productReducer, null);
 
-
   useEffect(() => {
-    productService.getAll().then((x) => dispatchProducts({ type: "products", payload: x }));
+    productService
+      .getAll()
+      .then((x) => dispatchProducts({ type: "products", payload: x }));
   }, []);
-
-  console.log(products)
 
   return (
     <>
-      <ProductsContext.Provider value={{ products: products, productsDispatch: dispatchProducts }}>
+      <ProductsContext.Provider
+        value={{ products: products, productsDispatch: dispatchProducts }}
+      >
         {children}
       </ProductsContext.Provider>
     </>

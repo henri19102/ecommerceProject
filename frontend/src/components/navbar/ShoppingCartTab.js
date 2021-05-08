@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { IconButton } from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
@@ -14,22 +14,19 @@ const ShoppingCartTab = () => {
   const userCart = useCart();
   const history = useHistory();
 
-  if(!orders)return null
-
+  if (!orders) return null;
 
   const showShoppingCart = async () => {
-    if (user){
+    if (user) {
       const userOrders = await orderService.getProductCount(user.id);
       userCart.dispatchCart({ type: "getAll", payload: userOrders });
       history.push("/shoppingcart");
     }
-    
   };
 
   const countContent = () => {
-    if (user) return orders.filter(x=>x.userId === user.id).length
-  }
-
+    if (user) return orders.filter((x) => x.userId === user.id).length;
+  };
 
   return (
     <>
@@ -38,8 +35,8 @@ const ShoppingCartTab = () => {
         color="primary"
         aria-label="add to shopping cart"
       >
-        <Badge color="secondary" badgeContent={countContent()} >
-        <ShoppingCart fontSize="large" />
+        <Badge color="secondary" badgeContent={countContent()}>
+          <ShoppingCart fontSize="large" />
         </Badge>
       </IconButton>
     </>

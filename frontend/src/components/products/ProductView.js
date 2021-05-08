@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
@@ -15,15 +15,10 @@ import {useNotification} from '../reducers/NotificationReducer'
 import ratingService from '../../services/ratings'
 import Rating from '@material-ui/lab/Rating';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useParams,
   useHistory
 } from "react-router-dom";
 
 const ProductView = ({ product }) => {
-  const [value, setValue] = useState(0)
   const classes = useStyles();
   const order = useOrders();
   const userCart = useCart();
@@ -46,28 +41,23 @@ const ProductView = ({ product }) => {
   const addToUserCart = async () => {
     if (user){
       const createOrder = await orderService.addToCart(product.id, user.id);
-      console.log(createOrder);
       order.dispatchOrders({ type: "add", payload: createOrder });
       const userOrders = await orderService.getProductCount(user.id);
-      console.log(userOrders);
       userCart.dispatchCart({ type: "getAll", payload: userOrders });
     }
   };
   if(ratings.ratings.find(x=>x.productId === product.id)){
     const filteredRatings = ratings.ratings.filter(x=>x.productId === product.id)
-    console.log(filteredRatings)
     const average = filteredRatings.map(x=> x = x.starRating)
     joku = average.reduce((a, b) => (a + b)) / average.length
   }
 
- console.log(value)
 
  const submitRating = async (userId, productId, starRating) => {
   if (ratings.ratings.find(x=> x.userId === userId && x.productId === productId)){
     return notificationMessage('You have already rated this product!',true)
   }
   const newRating = await ratingService.addRating(userId, productId, starRating)
-  console.log(newRating)
   ratings.dispatchRatings({type: "add", payload: newRating})
   notificationMessage('Product rated succesfully!',false)
  }
@@ -97,6 +87,7 @@ const ProductView = ({ product }) => {
 
           <Rating 
           value={joku || 0} 
+          name="unique-rating"
           onChange={(event, newValue) => {
             submitRating(user.id, product.id, newValue);
           }}

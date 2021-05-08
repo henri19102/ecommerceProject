@@ -7,6 +7,11 @@ const getAll = async ()  => {
     return res.data
   };
 
-const reviewService =  {getAll}
+  const addReview = async (userId, productId, reviewText) => {
+    const res = await axios.post(url, {userId, productId, reviewText});
+    return res.data;
+  };
+
+const reviewService =  {getAll, addReview}
 
 export default reviewService
