@@ -11,6 +11,7 @@ import AppDataContext from "./components/reducers/AppDataContext";
 import Notification from './components/Notification'
 import ShoppingCart from './components/products/ShoppingCart'
 import ProductDetailView from './components/products/ProductDetailView'
+import Admin from './components/admin/Admin'
 
 const App = () => {
 
@@ -41,6 +42,9 @@ const App = () => {
             </Route>
             <Route exact path="/shoppingcart">
               <ShoppingCart />
+            </Route>
+            <Route exact path="/admin">
+              <Admin />
             </Route>
           </Switch>
         </Container>

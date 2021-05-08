@@ -1,5 +1,5 @@
 import React from "react";
-import { Box } from "@material-ui/core";
+import { Box, Button } from "@material-ui/core";
 import { useCart } from "../reducers/CartReducer";
 import CartProductView from "./CartProductView";
 
@@ -15,6 +15,7 @@ const ShoppingCart = () => {
           <CartProductView key={x.productId} product={x} />
         ))}
       </Box>
+        <Button size='large' variant="contained" >checkout</Button>
     </div>
   );
 };

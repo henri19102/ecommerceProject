@@ -7,6 +7,7 @@ import { useUsers } from "../reducers/UserReducer";
 
 const Navbar = () => {
   const { user } = useUsers();
+  if(!user)return null
 
   return (
     <Box style={{ textAlign: "center" }}>
@@ -15,6 +16,7 @@ const Navbar = () => {
         <NavbarTab name={"Products"} pathTo={"/products"} />
         <NavbarTab name={"About"} pathTo={"/"} />
         {!user && <NavbarTab name={"Sign up"} pathTo={"/signup"} />}
+        {user.isAdmin && <NavbarTab name={"admin"} pathTo={"/admin"} /> }
       </ButtonGroup>
       <ShoppingCartTab />
       <LogInTab />
