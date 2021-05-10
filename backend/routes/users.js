@@ -12,6 +12,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const users = await User.findAll();
+  res.setHeader('Content-Range', '1')
   return res.json(users);
 });
 

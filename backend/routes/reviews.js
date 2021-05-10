@@ -6,6 +6,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
     const reviews = await Review.findAll()
+    res.setHeader('Content-Range', '1')
     return res.json(reviews)
 })
 

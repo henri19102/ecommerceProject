@@ -7,6 +7,7 @@ const router = express.Router()
 
 router.get('/', async (req, res) => {
     const orders = await Order.findAll()
+    res.setHeader('Content-Range', '1')
     return res.json(orders)
 })
 

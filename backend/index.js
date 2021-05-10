@@ -10,8 +10,14 @@ const ratingsRouter = require('./routes/ratings')
 
 const cors = require('cors')
 
+
+
 const app = express();
-app.use(cors())
+
+
+
+app.use(cors({exposedHeaders: ['Content-Range']}))
+
 app.use(express.json())
 dotenv.config();
 

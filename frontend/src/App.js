@@ -8,46 +8,68 @@ import Frontpage from "./components/Frontpage";
 import { Container } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppDataContext from "./components/reducers/AppDataContext";
-import Notification from './components/Notification'
-import ShoppingCart from './components/products/ShoppingCart'
-import ProductDetailView from './components/products/ProductDetailView'
-import Admin from './components/admin/Admin'
+import Notification from "./components/Notification";
+import ShoppingCart from "./components/products/ShoppingCart";
+import ProductDetailView from "./components/products/ProductDetailView";
+import AdminPage from "./components/admin/AdminPage";
 
 const App = () => {
-
-
-
   return (
     <AppDataContext>
       <Router>
-        <Container maxWidth="md" className="container1">
-          <Header />
-          <Navbar />
-          <Notification/>
-          <Switch>
-            <Route exact path="/">
+        <Switch>
+          <Route exact path="/">
+            <Container maxWidth="md" className="container1">
+              <Header />
+              <Navbar />
+              <Notification />
               <Frontpage />
-            </Route>
-            <Route exact path="/products">
+            </Container>
+          </Route>
+          <Route exact path="/products">
+            <Container maxWidth="md" className="container1">
+              <Header />
+              <Navbar />
+              <Notification />
               <Products />
-            </Route>
-            <Route exact path="/products/:id">
+            </Container>
+          </Route>
+          <Route exact path="/products/:id">
+            <Container maxWidth="md" className="container1">
+              <Header />
+              <Navbar />
+              <Notification />
               <ProductDetailView />
-            </Route>
-            <Route exact path="/signup">
+            </Container>
+          </Route>
+          <Route exact path="/signup">
+            <Container maxWidth="md" className="container1">
+              <Header />
+              <Navbar />
+              <Notification />
               <SignUp />
-            </Route>
-            <Route exact path="/login">
+            </Container>
+          </Route>
+          <Route exact path="/login">
+            <Container maxWidth="md" className="container1">
+              <Header />
+              <Navbar />
+              <Notification />
               <LogIn />
-            </Route>
-            <Route exact path="/shoppingcart">
+            </Container>
+          </Route>
+          <Route exact path="/shoppingcart">
+            <Container maxWidth="md" className="container1">
+              <Header />
+              <Navbar />
+              <Notification />
               <ShoppingCart />
-            </Route>
-            <Route exact path="/admin">
-              <Admin />
-            </Route>
-          </Switch>
-        </Container>
+            </Container>
+          </Route>
+          <Route exact path="/admin">
+            <AdminPage />
+          </Route>
+        </Switch>
       </Router>
     </AppDataContext>
   );

@@ -19,7 +19,8 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3001/api/orders/delete
+DELETE http://localhost:3001/api/products/56
+Content-Type: application/json
 
 ###
 
@@ -31,3 +32,10 @@ Content-Type: application/json
 }
 
 ###
+
+PUT http://localhost:3001/api/products/44
+Content-Type: application/json
+
+{
+    "price": 5
+}
