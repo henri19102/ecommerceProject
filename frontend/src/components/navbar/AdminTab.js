@@ -1,10 +1,7 @@
 import React from 'react'
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import { IconButton, Typography } from "@material-ui/core";
-import Badge from "@material-ui/core/Badge";
 import { useHistory } from "react-router-dom";
-
-
 
 const AdminTab = ({pathTo}) => {
     const history = useHistory();

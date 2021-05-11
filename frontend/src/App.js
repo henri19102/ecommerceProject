@@ -9,8 +9,8 @@ import { Container } from "@material-ui/core";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppDataContext from "./components/reducers/AppDataContext";
 import Notification from "./components/Notification";
-import ShoppingCart from "./components/products/ShoppingCart";
-import ProductDetailView from "./components/products/ProductDetailView";
+import ShoppingCart from "./components/shoppingCart/ShoppingCart";
+import ProductDetailView from "./components/productDetails/ProductDetailView";
 import AdminPage from "./components/admin/AdminPage";
 
 const App = () => {
