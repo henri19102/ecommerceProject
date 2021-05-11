@@ -48,14 +48,14 @@ router.post('/add', async (req, res) => {
       }
 })
 
-router.delete('/delete/:id', async (req, res) => {
-  console.log(req.body)
-    await Order.destroy({
-        where: {
-          id: req.params.id
-        }
-      })
-      res.status(204).end()
-})
+router.delete("/:id", async (req, res) => {
+  try {
+    const order = await Order.findOne({ where: { id: req.params.id } });
+    await order.destroy();
+    res.status(204).end();
+  } catch (e) {
+    console.log("error");
+  }
+});
 
 module.exports = router

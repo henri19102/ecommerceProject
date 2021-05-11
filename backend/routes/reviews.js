@@ -24,4 +24,14 @@ router.post('/', async (req, res) => {
       }
 })
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const review = await Review.findOne({ where: { id: req.params.id } });
+    await review.destroy();
+    res.status(204).end();
+  } catch (e) {
+    console.log("error");
+  }
+});
+
 module.exports = router

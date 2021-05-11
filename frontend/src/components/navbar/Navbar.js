@@ -3,11 +3,18 @@ import { ButtonGroup, Box } from "@material-ui/core";
 import NavbarTab from "./NavbarTab";
 import LogInTab from "./LogInTab";
 import ShoppingCartTab from "./ShoppingCartTab";
+import AdminTab from "./AdminTab";
 import { useUsers } from "../reducers/UserReducer";
 
 const Navbar = () => {
   const { user } = useUsers();
-  if(!user)return null
+  let admin
+
+  if(user) {
+    user.isAdmin ? admin = true : admin = false;
+  }
+  
+console.log(admin)
 
   return (
     <Box style={{ textAlign: "center" }}>
@@ -16,10 +23,10 @@ const Navbar = () => {
         <NavbarTab name={"Products"} pathTo={"/products"} />
         <NavbarTab name={"About"} pathTo={"/"} />
         {!user && <NavbarTab name={"Sign up"} pathTo={"/signup"} />}
-        {user.isAdmin && <NavbarTab name={"admin"} pathTo={"/admin"} /> }
       </ButtonGroup>
       <ShoppingCartTab />
       <LogInTab />
+      {admin && <AdminTab pathTo={"/admin"} />  } 
     </Box>
   );
 };

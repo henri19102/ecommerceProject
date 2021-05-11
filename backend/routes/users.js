@@ -10,11 +10,22 @@ const User = models.User;
 
 const router = express.Router();
 
+///  GET   ///
+
 router.get("/", async (req, res) => {
   const users = await User.findAll();
   res.setHeader('Content-Range', '1')
   return res.json(users);
 });
+
+router.get("/:id", async (req, res) => {
+  const user = await User.findOne({ where: { id: req.params.id } });
+  return res.json(user);
+});
+
+///  GET   ///
+/////////////
+///  POST ///
 
 router.post("/", async (req, res) => {
   try {
@@ -24,9 +35,10 @@ router.post("/", async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword,
+      isAdmin: req.body.isAdmin
     };
-    await User.create(user);
-    res.status(201).send();
+    const newUser = await User.create(user);
+    res.status(201).send(newUser);
   } catch {
     res.status(500).send();
   }
@@ -47,6 +59,43 @@ router.post("/login", async (req, res) => {
     res.status(500).send();
   }
 });
+
+///  POST ///
+/////////////
+///  PUT ///
+
+router.put("/:id", async (req, res) => {
+  try {
+    const { name, email, password, isAdmin } = req.body;
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const user = await User.findOne({ where: { id: req.params.id } });
+    user.name = name;
+    user.email = email;
+    user.password = hashedPassword;
+    user.isAdmin = isAdmin;
+    await user.save();
+    return res.json(user);
+  } catch {
+    res.status(500).send();
+  }
+});
+
+///  PUT ///
+/////////////
+///  DELETE ///
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const user = await User.findOne({ where: { id: req.params.id } });
+    await user.destroy();
+    res.status(204).end();
+  } catch {
+    res.status(500).send();
+  }
+});
+
+///  DELETE ///
 
 const checkToken = (req, res, next) => {
     const token = req.headers['authorization'].split(' ')[1]

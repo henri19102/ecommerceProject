@@ -4,6 +4,8 @@ const Product = models.Product;
 
 const router = express.Router();
 
+///  GET   ///
+
 router.get("/", async (req, res) => {
   const products = await Product.findAll();
   res.setHeader("Content-Range", "1");
@@ -14,6 +16,10 @@ router.get("/:id", async (req, res) => {
   const product = await Product.findOne({ where: { id: req.params.id } });
   return res.json(product);
 });
+
+///  GET   ///
+/////////////
+///  POST ///
 
 router.post("/", async (req, res) => {
   try {
@@ -30,26 +36,35 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.delete("/:id", async (req, res) => {
-    try {
-        const product = await Product.findOne({ where: { id: req.params.id } });
-        await product.destroy();
-        res.status(204).end();
-    } catch (e){
-        console.log("error")
-    }
-  
-});
+///  POST ///
+/////////////
+///  PUT ///
 
 router.put("/:id", async (req, res) => {
-  const {name, price, count, category} = req.body
+  const { name, price, count, category } = req.body;
   const product = await Product.findOne({ where: { id: req.params.id } });
   product.name = name;
   product.price = price;
   product.count = count;
   product.category = category;
-  await product.save()
+  await product.save();
   return res.json(product);
 });
+
+///  PUT ///
+/////////////
+///  DELETE ///
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const product = await Product.findOne({ where: { id: req.params.id } });
+    await product.destroy();
+    res.status(204).end();
+  } catch (e) {
+    console.log("error");
+  }
+});
+
+///  DELETE ///
 
 module.exports = router;
