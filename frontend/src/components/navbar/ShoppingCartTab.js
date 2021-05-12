@@ -4,25 +4,16 @@ import { ShoppingCart } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { useUsers } from "../reducers/UserReducer";
 import { useOrders } from "../reducers/OrdersReducer";
-import { useCart } from "../reducers/CartReducer";
-import orderService from "../../services/orders";
 import Badge from "@material-ui/core/Badge";
+import { useStyles } from "../../styles/styles"
 
 const ShoppingCartTab = () => {
+  const classes = useStyles();
   const { user } = useUsers();
   const { orders } = useOrders();
-  const userCart = useCart();
   const history = useHistory();
 
   if (!orders) return null;
-
-  const showShoppingCart = async () => {
-    if (user) {
-      const userOrders = await orderService.getProductCount(user.id);
-      userCart.dispatchCart({ type: "getAll", payload: userOrders });
-      history.push("/shoppingcart");
-    }
-  };
 
   const countContent = () => {
     if (user) return orders.filter((x) => x.userId === user.id).length;
@@ -31,8 +22,8 @@ const ShoppingCartTab = () => {
   return (
     <>
       <IconButton
-        onClick={showShoppingCart}
-        color="primary"
+      className={classes.white}
+        onClick={() => history.push("/shoppingcart")}
         aria-label="add to shopping cart"
       >
         <Badge color="secondary" badgeContent={countContent()}>

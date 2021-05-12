@@ -11,24 +11,18 @@ import Avatar from "@material-ui/core/Avatar";
 const ProductListItem = ({ review }) => {
   const classes = useStyles();
   const { user } = useUsers();
-
+  if (!user) return null;
   return (
     <>
-      <ListItem key={review.id} alignItems="flex-start">
+      <ListItem key={review.id}>
         <ListItemAvatar>
           <Avatar alt="Remy Sharp" />
         </ListItemAvatar>
         <ListItemText
-          style={{ color: "blue" }}
           primary={`${user.name}`}
           secondary={
             <React.Fragment>
-              <Typography
-                component="span"
-                variant="body2"
-                className={classes.inline}
-                color="textPrimary"
-              >
+              <Typography component="span" variant="body2" color="textPrimary">
                 {review.reviewText}
               </Typography>
             </React.Fragment>

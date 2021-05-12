@@ -1,52 +1,62 @@
-const express = require('express')
-const { sequelize } = require('../models')
-const models = require('../models')
-const Order = models.Order
+const express = require("express");
+const { sequelize } = require("../models");
+const models = require("../models");
+const Order = models.Order;
+const Product = models.Product;
 
-const router = express.Router()
+const router = express.Router();
 
-router.get('/', async (req, res) => {
-    const orders = await Order.findAll()
-    res.setHeader('Content-Range', '1')
-    return res.json(orders)
-})
-
-router.get('/user/:id', async (req, res) => {
+router.get("/", async (req, res) => {
   const orders = await Order.findAll({
+    include: {
+      model: Product,
+      attributes: ["name"],
+    },
+  });
+  res.setHeader("Content-Range", "1");
+  return res.json(orders);
+});
+
+router.get("/user/:id", async (req, res) => {
+  const orders = await Order.findAll({
+    include: {
+      model: Product,
+      attributes: ["name", "price"],
+    },
     attributes: [
-      'userId', 'productId',
-      [sequelize.fn('COUNT', sequelize.col('*')), 'productCount']
+      "Product.name",
+      "Product.price",
+      "userId",
+      "productId",
+      [sequelize.fn("COUNT", sequelize.col("*")), "productCount"],
     ],
-    where: {userId: req.params.id},
-    group: ["productId", "userId"]
-  })
-    return res.json(orders)
-})
+    where: { userId: req.params.id },
+    group: ["Product.id", "Product.name", "productId", "userId"],
+  });
+  return res.json(orders);
+});
 
-router.get('/:id', async (req, res) => {
-    const orders = await Order.findAll({
-        where: {
-          userId: req.params.id
-        }
-      })
-    return res.json(orders)
-})
+router.get("/:id", async (req, res) => {
+  const orders = await Order.findAll({
+    where: {
+      userId: req.params.id,
+    },
+  });
+  return res.json(orders);
+});
 
-
-
-
-router.post('/add', async (req, res) => {
-    try {
-        const order = {
-            userId: req.body.userId,
-            productId: req.body.productId
-        };
-        const newOrder = await Order.create(order);
-        res.status(201).send(newOrder);
-      } catch {
-        res.status(500).send();
-      }
-})
+router.post("/add", async (req, res) => {
+  try {
+    const order = {
+      userId: req.body.userId,
+      productId: req.body.productId,
+    };
+    const newOrder = await Order.create(order);
+    res.status(201).send(newOrder);
+  } catch {
+    res.status(500).send();
+  }
+});
 
 router.delete("/:id", async (req, res) => {
   try {
@@ -58,4 +68,4 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-module.exports = router
+module.exports = router;

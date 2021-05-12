@@ -46,15 +46,15 @@ const Login = () => {
   };
 
   return (
-    <div className="pageStyle">
-      <Box borderRadius={16} className="box" boxShadow="10">
+      <Box className={classes.logIn} borderRadius={16} boxShadow="10">
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
-          <Form className={classes.root} noValidate autoComplete="off">
+          <Form className={classes.form}  noValidate autoComplete="off">
             <MyTextInput
+              className={classes.input}
               id="nameInput"
               label="name"
               name="name"
@@ -62,6 +62,7 @@ const Login = () => {
               placeholder="jane@formik.com"
             />
             <MyTextInput
+              className={classes.input}
               id="passwordInput"
               label="password"
               name="password"
@@ -70,7 +71,7 @@ const Login = () => {
             />
 
             <Button
-              style={{ backgroundColor: "green" }}
+            color="primary"
               variant="contained"
               type="submit"
             >
@@ -79,7 +80,6 @@ const Login = () => {
           </Form>
         </Formik>
       </Box>
-    </div>
   );
 };
 

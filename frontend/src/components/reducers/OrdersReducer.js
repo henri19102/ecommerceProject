@@ -31,6 +31,8 @@ const OrdersReducer = ({ children }) => {
       .then((x) => dispatchOrders({ type: "getAll", payload: x }));
   }, []);
 
+  console.log(orders)
+
   return (
     <>
       <OrdersContext.Provider

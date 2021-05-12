@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import ProductView from "./ProductView";
 import { useProducts } from "../reducers/ProductsReducer";
-import Select from "react-select";
-import TextField from "@material-ui/core/TextField";
+import {useStyles} from "../../styles/styles"
+import ProductFilter from './ProductFilter'
+import ProductSearch from './ProductSearch'
 
 const Products = () => {
+
+//#region
   const [category, setCategory] = useState("All");
   const [name, setName] = useState("");
-
+  const classes = useStyles();
   const { products } = useProducts();
 
   if (!products) return null;
@@ -28,42 +31,16 @@ const Products = () => {
   const findValue = () => {
     return options.find((obj) => obj.value === category);
   };
-
-  return (
+//#endregion
+  
+return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          alignItems: "center",
-          borderRadius: "25px",
-          padding: "2%",
-          backgroundColor: "white",
-        }}
-      >
-        <div style={{ width: "30%" }}>
-          <label>
-            Filter by product category:
-            <Select
-              options={options}
-              onChange={handleChange}
-              value={findValue}
-            />
-          </label>
-        </div>
-        <div style={{ width: "30%" }}>
-          <label>
-            Search:
-            <TextField
-              variant="outlined"
-              onChange={(e) => setName(e.target.value)}
-              label="Search product by name"
-            />
-          </label>
-        </div>
+    <div className={classes.productsPage} >
+      <div className={classes.products} >
+        <ProductFilter options={options} handleChange={handleChange} findValue={findValue}  />
+       <ProductSearch setName={setName} />
       </div>
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div className={classes.products} >
         {products
           .filter((z) => z.name.includes(name))
           .filter((y) =>
@@ -72,6 +49,7 @@ const Products = () => {
           .map((x) => (
             <ProductView key={x.id} product={x} />
           ))}
+      </div>
       </div>
     </>
   );

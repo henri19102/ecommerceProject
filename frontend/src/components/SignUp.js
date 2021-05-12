@@ -10,6 +10,9 @@ import { useNotification } from "./reducers/NotificationReducer";
 import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
+
+//#region 
+
   const user = useUsers();
   const history = useHistory();
   const classes = useStyles();
@@ -50,18 +53,18 @@ const notificationMessage = (msg, isError) => {
       notificationMessage('Invalid inputs!', true)
     }
   };
-
+//#endregion
 
   return (
-    <div className="pageStyle">
-      <Box borderRadius={16} className="box" boxShadow="10">
+      <Box borderRadius={16} className={classes.logIn} boxShadow="10">
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={onSubmit}
         >
-          <Form className={classes.root} noValidate autoComplete="off">
+          <Form className={classes.form} noValidate autoComplete="off">
             <MyTextInput
+            className={classes.input}
               id="nameInput"
               label="Name"
               name="name"
@@ -70,6 +73,7 @@ const notificationMessage = (msg, isError) => {
             />
 
             <MyTextInput
+            className={classes.input}
               id="emailInput"
               label="Email"
               name="email"
@@ -78,6 +82,7 @@ const notificationMessage = (msg, isError) => {
             />
 
             <MyTextInput
+            className={classes.input}
               id="passwordInput"
               label="password"
               name="password"
@@ -86,7 +91,7 @@ const notificationMessage = (msg, isError) => {
             />
 
             <Button
-              style={{ backgroundColor: "green" }}
+            color="primary"
               variant="contained"
               type="submit"
             >
@@ -95,7 +100,6 @@ const notificationMessage = (msg, isError) => {
           </Form>
         </Formik>
       </Box>
-    </div>
   );
 };
 

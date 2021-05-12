@@ -48,23 +48,15 @@ const ProductReview = () => {
     setText("");
   };
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        marginBottom: "20px",
-        backgroundColor: "white",
-      }}
-    >
+    <div>
       <Button variant="contained" size="small" onClick={submitReview}>
         Add Review
       </Button>
       <TextField
-        style={{ flexGrow: "3" }}
         onChange={(e) => setText(e.target.value)}
         value={text}
         multiline
-        rows={4}
+        rows={2}
       ></TextField>
     </div>
   );

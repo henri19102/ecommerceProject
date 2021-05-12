@@ -25,8 +25,8 @@ const ProductDetailView = () => {
       <ProductDescription />
       <ProductButtons />
       <ProductReview />
-      <div style={{ backgroundColor: "white" }}>
-        <List className={classes.root}>
+      <div>
+        <List>
           {someReviews.map((x) => (
             <ProductListItem review={x} />
           ))}

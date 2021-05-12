@@ -5,45 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: gray;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.menu {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  background-color: aqua;
-}
-.container1{
-  background-color: bisque;
-  padding-bottom: 10px;
-}
-
-h2{
-  text-align: center;
-}
-form{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20;
-  margin-bottom: 10%;
-  width: auto;
-}
-.box{
-  background-color: white;
-  margin: 10;
-}
-.pageStyle {
-display: flex;
-justify-content: center;
-margin-bottom: 10%;
-
-}
-
 

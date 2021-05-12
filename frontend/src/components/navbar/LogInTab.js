@@ -3,8 +3,10 @@ import { IconButton, Typography } from "@material-ui/core";
 import { LockOpen, Lock } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { useUsers } from "../reducers/UserReducer";
+import {useStyles} from "../../styles/styles"
 
 const LogInTab = () => {
+  const classes = useStyles();
   const history = useHistory();
   const user = useUsers();
 
@@ -18,15 +20,15 @@ const LogInTab = () => {
 
   return (
     <>
-      <IconButton onClick={handleChange}>
+      <IconButton className={classes.white} onClick={handleChange}>
         {user.user ? (
           <Typography>
-            <LockOpen fontSize="large" style={{ display: "flex" }} />
+            <LockOpen fontSize="large" />
             logout
           </Typography>
         ) : (
           <Typography>
-            <Lock fontSize="large" style={{ display: "flex" }} />
+            <Lock fontSize="large" />
             login
           </Typography>
         )}

@@ -1,33 +1,48 @@
 import React from "react";
-import { ButtonGroup, Box } from "@material-ui/core";
+import {
+  Typography,
+  AppBar,
+  Toolbar,
+  useMediaQuery,
+  useTheme,
+} from "@material-ui/core";
 import NavbarTab from "./NavbarTab";
 import LogInTab from "./LogInTab";
 import ShoppingCartTab from "./ShoppingCartTab";
-import AdminTab from "./AdminTab";
 import { useUsers } from "../reducers/UserReducer";
+import TogglableMenu from "./TogglableMenu";
+import NormalMenu from "./NormalMenu";
+import {useStyles} from "../../styles/styles"
 
 const Navbar = () => {
   const { user } = useUsers();
-  let admin
+  const theme = useTheme();
+  const classes = useStyles();
+  const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
 
-  if(user) {
-    user.isAdmin ? admin = true : admin = false;
+  let admin;
+
+  if (user) {
+    user.isAdmin ? (admin = true) : (admin = false);
   }
-  
-console.log(admin)
 
   return (
-    <Box style={{ textAlign: "center" }}>
-      <ButtonGroup>
-        <NavbarTab name={"Frontpage"} pathTo={"/"} />
-        <NavbarTab name={"Products"} pathTo={"/products"} />
-        <NavbarTab name={"About"} pathTo={"/"} />
-        {!user && <NavbarTab name={"Sign up"} pathTo={"/signup"} />}
-      </ButtonGroup>
-      <ShoppingCartTab />
-      <LogInTab />
-      {admin && <AdminTab pathTo={"/admin"} />  } 
-    </Box>
+    <>
+      <AppBar className={classes.appBar} position="sticky">
+        <Toolbar className={classes.toolbar} >
+          {isMatch ? (
+            <TogglableMenu admin={admin} />
+          ) : (
+            <NormalMenu admin={admin} />
+          )}
+
+          <Typography className={classes.header} variant="h4">HAMAZON</Typography>
+          {!user && <NavbarTab name={"Sign up"} pathTo={"/signup"} />}
+          <ShoppingCartTab />
+          <LogInTab />
+        </Toolbar>
+      </AppBar>
+    </>
   );
 };
 

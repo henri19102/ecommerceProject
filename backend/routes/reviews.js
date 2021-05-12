@@ -1,11 +1,18 @@
 const express = require('express')
 const models = require('../models')
 const Review = models.Review
+const User = models.User
+const { sequelize } = require('../models')
+
 
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-    const reviews = await Review.findAll()
+    const reviews = await Review.findAll({ include: {
+      model: User,
+      attributes: ["name"]
+    }
+  })
     res.setHeader('Content-Range', '1')
     return res.json(reviews)
 })

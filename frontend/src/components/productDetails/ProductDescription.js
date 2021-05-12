@@ -18,26 +18,18 @@ const ProductDescription = () => {
 
   return (
     <div>
-      <Typography className={classes.title} color="textSecondary" gutterBottom>
-        Product:
-      </Typography>
-      <Typography variant="h5" component="h2">
-        {`${product.name}`}
-      </Typography>
-      <p>
+      <Typography>Product:</Typography>
+      <Typography>{`${product.name}`}</Typography>
+      <Typography>
         Contrary to popular belief, Lorem Ipsum is not simply random text. It
         has roots in a piece of classical Latin literature from 45 BC, making it
         over 2000 years old. Richard McClintock, a Latin professor at
         Hampden-Sydney College in Virginia, looked up one of the more obscure
-      </p>
-
-      <Typography className={classes.pos} color="textSecondary">
-        Price:
       </Typography>
-      <Typography variant="body2" component="p">
-        {`${product.price} €`}
-      </Typography>
+      <Typography>Price:</Typography>
+      <Typography>{`${product.price} €`}</Typography>
+    </div>
+  );
+};
 
-        </div>)}
-
-export default ProductDescription
+export default ProductDescription;

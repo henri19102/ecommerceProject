@@ -1,27 +1,21 @@
 import React from "react";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import { Grid } from "@material-ui/core";
+import {Card, CardActions, CardContent, Button, Typography, Badge } from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import RemoveIcon from '@material-ui/icons/Remove';
 import { useStyles } from "../../styles/styles";
-import { useProducts } from "../reducers/ProductsReducer";
 import { useUsers } from "../reducers/UserReducer";
 import { useOrders } from "../reducers/OrdersReducer";
 import { useCart } from "../reducers/CartReducer";
 import orderService from "../../services/orders";
 
 const CartProductView = ({ product }) => {
+  //#region 
   const classes = useStyles();
-  const { products } = useProducts();
   const { user } = useUsers();
   const orders = useOrders();
   const userCart = useCart();
 
-  if (!userCart.cartProducts) return null;
-
-  const prods = products.find((x) => x.id === product.productId);
+  if (!product) return null;
 
   const removeProductFromCart = async () => {
     const deleteObj = orders.orders.find(
@@ -44,47 +38,40 @@ const CartProductView = ({ product }) => {
     userCart.dispatchCart({ type: "getAll", payload: userOrders });
   };
 
+//#endregion
   return (
-    <Grid style={{ margin: "20px" }}>
-      <Card className={classes.root2} variant="outlined">
+      <Card className={classes.productCard}  variant="outlined">
         <CardContent>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            Product:
+          <Typography gutterBottom>Product:</Typography>
+          <Typography>{`${product.Product.name}`}</Typography>
+          <Typography >Price:</Typography>
+          <Typography>
+            {`${product.Product.price} € `}
           </Typography>
-          <Typography variant="h5" component="h2">
-            {`${prods.name}`}
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            Price:
-          </Typography>
-          <Typography variant="body2" component="p">
-            {`${prods.price} €  count: ${product.productCount}`}
-          </Typography>
+          
         </CardContent>
         <CardActions>
           <Button
+          startIcon={<AddIcon/>}
             onClick={addProductToCart}
             color="primary"
             variant="contained"
             size="small"
           >
-            Add to Cart
+            Add
           </Button>
+          <Button variant="outlined"  className={classes.green}>{`${product.productCount} pcs.`}</Button>
           <Button
+          startIcon={<RemoveIcon/>}
             onClick={removeProductFromCart}
             color="secondary"
             variant="contained"
             size="small"
           >
-            Remove from cart
+            Remove
           </Button>
         </CardActions>
       </Card>
-    </Grid>
   );
 };
 

@@ -2,17 +2,20 @@ import React from 'react'
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import { IconButton, Typography } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import {useStyles} from "../../styles/styles"
+
 
 const AdminTab = ({pathTo}) => {
+  const classes = useStyles();
     const history = useHistory();
     return (
         <>
         <IconButton
-          color="primary"
+        className={classes.white}
           aria-label="admin"
         >
-          <Typography color="secondary" >
-            <SupervisorAccountIcon fontSize="large" onClick={() => history.push("/admin")} />
+          <Typography  >
+            <SupervisorAccountIcon fontSize="large" onClick={() => history.push(pathTo)} />
             Admin
           </Typography>
         </IconButton>
