@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Box, Button } from "@material-ui/core";
+import { Box, Button, Typography, Card, CardContent } from "@material-ui/core";
 import CartProductView from "./CartProductView";
 import { useUsers } from "../reducers/UserReducer";
 import { useCart } from "../reducers/CartReducer";
@@ -25,6 +25,7 @@ const ShoppingCart = () => {
   }, [userCart, user]);
 
   if (!userCart.cartProducts) return null;
+  
 //#endregion
   return (
     <div  className={classes.productsPage} >
@@ -33,6 +34,12 @@ const ShoppingCart = () => {
           <CartProductView key={x.productId} product={x} />
         ))}
       </Box>
+      <Card className={classes.cardContent}  variant="outlined">
+        <CardContent className={classes.cardContent2}  >
+      <Typography  variant="h6"  >{`Total price: ${userCart.cartProducts.reduce((a,b)=>a+(Number(b.productCount)*b.Product.price),0)} €`}</Typography>
+     </CardContent>
+     </Card>
+
       <Button size="large" variant="contained">
         checkout
       </Button>

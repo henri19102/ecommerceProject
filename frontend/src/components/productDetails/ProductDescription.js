@@ -1,5 +1,5 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
+import {Typography, Box} from "@material-ui/core";
 import { useStyles } from "../../styles/styles";
 import { useProducts } from "../reducers/ProductsReducer";
 import { useReviews } from "../reducers/ReviewsReducer";
@@ -18,16 +18,18 @@ const ProductDescription = () => {
 
   return (
     <div>
-      <Typography>Product:</Typography>
-      <Typography>{`${product.name}`}</Typography>
+              <Typography className={classes.text1} >Product: <Box component="span" fontWeight='fontWeightBold'>{`${product.name}`}</Box></Typography>
+
       <Typography>
+      <Box fontStyle="italic">
         Contrary to popular belief, Lorem Ipsum is not simply random text. It
         has roots in a piece of classical Latin literature from 45 BC, making it
         over 2000 years old. Richard McClintock, a Latin professor at
         Hampden-Sydney College in Virginia, looked up one of the more obscure
+        </Box>
       </Typography>
-      <Typography>Price:</Typography>
-      <Typography>{`${product.price} €`}</Typography>
+      <Typography className={classes.text1} >Price: <Box component="span" fontWeight='fontWeightBold'>{`${product.price}`}</Box></Typography>
+
     </div>
   );
 };

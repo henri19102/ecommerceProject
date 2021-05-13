@@ -1,5 +1,7 @@
 import React from "react";
-import { Button, Box } from "@material-ui/core";
+import { Button, Card, CardContent,  useMediaQuery,
+  useTheme, } from "@material-ui/core";
+
 import userService from "../services/users";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -14,6 +16,8 @@ const Login = () => {
   const history = useHistory();
   const classes = useStyles();
   const message = useNotification()
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
 
   const notificationMessage = (msg, isError) => {
     message.dispatchNotification({ type: "message", message: {message: msg, isError: isError} })
@@ -46,7 +50,8 @@ const Login = () => {
   };
 
   return (
-      <Box className={classes.logIn} borderRadius={16} boxShadow="10">
+    <Card className={isMatch ? classes.cardContent4 : classes.cardContent3}  variant="outlined">
+    <CardContent  >
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -71,6 +76,7 @@ const Login = () => {
             />
 
             <Button
+            className={classes.input}
             color="primary"
               variant="contained"
               type="submit"
@@ -79,7 +85,8 @@ const Login = () => {
             </Button>
           </Form>
         </Formik>
-      </Box>
+        </CardContent>
+      </Card>
   );
 };
 

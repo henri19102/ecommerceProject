@@ -1,19 +1,16 @@
 import React from "react";
-import { ButtonGroup } from "@material-ui/core";
 import NavbarTab from "./NavbarTab";
 import AdminTab from "./AdminTab";
-import {useStyles} from "../../styles/styles"
 
-
-const NormalMenu = ({admin}) => {
-  const classes = useStyles();
+const NormalMenu = ({ admin, user }) => {
   return (
     <>
-        <NavbarTab name={"Frontpage"} pathTo={"/"} />
-        <NavbarTab name={"Products"} pathTo={"/products"} />
-        <NavbarTab name={"About"} pathTo={"/"} />
+      <NavbarTab name={"Frontpage"} pathTo={"/"} />
+      <NavbarTab name={"Products"} pathTo={"/products"} />
+      <NavbarTab name={"About"} pathTo={"/"} />
 
       {admin && <AdminTab pathTo={"/admin"} />}
+      {!user && <NavbarTab name={"Sign up"} pathTo={"/signup"} />}
     </>
   );
 };

@@ -11,42 +11,47 @@ import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import ProductDetailView from "./components/productDetails/ProductDetailView";
 import AdminPage from "./components/admin/AdminPage";
 import { useStyles } from "./styles/styles";
-import { Container } from '@material-ui/core'
+import { Container } from "@material-ui/core";
 
 const App = () => {
   const classes = useStyles();
+
 
   return (
     <AppDataContext>
       <Router>
         <Navbar />
-
+        <Container className={classes.container} maxWidth="md">
         <Notification />
-<Container className={classes.container} maxWidth="md" >
-        <Switch>
-          <Route exact path="/">
-            <Frontpage />
-          </Route>
-          <Route exact path="/products">
-            <Products />
-          </Route>
-          <Route exact path="/products/:id">
-            <ProductDetailView />
-          </Route>
-          <Route exact path="/signup">
-            <SignUp />
-          </Route>
-          <Route exact path="/login">
-            <LogIn />
-          </Route>
-          <Route exact path="/shoppingcart">
-            <ShoppingCart />
-          </Route>
-          <Route exact path="/admin">
-            <AdminPage />
-          </Route>
-        </Switch>
+
+
+          <Switch>
+
+            <Route exact path="/">
+              <Frontpage />
+            </Route>
+            <Route exact path="/products">
+              <Products />
+            </Route>
+            <Route exact path="/products/:id">
+              <ProductDetailView />
+            </Route>
+            <Route exact path="/signup">
+              <SignUp />
+            </Route>
+            <Route exact path="/login">
+              <LogIn />
+            </Route>
+            <Route exact path="/shoppingcart">
+              <ShoppingCart />
+            </Route>
+            <Route exact path="/admin">
+              <AdminPage />
+            </Route>
+
+          </Switch>
         </Container>
+
       </Router>
     </AppDataContext>
   );

@@ -49,15 +49,16 @@ const ProductReview = () => {
   };
   return (
     <div>
-      <Button variant="contained" size="small" onClick={submitReview}>
-        Add Review
-      </Button>
+     
       <TextField
+      style={{width: "100%"}}
         onChange={(e) => setText(e.target.value)}
         value={text}
         multiline
-        rows={2}
       ></TextField>
+       <Button color="primary" style={{marginTop: "2%"}} variant="contained" size="small" onClick={submitReview}>
+        Add Review
+      </Button>
     </div>
   );
 };

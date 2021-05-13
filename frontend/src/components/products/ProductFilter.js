@@ -3,7 +3,7 @@ import Select from "react-select";
 import {Typography} from "@material-ui/core";
 
 
-const ProductFilter = ({options, handleChange, findValue}) => {
+const ProductFilter = ({options, handleChange, findValue, category}) => {
     return (
         <div style={{ width: "30%" }}>
         <Typography>

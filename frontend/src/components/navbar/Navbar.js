@@ -6,7 +6,6 @@ import {
   useMediaQuery,
   useTheme,
 } from "@material-ui/core";
-import NavbarTab from "./NavbarTab";
 import LogInTab from "./LogInTab";
 import ShoppingCartTab from "./ShoppingCartTab";
 import { useUsers } from "../reducers/UserReducer";
@@ -31,13 +30,12 @@ const Navbar = () => {
       <AppBar className={classes.appBar} position="sticky">
         <Toolbar className={classes.toolbar} >
           {isMatch ? (
-            <TogglableMenu admin={admin} />
+            <TogglableMenu admin={admin} user={user}/>
           ) : (
-            <NormalMenu admin={admin} />
+            <NormalMenu admin={admin} user={user} />
           )}
 
           <Typography className={classes.header} variant="h4">HAMAZON</Typography>
-          {!user && <NavbarTab name={"Sign up"} pathTo={"/signup"} />}
           <ShoppingCartTab />
           <LogInTab />
         </Toolbar>

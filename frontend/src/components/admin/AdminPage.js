@@ -17,7 +17,7 @@ const AdminPage = () => {
     history.push("");
   }
   return (
-    <Admin dataProvider={restProvider("http://localhost:3001/api")}>
+    <Admin  dataProvider={restProvider("http://localhost:3001/api")}>
       <Resource
         name="products"
         list={ProductsList}

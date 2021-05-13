@@ -37,7 +37,7 @@ return (
     <>
     <div className={classes.productsPage} >
       <div className={classes.products} >
-        <ProductFilter options={options} handleChange={handleChange} findValue={findValue}  />
+        <ProductFilter options={options} handleChange={handleChange} findValue={findValue} category={category}  />
        <ProductSearch setName={setName} />
       </div>
       <div className={classes.products} >

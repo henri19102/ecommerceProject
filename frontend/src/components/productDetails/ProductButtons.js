@@ -1,14 +1,19 @@
 import React from "react";
 import CardActions from "@material-ui/core/CardActions";
 import Button from "@material-ui/core/Button";
+import AddIcon from "@material-ui/icons/Add";
 
 const ProductButtons = () => {
   return (
     <>
       <CardActions>
-        <Button variant="contained" size="small">
-          Add to Cart
-        </Button>
+      <Button
+          startIcon={<AddIcon/>}
+            color="primary"
+            variant="contained"
+          >
+            Add to cart
+          </Button>
       </CardActions>
     </>
   );

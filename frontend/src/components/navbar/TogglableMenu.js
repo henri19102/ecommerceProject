@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { ButtonGroup, Menu } from "@material-ui/core";
+import { Menu } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import NavbarTab from "./NavbarTab";
 import AdminTab from "./AdminTab";
 import {useStyles} from "../../styles/styles"
 
 
-const TogglableMenu = ({ admin }) => {
+const TogglableMenu = ({ admin, user }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -34,11 +34,12 @@ const TogglableMenu = ({ admin }) => {
         onClose={handleClose}
       >
       
-        <div className={classes.grey} >
+        <div className={classes.blue} >
           <NavbarTab name={"Frontpage"} pathTo={"/"} />
           <NavbarTab name={"Products"} pathTo={"/products"} />
           <NavbarTab name={"About"} pathTo={"/"} />
         {admin && <AdminTab pathTo={"/admin"} />}
+        {!user && <NavbarTab name={"Sign up"} pathTo={"/signup"} />}
         </div>
       </Menu>
     </>

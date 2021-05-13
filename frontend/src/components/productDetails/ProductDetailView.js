@@ -3,7 +3,7 @@ import { useStyles } from "../../styles/styles";
 import { useProducts } from "../reducers/ProductsReducer";
 import { useReviews } from "../reducers/ReviewsReducer";
 import { useParams } from "react-router-dom";
-import List from "@material-ui/core/List";
+import {List, Card, CardContent} from "@material-ui/core";
 import ProductDescription from "./ProductDescription";
 import ProductListItem from "./ProductListItem";
 import ProductButtons from "./ProductButtons";
@@ -18,19 +18,30 @@ const ProductDetailView = () => {
   if (!products) return null;
   if (!reviews.reviews) return null;
 
-  const someReviews = reviews.reviews.filter((x) => x.productId === Number(id));
 
   return (
     <div>
+      <Card className={classes.card1} >
+        <CardContent>
       <ProductDescription />
       <ProductButtons />
+      </CardContent>
+      </Card>
+      <Card className={classes.card1} >
+        <CardContent>
       <ProductReview />
+      </CardContent>
+      </Card>
       <div>
+      <Card className={classes.card1} >
+        <CardContent>
         <List>
-          {someReviews.map((x) => (
-            <ProductListItem review={x} />
+          {reviews.reviews.filter((x) => x.productId === Number(id)).map((x) => (
+            <ProductListItem key={x.id} review={x} />
           ))}
         </List>
+        </CardContent>
+      </Card>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import {Card, CardActions, CardContent, Button, Typography, Badge } from "@material-ui/core";
+import {Card, CardActions, CardContent, Button, Typography, Box } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from '@material-ui/icons/Remove';
 import { useStyles } from "../../styles/styles";
@@ -40,14 +40,11 @@ const CartProductView = ({ product }) => {
 
 //#endregion
   return (
-      <Card className={classes.productCard}  variant="outlined">
-        <CardContent>
-          <Typography gutterBottom>Product:</Typography>
-          <Typography>{`${product.Product.name}`}</Typography>
-          <Typography >Price:</Typography>
-          <Typography>
-            {`${product.Product.price} € `}
-          </Typography>
+      <Card className={classes.cardContent}  variant="outlined">
+        <CardContent className={classes.cardContent} >
+        <Typography className={classes.text1} >Product: <Box component="span" fontWeight='fontWeightBold'>{`${product.Product.name}`}</Box></Typography>
+        <Typography className={classes.text1} >Price: <Box component="span" fontWeight='fontWeightBold'>{`${product.Product.price} € `}</Box></Typography>
+        <Typography className={classes.text1} >Total price: <Box component="span" fontWeight='fontWeightBold'>{`${Number(product.productCount) * product.Product.price} € `}</Box></Typography>
           
         </CardContent>
         <CardActions>
@@ -60,7 +57,7 @@ const CartProductView = ({ product }) => {
           >
             Add
           </Button>
-          <Button variant="outlined"  className={classes.green}>{`${product.productCount} pcs.`}</Button>
+          <Typography variant="h6"  className={classes.green}>{`${product.productCount} pcs.`}</Typography>
           <Button
           startIcon={<RemoveIcon/>}
             onClick={removeProductFromCart}
