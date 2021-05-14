@@ -8,12 +8,26 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
+import { useLikes } from "../reducers/LikesReducer";
+import likeService from '../../services/likes'
+
 
 const ProductListItem = ({ review }) => {
+  const likes = useLikes();
+
   const [klik, setKlik] = useState(false)
   const { user } = useUsers();
   if (!user) return null;
   if (!review.User) return null;
+  if (!likes.likes) return null;
+
+  const findIfReviewed = likes.likes.find(x => x.userId === user.id && x.reviewId === review.id)
+  const countLikes = likes.likes.filter(x=> x.reviewId === review.id).length
+
+  const likeReview = async () => {
+    const like = await likeService.addLike(user.id, review.id);
+    likes.dispatchLikes({ type: "add", payload: like });
+  };
 
   return (
     <>
@@ -35,11 +49,18 @@ const ProductListItem = ({ review }) => {
             </React.Fragment>
           }
         />
-        <IconButton onclick={()=> setKlik(true)} >
-          {klik ? <ThumbUpAltOutlinedIcon  color="primary"  /> : <ThumbUpIcon color="primary" /> }
-      
-      </IconButton>
-          <p style={{color: "blue"}} >100</p>
+        {findIfReviewed ? 
+        <IconButton disabled  >
+        <ThumbUpIcon color="primary" /> 
+      </IconButton> :
+
+<IconButton onClick={likeReview} >
+<ThumbUpAltOutlinedIcon  color="primary"  />
+</IconButton>
+      }
+        
+        
+          <Typography style={{color: "blue"}} >{countLikes}</Typography>
       </ListItem>
       <Divider variant="inset" component="li" />
     </>

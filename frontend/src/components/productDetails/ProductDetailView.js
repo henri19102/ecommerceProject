@@ -17,7 +17,7 @@ const ProductDetailView = () => {
 
   if (!products) return null;
   if (!reviews.reviews) return null;
-
+console.log(reviews.reviews)
 
   return (
     <div>

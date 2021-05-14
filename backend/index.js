@@ -6,6 +6,8 @@ const usersRouter = require('./routes/users')
 const ordersRouter = require('./routes/orders') 
 const reviewsRouter = require('./routes/reviews') 
 const ratingsRouter = require('./routes/ratings') 
+const likesRouter = require('./routes/likes') 
+
 
 
 const cors = require('cors')
@@ -40,6 +42,8 @@ app.use('/api/products', productsRouter)
 app.use('/api/orders', ordersRouter)
 app.use('/api/reviews', reviewsRouter)
 app.use('/api/ratings', ratingsRouter)
+app.use('/api/likes', likesRouter)
+
 
 
 
