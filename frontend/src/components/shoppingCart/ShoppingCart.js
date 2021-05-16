@@ -3,6 +3,7 @@ import { Box, Button, Typography, Card, CardContent } from "@material-ui/core";
 import CartProductView from "./CartProductView";
 import { useUsers } from "../reducers/UserReducer";
 import { useCart } from "../reducers/CartReducer";
+import { useOrders} from "../reducers/OrdersReducer";
 import orderService from "../../services/orders";
 import {useStyles} from "../../styles/styles"
 
@@ -11,6 +12,7 @@ const ShoppingCart = () => {
   //#region 
   const userCart = useCart();
   const { user } = useUsers();
+  const order = useOrders();
   const classes = useStyles();
 
   useEffect(() => {
@@ -22,9 +24,16 @@ const ShoppingCart = () => {
     if (user) {
       fetchCart();
     }
-  }, [userCart, user]);
+  }, [user]);
 
   if (!userCart.cartProducts) return null;
+
+  
+
+  const deleteAll = async () => {
+    const all = order.orders.filter(x=> x.userId === user.id).map(x => x.id)
+    await orderService.removeAllFromCart({all: all})
+  }
   
 //#endregion
   return (
@@ -40,7 +49,7 @@ const ShoppingCart = () => {
      </CardContent>
      </Card>
 
-      <Button size="large" variant="contained">
+      <Button onClick={deleteAll} size="large" variant="contained">
         checkout
       </Button>
     </div>

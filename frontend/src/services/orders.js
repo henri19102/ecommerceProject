@@ -22,11 +22,18 @@ const addToCart = async (productId, userId) => {
   return res.data;
 };
 
+const removeAllFromCart = async (all) => {
+  await axios.delete(`${url}`, all)
+
+}
+
 const removeProductFromCart = async (id) => {
-  await axios.delete(`${url}/${id}`)
+   await axios.delete(`${url}/${id}`)
 }
 
 
-const orderService = { addToCart, getAll, removeProductFromCart, getUsersOrders, getProductCount };
+
+
+const orderService = { addToCart, getAll, removeProductFromCart, getUsersOrders, getProductCount, removeAllFromCart };
 
 export default orderService

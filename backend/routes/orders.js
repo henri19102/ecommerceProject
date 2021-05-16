@@ -58,6 +58,17 @@ router.post("/add", async (req, res) => {
   }
 });
 
+router.delete("/", async (req, res) => {
+  console.log(req.body)
+
+  try {
+    await order.destroy({ where: { id: [...req.body.all] } });
+    res.status(204).end();
+  } catch (e) {
+    console.log("error");
+  }
+});
+
 router.delete("/:id", async (req, res) => {
   try {
     const order = await Order.findOne({ where: { id: req.params.id } });
@@ -67,5 +78,7 @@ router.delete("/:id", async (req, res) => {
     console.log("error");
   }
 });
+
+
 
 module.exports = router;
