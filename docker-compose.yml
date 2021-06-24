@@ -1,0 +1,28 @@
+version: '3' 
+
+services:
+
+    db:
+      image: postgres
+      ports: 
+        - 5432:5432
+      restart: unless-stopped
+      container_name: postgres
+
+    backend:  
+      image: ecommerce-backend
+      ports: 
+        - 3001:3001
+      environment:
+        - PORT=3001
+      command: ["npm", "start"]
+      container_name: backend
+      depends_on: 
+        - db
+
+    frontend:  
+      image: ecommerce-frontend
+      ports: 
+        - 3000:3000
+      command: ["npm", "start"]
+      container_name: frontend
