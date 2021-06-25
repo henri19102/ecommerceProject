@@ -3,19 +3,21 @@ version: '3'
 services:
 
     db:
-      image: postgres
+      image: postgres:13.2
       ports: 
         - 5432:5432
       restart: unless-stopped
+      environment:
+        POSTGRES_USER: ${USER}
+        POSTGRES_PASSWORD: ${PASS}
+        POSTGRES_DB: ${DB}
       container_name: postgres
 
     backend:  
       image: ecommerce-backend
       ports: 
         - 3001:3001
-      environment:
-        - PORT=3001
-      command: ["npm", "start"]
+      command: ["/bin/sh", "entrypoint.sh"]
       container_name: backend
       depends_on: 
         - db

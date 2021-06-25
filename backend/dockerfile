@@ -4,8 +4,9 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm install
-
 EXPOSE 3001
 
-CMD ["npm", "start"]
+RUN npm install \
+    && printf "ls\nnpm run migrate\nnpm run seed\nnpm start\n" > entrypoint.sh
+
+CMD ["/bin/sh", "entrypoint.sh"]
