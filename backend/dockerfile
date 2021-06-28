@@ -6,7 +6,6 @@ COPY . .
 
 EXPOSE 3001
 
-RUN npm install \
-    && printf "ls\nnpm run migrate\nnpm run seed\nnpm start\n" > entrypoint.sh
+RUN npm install
 
 CMD ["/bin/sh", "entrypoint.sh"]

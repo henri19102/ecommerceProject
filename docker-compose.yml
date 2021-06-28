@@ -23,8 +23,16 @@ services:
         - db
 
     frontend:  
-      image: ecommerce-frontend
+      build: ./frontend
       ports: 
         - 3000:3000
       command: ["npm", "start"]
+      environment: 
+        - CHOKIDAR_USEPOLLING=true
+      volumes:
+        - ${pwd}/frontend:/usr/src/app # Let us modify the contents of the container locally
+        - ${pwd}/frontend/node_modules:/usr/src/app/node_modules # A bit of node magic, this ensures the dependencies built for the image are not available locally.
       container_name: frontend
+
+volumes: # This is required for the node_modules named volume
+    node_modules:

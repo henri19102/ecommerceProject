@@ -2,7 +2,7 @@ FROM node:15.9
 
 WORKDIR /usr/src/app
 
-COPY . .
+COPY package* ./
 
 RUN npm install
 
