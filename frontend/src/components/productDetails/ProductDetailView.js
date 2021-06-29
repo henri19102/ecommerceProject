@@ -2,6 +2,7 @@ import React from "react";
 import { useStyles } from "../../styles/styles";
 import { useProducts } from "../reducers/ProductsReducer";
 import { useReviews } from "../reducers/ReviewsReducer";
+import { useLikes } from "../reducers/LikesReducer";
 import { useParams } from "react-router-dom";
 import {List, Card, CardContent} from "@material-ui/core";
 import ProductDescription from "./ProductDescription";
@@ -14,10 +15,14 @@ const ProductDetailView = () => {
   const { products } = useProducts();
   const reviews = useReviews();
   const { id } = useParams();
+  const {likes} = useLikes();
 
   if (!products) return null;
+  if (!likes) return null;
+
   if (!reviews.reviews) return null;
-console.log(reviews.reviews)
+
+  
 
   return (
     <div>

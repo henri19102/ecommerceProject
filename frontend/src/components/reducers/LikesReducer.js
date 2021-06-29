@@ -13,6 +13,8 @@ const likeReducer = (state, action) => {
       return action.payload;
     case "add":
       return [...state, action.payload];
+    case "remove":
+      return [...state.filter(x=>x!== action.payload)];
     default:
       return state;
   }

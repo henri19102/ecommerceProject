@@ -18,6 +18,9 @@ import { useHistory } from "react-router-dom";
 
 const ProductView = ({ product }) => {
 
+  // OK
+
+
  //#region 
   
   const classes = useStyles();
@@ -25,7 +28,6 @@ const ProductView = ({ product }) => {
   const userCart = useCart();
   const { user } = useUsers();
   const ratings = useRatings();
-
   const history = useHistory();
   const message = useNotification();
 
@@ -58,19 +60,24 @@ const ProductView = ({ product }) => {
     rating = average.reduce((a, b) => a + b) / average.length;
   }
 
-  const submitRating = async (userId, productId, starRating) => {
+  const submitRating = async (starRating) => {
+    if (!user){
+      return notificationMessage("You have to log in first!", true)
+    }
     if (
       ratings.ratings.find(
-        (x) => x.userId === userId && x.productId === productId
+        (x) => x.userId === user.id && x.productId === product.id
       )
     ) {
       return notificationMessage("You have already rated this product!", true);
     }
     const newRating = await ratingService.addRating(
-      userId,
-      productId,
+      user.id,
+      product.id,
       starRating
     );
+
+    
     ratings.dispatchRatings({ type: "add", payload: newRating });
     notificationMessage("Product rated succesfully!", false);
   };
@@ -93,9 +100,9 @@ const ProductView = ({ product }) => {
 
           <Rating
             value={rating || 0}
-            name="unique-rating"
+            name={`${product.id}`}
             onChange={(event, newValue) => {
-              submitRating(user.id, product.id, newValue);
+              submitRating(newValue);
             }}
           ></Rating>
         </CardContent>

@@ -24,6 +24,16 @@ router.post('/', async (req, res) => {
       }
 })
 
+router.delete("/:id", async (req, res) => {
+  try {
+    const like = await Like.findOne({ where: { id: req.params.id} });
+    await like.destroy();
+    res.status(204).end();
+  } catch (e) {
+    console.log("error");
+  }
+});
+
 
 
 module.exports = router

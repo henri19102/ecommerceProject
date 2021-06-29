@@ -7,6 +7,8 @@ import ProductSearch from './ProductSearch'
 
 const Products = () => {
 
+  // OK
+
 //#region
   const [category, setCategory] = useState("All");
   const [name, setName] = useState("");

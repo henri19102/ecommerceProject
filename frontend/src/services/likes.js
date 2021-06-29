@@ -12,6 +12,10 @@ const getAll = async ()  => {
     return res.data;
   };
 
-const likeService =  {getAll, addLike}
+  const removeLike = async (likeId) => {
+    await axios.delete(`${url}/${likeId}`);
+ }
+
+const likeService =  {getAll, addLike, removeLike}
 
 export default likeService

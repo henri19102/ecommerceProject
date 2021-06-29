@@ -14,20 +14,27 @@ import likeService from '../../services/likes'
 
 const ProductListItem = ({ review }) => {
   const likes = useLikes();
-
-  const [klik, setKlik] = useState(false)
   const { user } = useUsers();
   if (!user) return null;
   if (!review.User) return null;
   if (!likes.likes) return null;
+
 
   const findIfReviewed = likes.likes.find(x => x.userId === user.id && x.reviewId === review.id)
   const countLikes = likes.likes.filter(x=> x.reviewId === review.id).length
 
   const likeReview = async () => {
     const like = await likeService.addLike(user.id, review.id);
+    console.log(like)
     likes.dispatchLikes({ type: "add", payload: like });
   };
+
+  const dislikeReview = async () => {
+    const like2 = likes.likes.find(x=> x.userId === user.id && x.reviewId === review.id)
+    console.log(like2.id)
+    await likeService.removeLike(like2.id)
+    likes.dispatchLikes({ type: "remove", payload: like2 });
+  }
 
   return (
     <>
@@ -50,7 +57,7 @@ const ProductListItem = ({ review }) => {
           }
         />
         {findIfReviewed ? 
-        <IconButton disabled  >
+        <IconButton onClick={dislikeReview}  >
         <ThumbUpIcon color="primary" /> 
       </IconButton> :
 
