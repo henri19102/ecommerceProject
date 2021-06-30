@@ -10,6 +10,8 @@ const cartReducer = (state, action) => {
   switch (action.type) {
     case "getAll":
       return action.payload;
+    case "removeAll":
+      return []
     default:
       return state;
   }

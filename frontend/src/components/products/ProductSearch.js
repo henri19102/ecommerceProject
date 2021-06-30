@@ -7,7 +7,7 @@ const ProductSearch = ({setName}) => {
     const classes = useStyles();
     return (
         <div style={{ width: "30%" }}>
-        <Typography>
+        <Typography component={'div'} >
           Search:
           <TextField
             className={classes.productSearch}

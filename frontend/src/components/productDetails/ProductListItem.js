@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {Typography, Box, IconButton} from "@material-ui/core";
 import { useUsers } from "../reducers/UserReducer";
 import ListItem from "@material-ui/core/ListItem";
@@ -49,7 +49,7 @@ const ProductListItem = ({ review }) => {
           secondary={
             <React.Fragment>
               <Typography component="span" variant="body2" color="textPrimary">
-              <Box fontStyle="italic">
+              <Box style={{wordWrap: "breakWord"}} fontStyle="italic">
                 {review.reviewText}
                 </Box>
               </Typography>
@@ -67,7 +67,7 @@ const ProductListItem = ({ review }) => {
       }
         
         
-          <Typography style={{color: "blue"}} >{countLikes}</Typography>
+          <Typography component={'div'} style={{color: "blue"}} >{countLikes}</Typography>
       </ListItem>
       <Divider variant="inset" component="li" />
     </>

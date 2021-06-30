@@ -59,10 +59,9 @@ router.post("/add", async (req, res) => {
 });
 
 router.delete("/", async (req, res) => {
-  console.log(req.body)
-
+console.log(req.body.all)
   try {
-    await order.destroy({ where: { id: [...req.body.all] } });
+    await Order.destroy({ where: { id: [...req.body.all] } });
     res.status(204).end();
   } catch (e) {
     console.log("error");

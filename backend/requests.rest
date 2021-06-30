@@ -39,3 +39,14 @@ Content-Type: application/json
 {
     "price": 5
 }
+
+###
+
+DELETE http://localhost:3001/api/orders
+Content-Type: application/json
+
+{
+    "all": [513, 514, 515, 516]
+}
+
+###

@@ -17,6 +17,8 @@ const orderReducer = (state, action) => {
       return [...state, action.payload];
     case "delete":
       return state.filter((x) => x.id !== action.deleteId);
+    case "deleteAll":
+      return [...state.filter(x=>!action.payload.includes(x))]
     default:
       return state;
   }
@@ -30,8 +32,6 @@ const OrdersReducer = ({ children }) => {
       .getAll()
       .then((x) => dispatchOrders({ type: "getAll", payload: x }));
   }, []);
-
-  console.log(orders)
 
   return (
     <>

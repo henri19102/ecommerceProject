@@ -84,7 +84,7 @@ const ProductView = ({ product }) => {
 //#endregion
   return (
     <Grid className={classes.productCard} >
-      <Card variant="outlined">
+      <Card  variant="outlined">
         <CardContent>
           <Typography gutterBottom>Product:</Typography>
           <Button

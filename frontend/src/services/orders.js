@@ -23,7 +23,7 @@ const addToCart = async (productId, userId) => {
 };
 
 const removeAllFromCart = async (all) => {
-  await axios.delete(`${url}`, all)
+  await axios.delete(`${url}`, { data: { all: all }})
 
 }
 
