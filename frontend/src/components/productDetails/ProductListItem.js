@@ -48,11 +48,7 @@ const ProductListItem = ({ review }) => {
           primary={<Box fontWeight='fontWeightBold' >{review.User.name}</Box>}
           secondary={
             <React.Fragment>
-              <Typography component="span" variant="body2" color="textPrimary">
-              <Box style={{wordWrap: "breakWord"}} fontStyle="italic">
                 {review.reviewText}
-                </Box>
-              </Typography>
             </React.Fragment>
           }
         />

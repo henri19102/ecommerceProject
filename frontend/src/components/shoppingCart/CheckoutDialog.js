@@ -47,9 +47,9 @@ const deleteAll = async () => {
   }
 
   return (
-    <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Checkout all
+    <div style={{textAlign: "center"}}>
+      <Button variant="contained" onClick={handleClickOpen}>
+        Checkout
       </Button>
       <Dialog
         fullScreen={fullScreen}
@@ -57,10 +57,10 @@ const deleteAll = async () => {
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >
-        <DialogTitle id="responsive-dialog-title">{"Are you sure?"}</DialogTitle>
+        <DialogTitle id="responsive-dialog-title">{"Continue?"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Purchase all from shopping cart or continue shopping?
+            Purchase all items from shopping cart or cancel and continue shopping?
           </DialogContentText>
         </DialogContent>
         <DialogActions>

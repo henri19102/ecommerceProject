@@ -38,7 +38,9 @@ const Login = () => {
 
   const onSubmit = async (values) => {
     try {
-      const loggedInUser = await userService.logIn(values);
+      const timeNow = new Date()
+      const item = await userService.logIn(values);
+      const loggedInUser = {...item, expiry: timeNow.getTime() + Math.pow(3200,2)} // expiry time is about 2h and 50min
       window.localStorage.setItem("loggedUser", JSON.stringify(loggedInUser));
       user.dispatchUser({ type: "logIn", payload: loggedInUser });
       history.push("/");

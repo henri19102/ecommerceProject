@@ -27,6 +27,13 @@ const ShoppingCart = () => {
 
   if (!userCart.cartProducts) return null;
 
+  const sumAllFromCart = userCart.cartProducts.reduce((a,b)=>a+(Number(b.productCount)*b.Product.price),0)
+
+
+  const sumAllItemsText = () => {
+    return sumAllFromCart > 0 ? `Total price: ${sumAllFromCart}` : `Shopping cart is empty`
+  }
+
   
 //#endregion
   return (
@@ -38,11 +45,10 @@ const ShoppingCart = () => {
       </Box>
       <Card className={classes.cardContent}  variant="outlined">
         <CardContent className={classes.cardContent2}  >
-      <Typography  variant="h6"  >{`Total price: ${userCart.cartProducts.reduce((a,b)=>a+(Number(b.productCount)*b.Product.price),0)} €`}</Typography>
+      <Typography  variant="h6"  >{sumAllItemsText()}</Typography>
      </CardContent>
      </Card>
-
-      <CheckoutDialog />
+    {sumAllFromCart > 0 && <CheckoutDialog />}
     </div>
   );
 };

@@ -51,14 +51,16 @@ router.post("/login", async (req, res) => {
   }
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
-      const token = jwt.sign({ name: user.name }, process.env.TOKEN_SECRET);
-      return res.status(200).send({ token, name: user.name, id: user.id, isAdmin: user.isAdmin });
+      const accessToken = jwt.sign({ name: user.name }, process.env.TOKEN_SECRET);
+      return res.status(200).send({ accessToken, name: user.name, id: user.id, isAdmin: user.isAdmin });
     }
     return res.status(400).send("wrong password");
   } catch {
     res.status(500).send();
   }
 });
+
+
 
 ///  POST ///
 /////////////
