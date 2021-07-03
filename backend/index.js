@@ -33,17 +33,13 @@ sequelize
   });
 
 
-app.get("/", (req, res) => {
-  res.send("<h1>Hello</h1>");
-});
-
 app.use('/api/users', usersRouter)
 app.use('/api/products', productsRouter)
 app.use('/api/orders', ordersRouter)
 app.use('/api/reviews', reviewsRouter)
 app.use('/api/ratings', ratingsRouter)
 app.use('/api/likes', likesRouter)
-
+app.use(express.static('build'))
 
 
 

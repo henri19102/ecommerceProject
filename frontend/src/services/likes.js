@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const url = 'http://localhost:3001/api/likes'
+const url = "/api/likes" //'http://localhost:3001/api/likes'
 
 const getAll = async ()  => {
     const res = await axios.get(url);
