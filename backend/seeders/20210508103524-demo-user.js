@@ -6,9 +6,9 @@ module.exports = {
       "Users",
       [
         {
-          name: 'timi',
+          name: 'timiii',
           email: 'timi@mail.fi',
-          password: 'timi',
+          password: 'jagrtolemieaux',
           isAdmin: true,
           createdAt: new Date(),
           updatedAt: new Date(),

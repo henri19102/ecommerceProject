@@ -67,7 +67,7 @@ const notificationMessage = (msg, isError) => {
         >
           <Form className={classes.form} noValidate autoComplete="off">
             <MyTextInput
-            className={classes.input}
+            style={{margin:"5%"}}
               id="nameInput"
               label="Name"
               name="name"
@@ -76,7 +76,7 @@ const notificationMessage = (msg, isError) => {
             />
 
             <MyTextInput
-            className={classes.input}
+            style={{margin:"5%"}}
               id="emailInput"
               label="Email"
               name="email"
@@ -85,7 +85,7 @@ const notificationMessage = (msg, isError) => {
             />
 
             <MyTextInput
-            className={classes.input}
+            style={{margin:"5%"}}
               id="passwordInput"
               label="password"
               name="password"
@@ -94,7 +94,7 @@ const notificationMessage = (msg, isError) => {
             />
 
             <Button
-             className={classes.input}
+             style={{margin:"5%"}}
             color="primary"
               variant="contained"
               type="submit"

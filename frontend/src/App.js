@@ -16,12 +16,22 @@ import { Container } from "@material-ui/core";
 const App = () => {
   const classes = useStyles();
 
+  const stylings =  {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "wheat",
+    paddingTop: "1%",
+    paddingBottom: "2%",
+  }
+
 
   return (
     <AppDataContext>
       <Router>
         <Navbar />
-        <Container className={classes.container} maxWidth="md">
+        <Container style={stylings} maxWidth="md">
         <Notification />
 
 

@@ -61,7 +61,7 @@ const Login = () => {
         >
           <Form className={classes.form}  noValidate autoComplete="off">
             <MyTextInput
-              className={classes.input}
+              style={{margin:"5%"}}
               id="nameInput"
               label="name"
               name="name"
@@ -69,7 +69,7 @@ const Login = () => {
               placeholder="jane@formik.com"
             />
             <MyTextInput
-              className={classes.input}
+              style={{margin:"5%"}}
               id="passwordInput"
               label="password"
               name="password"
@@ -78,7 +78,7 @@ const Login = () => {
             />
 
             <Button
-            className={classes.input}
+            style={{margin:"5%"}}
             color="primary"
               variant="contained"
               type="submit"

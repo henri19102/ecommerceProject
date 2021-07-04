@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-export const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles(() => ({
   container: {
     display: "flex",
     flexDirection: "column",
@@ -12,9 +12,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   productSearch: {
     backgroundColor: "white"
-  },
-  appBar: {
-    
   },
   toolbar: {
     display: "flex",

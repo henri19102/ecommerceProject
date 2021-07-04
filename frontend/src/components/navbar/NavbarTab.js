@@ -16,7 +16,7 @@ const NavbarTab = ({ name, pathTo, isSelected, ...props }) => {
       <Button
       {...props}
       startIcon={location.pathname===pathTo && <CheckIcon/>}
-      className={classes.white}
+      style={{color:"white"}}
         variant="outlined"
         size="large"
         onClick={() => history.push(pathTo)}
