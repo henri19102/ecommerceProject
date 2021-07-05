@@ -10,6 +10,8 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbUpAltOutlinedIcon from '@material-ui/icons/ThumbUpAltOutlined';
 import { useLikes } from "../reducers/LikesReducer";
 import likeService from '../../services/likes'
+import orderService from "../../services/orders";
+
 
 
 const ProductListItem = ({ review }) => {
@@ -22,6 +24,7 @@ const ProductListItem = ({ review }) => {
 
   const findIfReviewed = likes.likes.find(x => x.userId === user.id && x.reviewId === review.id)
   const countLikes = likes.likes.filter(x=> x.reviewId === review.id).length
+
 
   const likeReview = async () => {
     const like = await likeService.addLike(user.id, review.id);

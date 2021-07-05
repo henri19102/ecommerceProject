@@ -30,6 +30,7 @@ const ShoppingCart = () => {
   const sumAllFromCart = userCart.cartProducts.reduce((a,b)=>a+(Number(b.productCount)*b.Product.price),0)
 
 
+
   const sumAllItemsText = () => {
     return sumAllFromCart > 0 ? `Total price: ${sumAllFromCart}` : `Shopping cart is empty`
   }

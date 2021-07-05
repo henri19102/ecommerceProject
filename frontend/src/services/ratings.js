@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-const url =  "/api/ratings"
-//const url =  'http://localhost:3001/api/ratings' 
+//const url =  "/api/ratings"
+const url =  'http://localhost:3001/api/ratings' 
 
 
 const getAll = async ()  => {

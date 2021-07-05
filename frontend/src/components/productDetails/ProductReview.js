@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import Typography from "@material-ui/core/Typography";
 import reviewService from "../../services/reviews";
 import { useUsers } from "../reducers/UserReducer";
 import { useProducts } from "../reducers/ProductsReducer";
@@ -51,7 +52,7 @@ const ProductReview = () => {
   };
   return (
     <div>
-     
+     <Typography  component={'div'} style={{margin: "1%", textDecoration: "underline"}} >Add review:</Typography>
       <TextField
       style={{width: "100%"}}
         onChange={(e) => setText(e.target.value)}
@@ -59,7 +60,7 @@ const ProductReview = () => {
         multiline
       ></TextField>
        <Button color="primary" style={{marginTop: "2%"}} variant="contained" size="small" onClick={submitReview}>
-        Add Review
+        Submit Review
       </Button>
     </div>
   );

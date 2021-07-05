@@ -11,6 +11,7 @@ import { useOrders} from "../reducers/OrdersReducer";
 import { useUsers } from "../reducers/UserReducer";
 import orderService from "../../services/orders";
 import { useCart } from "../reducers/CartReducer";
+import { useNotification } from "../reducers/NotificationReducer";
 
 
 
@@ -19,6 +20,8 @@ const CheckoutDialog = () => {
     const { user } = useUsers();
   const order = useOrders();
   const userCart = useCart();
+  const message = useNotification();
+
 
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
@@ -35,6 +38,13 @@ const CheckoutDialog = () => {
   if (!user) return null
   if (!order) return null
 
+  const notificationMessage = (msg, isError) => {
+    message.dispatchNotification({ type: "message", message: {message: msg, isError: isError} })
+    setTimeout(()=>{
+        message.dispatchNotification({ type: "clear"})
+    }, 5000)
+  }
+
 
 const deleteAll = async () => {
     setOpen(false);
@@ -44,6 +54,7 @@ const deleteAll = async () => {
     const allOrders = await orderService.getAll()
     order.dispatchOrders({ type: "getAll", payload: allOrders });
     userCart.dispatchCart({type: "removeAll"})
+    notificationMessage(`Items purchased succesfully!`, false)
   }
 
   return (

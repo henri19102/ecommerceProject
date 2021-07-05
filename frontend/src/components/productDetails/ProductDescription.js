@@ -16,17 +16,20 @@ const ProductDescription = () => {
 
   return (
     <div>
-              <Typography component={'div'} >Product: <Box component="span" fontWeight='fontWeightBold'>{`${product.name}`}</Box></Typography>
-
-      <Typography component={'div'} >
+              <Typography  component={'div'} style={{margin: "1%", textDecoration: "underline"}} >Product: <Box component="span" fontWeight='fontWeightBold'>{`${product.name}`}</Box></Typography>
+              
+      <Typography component={'div'} style={{margin: "1%"}} >
       <Box fontStyle="italic">
+
         Contrary to popular belief, Lorem Ipsum is not simply random text. It
         has roots in a piece of classical Latin literature from 45 BC, making it
         over 2000 years old. Richard McClintock, a Latin professor at
         Hampden-Sydney College in Virginia, looked up one of the more obscure
+
         </Box>
       </Typography>
-      <Typography component={'div'} >Price: <Box component="span" fontWeight='fontWeightBold'>{`${product.price}`}</Box></Typography>
+      <span> </span>
+      <Typography component={'div'} style={{margin: "1%", textDecoration: "underline"}} >Price: <Box component="span" fontWeight='fontWeightBold'>{`${product.price} €`}</Box></Typography>
 
     </div>
   );

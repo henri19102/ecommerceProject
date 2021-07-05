@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Menu } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 import NavbarTab from "./NavbarTab";
 import AdminTab from "./AdminTab";
-import {useStyles} from "../../styles/styles"
-
+import { useStyles } from "../../styles/styles";
 
 const TogglableMenu = ({ admin, user }) => {
   const classes = useStyles();
@@ -21,7 +21,6 @@ const TogglableMenu = ({ admin, user }) => {
   return (
     <>
       <MenuIcon
-
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
@@ -33,14 +32,30 @@ const TogglableMenu = ({ admin, user }) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-      
-        <div className={classes.blue} >
-          <NavbarTab name={"Frontpage"} pathTo={"/"} />
-          <NavbarTab name={"Products"} pathTo={"/products"} />
-          <NavbarTab name={"About"} pathTo={"/"} />
-        {admin && <AdminTab pathTo={"/admin"} />}
-        {!user && <NavbarTab name={"Sign up"} pathTo={"/signup"} />}
-        </div>
+        <MenuItem>
+          <NavbarTab className={classes.blue} name={"Frontpage"} pathTo={"/"} />
+        </MenuItem>
+        <MenuItem>
+          <NavbarTab
+            className={classes.blue}
+            name={"Products"}
+            pathTo={"/products"}
+          />
+        </MenuItem>
+        {admin && (
+          <MenuItem>
+            <AdminTab className={classes.blue} pathTo={"/admin"} />
+          </MenuItem>
+        )}
+        {!user && (
+          <MenuItem>
+            <NavbarTab
+              className={classes.blue}
+              name={"Sign up"}
+              pathTo={"/signup"}
+            />
+          </MenuItem>
+        )}
       </Menu>
     </>
   );

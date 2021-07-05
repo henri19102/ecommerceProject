@@ -35,7 +35,7 @@ const Navbar = () => {
             <NormalMenu admin={admin} user={user} />
           )}
 
-          <Typography className={classes.header} variant="h4">HAMAZON</Typography>
+          <Typography className={classes.header} variant="h4">SHOP</Typography>
           <ShoppingCartTab />
           <LogInTab />
         </Toolbar>

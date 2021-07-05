@@ -29,10 +29,7 @@ const CartProductView = ({ product }) => {
   };
 
   const addProductToCart = async () => {
-    const createOrder = await orderService.addToCart(
-      product.productId,
-      user.id
-    );
+    const createOrder = await orderService.addToCart(product.productId,user.id);
     orders.dispatchOrders({ type: "add", payload: createOrder });
     const userOrders = await orderService.getProductCount(user.id);
     userCart.dispatchCart({ type: "getAll", payload: userOrders });

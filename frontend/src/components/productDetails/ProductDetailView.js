@@ -4,7 +4,7 @@ import { useProducts } from "../reducers/ProductsReducer";
 import { useReviews } from "../reducers/ReviewsReducer";
 import { useLikes } from "../reducers/LikesReducer";
 import { useParams } from "react-router-dom";
-import {List, Card, CardContent} from "@material-ui/core";
+import {List, Card, CardContent, Typography} from "@material-ui/core";
 import ProductDescription from "./ProductDescription";
 import ProductListItem from "./ProductListItem";
 import ProductButtons from "./ProductButtons";
@@ -29,7 +29,7 @@ const ProductDetailView = () => {
       <Card className={classes.card1} >
         <CardContent>
       <ProductDescription />
-      <ProductButtons />
+      <ProductButtons id={id} />
       </CardContent>
       </Card>
       <Card className={classes.card1} >
@@ -37,6 +37,10 @@ const ProductDetailView = () => {
       <ProductReview />
       </CardContent>
       </Card>
+   
+     <Typography  component={'div'} style={{margin: "1%", fontWeight: "bold"}} >REVIEWS:</Typography>
+      
+    
       <div>
       <Card className={classes.card1} >
         <CardContent>
