@@ -7,6 +7,7 @@ import { useUsers } from "../reducers/UserReducer";
 import { useOrders } from "../reducers/OrdersReducer";
 import { useCart } from "../reducers/CartReducer";
 import orderService from "../../services/orders";
+import AddToCartButton from "../AddToCartButton";
 
 const CartProductView = ({ product }) => {
   //#region 
@@ -28,13 +29,6 @@ const CartProductView = ({ product }) => {
     userCart.dispatchCart({ type: "getAll", payload: userOrders });
   };
 
-  const addProductToCart = async () => {
-    const createOrder = await orderService.addToCart(product.productId,user.id);
-    orders.dispatchOrders({ type: "add", payload: createOrder });
-    const userOrders = await orderService.getProductCount(user.id);
-    userCart.dispatchCart({ type: "getAll", payload: userOrders });
-  };
-
 //#endregion
   return (
       <Card className={classes.cardContent}  variant="outlined">
@@ -45,15 +39,7 @@ const CartProductView = ({ product }) => {
           
         </CardContent>
         <CardActions>
-          <Button
-          startIcon={<AddIcon/>}
-            onClick={addProductToCart}
-            color="primary"
-            variant="contained"
-            size="small"
-          >
-            Add
-          </Button>
+          <AddToCartButton productId={product.productId} buttonText={"Add"} />
           <Typography variant="h6"  className={classes.green}>{`${product.productCount} pcs.`}</Typography>
           <Button
           startIcon={<RemoveIcon/>}

@@ -44,7 +44,7 @@ return (
       </div>
       <div className={classes.products} >
         {products
-          .filter((z) => z.name.includes(name))
+          .filter((z) => z.name.toLowerCase().includes(name.toLowerCase()))
           .filter((y) =>
             category === "All" ? y : y.category === category
           )

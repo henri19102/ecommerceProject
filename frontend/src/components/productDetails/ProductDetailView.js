@@ -9,6 +9,7 @@ import ProductDescription from "./ProductDescription";
 import ProductListItem from "./ProductListItem";
 import ProductButtons from "./ProductButtons";
 import ProductReview from "./ProductReview";
+import AddToCartButton from "../AddToCartButton"
 
 const ProductDetailView = () => {
   const classes = useStyles();
@@ -22,14 +23,15 @@ const ProductDetailView = () => {
 
   if (!reviews.reviews) return null;
 
-  
+  const reviewsWithLikesCount = reviews.reviews.map(x=> x = {...x, likes: likes.filter(y=> y.reviewId === x.id).length})
+  const filteredAndSortedReviews = reviewsWithLikesCount.filter((x) => x.productId === Number(id)).sort((a, b)=> b.likes-a.likes)
 
   return (
     <div>
       <Card className={classes.card1} >
         <CardContent>
       <ProductDescription />
-      <ProductButtons id={id} />
+      <AddToCartButton productId={id} buttonText={"Add to cart"} />
       </CardContent>
       </Card>
       <Card className={classes.card1} >
@@ -45,7 +47,7 @@ const ProductDetailView = () => {
       <Card className={classes.card1} >
         <CardContent>
         <List>
-          {reviews.reviews.filter((x) => x.productId === Number(id)).map((x) => (
+          {filteredAndSortedReviews.map((x) => (
             <ProductListItem key={x.id} review={x} />
           ))}
         </List>

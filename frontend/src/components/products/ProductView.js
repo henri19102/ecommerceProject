@@ -7,7 +7,6 @@ import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 import { useStyles } from "../../styles/styles";
 import { useOrders } from "../reducers/OrdersReducer";
-import orderService from "../../services/orders";
 import { useUsers } from "../reducers/UserReducer";
 import { useCart } from "../reducers/CartReducer";
 import { useRatings } from "../reducers/RatingsReducer";
@@ -15,6 +14,7 @@ import { useNotification } from "../reducers/NotificationReducer";
 import ratingService from "../../services/ratings";
 import Rating from "@material-ui/lab/Rating";
 import { useHistory } from "react-router-dom";
+import AddToCartButton from "../AddToCartButton"
 
 const ProductView = ({ product }) => {
 
@@ -24,8 +24,6 @@ const ProductView = ({ product }) => {
  //#region 
   
   const classes = useStyles();
-  const order = useOrders();
-  const userCart = useCart();
   const { user } = useUsers();
   const ratings = useRatings();
   const history = useHistory();
@@ -44,14 +42,6 @@ const ProductView = ({ product }) => {
   if (!ratings.ratings) return null;
   let rating;
 
-  const addToUserCart = async () => {
-    if (user) {
-      const createOrder = await orderService.addToCart(product.id, user.id);
-      order.dispatchOrders({ type: "add", payload: createOrder });
-      const userOrders = await orderService.getProductCount(user.id);
-      userCart.dispatchCart({ type: "getAll", payload: userOrders });
-    }
-  };
   if (ratings.ratings.find((x) => x.productId === product.id)) {
     const filteredRatings = ratings.ratings.filter(
       (x) => x.productId === product.id
@@ -107,14 +97,7 @@ const ProductView = ({ product }) => {
           ></Rating>
         </CardContent>
         <CardActions>
-          <Button
-            onClick={addToUserCart}
-            variant="contained"
-            size="small"
-            color="primary"
-          >
-            Add to Cart
-          </Button>
+         <AddToCartButton productId={product.id} buttonText={"Add to cart"} />
         </CardActions>
       </Card>
     </Grid>

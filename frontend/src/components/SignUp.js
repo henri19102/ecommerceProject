@@ -1,6 +1,11 @@
 import React from "react";
-import { Button, Card, CardContent, useMediaQuery,
-  useTheme, } from "@material-ui/core";
+import {
+  Button,
+  Card,
+  CardContent,
+  useMediaQuery,
+  useTheme,
+} from "@material-ui/core";
 import userService from "../services/users";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
@@ -11,22 +16,24 @@ import { useNotification } from "./reducers/NotificationReducer";
 import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
-
-//#region 
+  //#region
 
   const user = useUsers();
   const history = useHistory();
   const classes = useStyles();
-  const message = useNotification()
+  const message = useNotification();
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
-  
-const notificationMessage = (msg, isError) => {
-  message.dispatchNotification({ type: "message", message: {message: msg, isError: isError} })
-  setTimeout(()=>{
-      message.dispatchNotification({ type: "clear"})
-  }, 5000)
-}
+
+  const notificationMessage = (msg, isError) => {
+    message.dispatchNotification({
+      type: "message",
+      message: { message: msg, isError: isError },
+    });
+    setTimeout(() => {
+      message.dispatchNotification({ type: "clear" });
+    }, 5000);
+  };
 
   const initialValues = {
     name: "",
@@ -39,27 +46,35 @@ const notificationMessage = (msg, isError) => {
       .max(15, "Must be 15 characters or less")
       .required("Required"),
     email: Yup.string().email("Invalid email addresss`").required("Required"),
-    password: Yup.string().required("Required"),
+    password: Yup.string()
+      .min(5, "Password must be atleast 5 characters long")
+      .required("Required"),
   });
 
   const onSubmit = async (values) => {
     try {
       await userService.signUp(values);
-      const loggedInUser = await userService.logIn({name: values.name, password: values.password});
+      const loggedInUser = await userService.logIn({
+        name: values.name,
+        password: values.password,
+      });
       window.localStorage.setItem("loggedUser", JSON.stringify(loggedInUser));
       user.dispatchUser({ type: "logIn", payload: loggedInUser });
       history.push("/");
-      notificationMessage('Succesfully signed up!', false)
+      notificationMessage("Succesfully signed up!", false);
     } catch (e) {
       console.error(e);
-      notificationMessage('Invalid inputs!', true)
+      notificationMessage("Invalid inputs!", true);
     }
   };
-//#endregion
+  //#endregion
 
   return (
-    <Card className={isMatch ? classes.cardContent4 : classes.cardContent3}  variant="outlined">
-    <CardContent className={classes.cardContent} >
+    <Card
+      className={isMatch ? classes.cardContent4 : classes.cardContent3}
+      variant="outlined"
+    >
+      <CardContent className={classes.cardContent}>
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -67,7 +82,7 @@ const notificationMessage = (msg, isError) => {
         >
           <Form className={classes.form} noValidate autoComplete="off">
             <MyTextInput
-            style={{margin:"5%"}}
+              style={{ margin: "5%" }}
               id="nameInput"
               label="Name"
               name="name"
@@ -76,7 +91,7 @@ const notificationMessage = (msg, isError) => {
             />
 
             <MyTextInput
-            style={{margin:"5%"}}
+              style={{ margin: "5%" }}
               id="emailInput"
               label="Email"
               name="email"
@@ -85,7 +100,7 @@ const notificationMessage = (msg, isError) => {
             />
 
             <MyTextInput
-            style={{margin:"5%"}}
+              style={{ margin: "5%" }}
               id="passwordInput"
               label="password"
               name="password"
@@ -94,8 +109,8 @@ const notificationMessage = (msg, isError) => {
             />
 
             <Button
-             style={{margin:"5%"}}
-            color="primary"
+              style={{ margin: "5%" }}
+              color="primary"
               variant="contained"
               type="submit"
             >
@@ -103,8 +118,8 @@ const notificationMessage = (msg, isError) => {
             </Button>
           </Form>
         </Formik>
-        </CardContent>
-      </Card>
+      </CardContent>
+    </Card>
   );
 };
 
