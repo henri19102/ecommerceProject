@@ -11,11 +11,11 @@ const AdminTab = ({pathTo}) => {
     return (
         <>
         <IconButton
-        className={classes.white}
+        className={classes.blue}
           aria-label="admin"
         >
-          <Typography  >
-            <SupervisorAccountIcon fontSize="large" onClick={() => history.push(pathTo)} />
+          <Typography className={classes.white}  >
+            <SupervisorAccountIcon className={classes.white} fontSize="large" onClick={() => history.push(pathTo)} />
             Admin
           </Typography>
         </IconButton>

@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import ProductView from "./ProductView";
 import { useProducts } from "../reducers/ProductsReducer";
-import {useStyles} from "../../styles/styles"
-import ProductFilter from './ProductFilter'
-import ProductSearch from './ProductSearch'
+import { useStyles } from "../../styles/styles";
+import ProductFilter from "./ProductFilter";
+import ProductSearch from "./ProductSearch";
 
 const Products = () => {
-
-  // OK
-
-//#region
   const [category, setCategory] = useState("All");
   const [name, setName] = useState("");
   const classes = useStyles();
@@ -33,25 +29,27 @@ const Products = () => {
   const findValue = () => {
     return options.find((obj) => obj.value === category);
   };
-//#endregion
-  
-return (
+
+  return (
     <>
-    <div className={classes.productsPage} >
-      <div className={classes.products} >
-        <ProductFilter options={options} handleChange={handleChange} findValue={findValue} category={category}  />
-       <ProductSearch setName={setName} />
-      </div>
-      <div className={classes.products} >
-        {products
-          .filter((z) => z.name.toLowerCase().includes(name.toLowerCase()))
-          .filter((y) =>
-            category === "All" ? y : y.category === category
-          )
-          .map((x) => (
-            <ProductView key={x.id} product={x} />
-          ))}
-      </div>
+      <div className={classes.productsPage}>
+        <div className={classes.products}>
+          <ProductFilter
+            options={options}
+            handleChange={handleChange}
+            findValue={findValue}
+            category={category}
+          />
+          <ProductSearch setName={setName} />
+        </div>
+        <div className={classes.products}>
+          {products
+            .filter((z) => z.name.toLowerCase().includes(name.toLowerCase()))
+            .filter((y) => (category === "All" ? y : y.category === category))
+            .map((x) => (
+              <ProductView key={x.id} product={x} />
+            ))}
+        </div>
       </div>
     </>
   );

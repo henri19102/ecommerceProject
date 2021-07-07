@@ -10,13 +10,10 @@ import Notification from "./components/Notification";
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import ProductDetailView from "./components/productDetails/ProductDetailView";
 import AdminPage from "./components/admin/AdminPage";
-import { useStyles } from "./styles/styles";
 import { Container } from "@material-ui/core";
 
 const App = () => {
-  const classes = useStyles();
-
-  const stylings =  {
+  const stylings = {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -24,19 +21,16 @@ const App = () => {
     backgroundColor: "wheat",
     paddingTop: "1%",
     paddingBottom: "2%",
-  }
-
+  };
 
   return (
     <AppDataContext>
       <Router>
         <Navbar />
         <Container style={stylings} maxWidth="md">
-        <Notification />
-
+          <Notification />
 
           <Switch>
-
             <Route exact path="/">
               <Frontpage />
             </Route>
@@ -58,10 +52,8 @@ const App = () => {
             <Route exact path="/admin">
               <AdminPage />
             </Route>
-
           </Switch>
         </Container>
-
       </Router>
     </AppDataContext>
   );

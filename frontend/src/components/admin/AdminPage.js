@@ -8,16 +8,16 @@ import UsersList from "./users/UsersList";
 import UsersEdit from "./users/UsersEdit";
 import UsersCreate from "./users/UsersCreate";
 import { useUsers } from "../reducers/UserReducer";
-import { useHistory } from "react-router-dom";
+import { createBrowserHistory } from 'history';
 
 const AdminPage = () => {
   const { user } = useUsers();
-  const history = useHistory();
+  const history = createBrowserHistory()
   if (!user) {
-    history.push("");
+    return null
   }
   return (
-    <Admin  dataProvider={restProvider("http://localhost:3001/api")}>
+    <Admin history={history}  dataProvider={restProvider("http://localhost:3001/api")}>
       <Resource
         name="products"
         list={ProductsList}

@@ -18,7 +18,7 @@ const orderReducer = (state, action) => {
     case "delete":
       return state.filter((x) => x.id !== action.deleteId);
     case "deleteAll":
-      return [...state.filter(x=>!action.payload.includes(x))]
+      return [...state.filter((x) => !action.payload.includes(x))];
     default:
       return state;
   }

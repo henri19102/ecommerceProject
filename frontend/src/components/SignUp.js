@@ -16,8 +16,6 @@ import { useNotification } from "./reducers/NotificationReducer";
 import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
-  //#region
-
   const user = useUsers();
   const history = useHistory();
   const classes = useStyles();
@@ -67,7 +65,6 @@ const SignUp = () => {
       notificationMessage("Invalid inputs!", true);
     }
   };
-  //#endregion
 
   return (
     <Card

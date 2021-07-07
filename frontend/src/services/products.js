@@ -1,14 +1,13 @@
-import axios from 'axios'
+import axios from "axios";
 
 //const url =  "/api/products"
-const url =  'http://localhost:3001/api/products'
+const url = "http://localhost:3001/api/products";
 
+const getAll = async () => {
+  const res = await axios.get(url);
+  return res.data;
+};
 
-const getAll = async ()  => {
-    const res = await axios.get(url);
-    return res.data
-  };
+const productService = { getAll };
 
-const productService =  {getAll}
-
-export default productService
+export default productService;

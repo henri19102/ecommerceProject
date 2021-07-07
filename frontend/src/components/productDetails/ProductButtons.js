@@ -7,9 +7,7 @@ import { useOrders } from "../reducers/OrdersReducer";
 import { useUsers } from "../reducers/UserReducer";
 import { useCart } from "../reducers/CartReducer";
 
-
-const ProductButtons = ({id}) => {
-
+const ProductButtons = ({ id }) => {
   const { user } = useUsers();
   const orders = useOrders();
   const userCart = useCart();
@@ -21,18 +19,17 @@ const ProductButtons = ({id}) => {
     userCart.dispatchCart({ type: "getAll", payload: userOrders });
   };
 
-
   return (
     <>
       <CardActions>
-      <Button
-          startIcon={<AddIcon/>}
-            color="primary"
-            variant="contained"
-            onClick={addProductToCart}
-          >
-            Add to cart
-          </Button>
+        <Button
+          startIcon={<AddIcon />}
+          color="primary"
+          variant="contained"
+          onClick={addProductToCart}
+        >
+          Add to cart
+        </Button>
       </CardActions>
     </>
   );

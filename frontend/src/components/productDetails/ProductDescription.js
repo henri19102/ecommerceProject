@@ -1,5 +1,5 @@
 import React from "react";
-import {Typography, Box} from "@material-ui/core";
+import { Typography, Box } from "@material-ui/core";
 import { useProducts } from "../reducers/ProductsReducer";
 import { useReviews } from "../reducers/ReviewsReducer";
 import { useParams } from "react-router-dom";
@@ -16,21 +16,36 @@ const ProductDescription = () => {
 
   return (
     <div>
-              <Typography  component={'div'} style={{margin: "1%", textDecoration: "underline"}} >Product: <Box component="span" fontWeight='fontWeightBold'>{`${product.name}`}</Box></Typography>
-              
-      <Typography component={'div'} style={{margin: "1%"}} >
-      <Box fontStyle="italic">
+      <Typography
+        component={"div"}
+        style={{ margin: "1%", textDecoration: "underline" }}
+      >
+        Product:{" "}
+        <Box
+          component="span"
+          fontWeight="fontWeightBold"
+        >{`${product.name}`}</Box>
+      </Typography>
 
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It
-        has roots in a piece of classical Latin literature from 45 BC, making it
-        over 2000 years old. Richard McClintock, a Latin professor at
-        Hampden-Sydney College in Virginia, looked up one of the more obscure
-
+      <Typography component={"div"} style={{ margin: "1%" }}>
+        <Box fontStyle="italic">
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It
+          has roots in a piece of classical Latin literature from 45 BC, making
+          it over 2000 years old. Richard McClintock, a Latin professor at
+          Hampden-Sydney College in Virginia, looked up one of the more obscure
         </Box>
       </Typography>
       <span> </span>
-      <Typography component={'div'} style={{margin: "1%", textDecoration: "underline"}} >Price: <Box component="span" fontWeight='fontWeightBold'>{`${product.price} €`}</Box></Typography>
-
+      <Typography
+        component={"div"}
+        style={{ margin: "1%", textDecoration: "underline" }}
+      >
+        Price:{" "}
+        <Box
+          component="span"
+          fontWeight="fontWeightBold"
+        >{`${product.price} €`}</Box>
+      </Typography>
     </div>
   );
 };

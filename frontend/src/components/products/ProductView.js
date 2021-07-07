@@ -6,23 +6,15 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Grid } from "@material-ui/core";
 import { useStyles } from "../../styles/styles";
-import { useOrders } from "../reducers/OrdersReducer";
 import { useUsers } from "../reducers/UserReducer";
-import { useCart } from "../reducers/CartReducer";
 import { useRatings } from "../reducers/RatingsReducer";
 import { useNotification } from "../reducers/NotificationReducer";
 import ratingService from "../../services/ratings";
 import Rating from "@material-ui/lab/Rating";
 import { useHistory } from "react-router-dom";
-import AddToCartButton from "../AddToCartButton"
+import AddToCartButton from "../AddToCartButton";
 
 const ProductView = ({ product }) => {
-
-  // OK
-
-
- //#region 
-  
   const classes = useStyles();
   const { user } = useUsers();
   const ratings = useRatings();
@@ -51,8 +43,8 @@ const ProductView = ({ product }) => {
   }
 
   const submitRating = async (starRating) => {
-    if (!user){
-      return notificationMessage("You have to log in first!", true)
+    if (!user) {
+      return notificationMessage("Please log in first to rate", true);
     }
     if (
       ratings.ratings.find(
@@ -67,14 +59,13 @@ const ProductView = ({ product }) => {
       starRating
     );
 
-    
     ratings.dispatchRatings({ type: "add", payload: newRating });
     notificationMessage("Product rated succesfully!", false);
   };
-//#endregion
+
   return (
-    <Grid className={classes.productCard} >
-      <Card  variant="outlined">
+    <Grid className={classes.productCard}>
+      <Card variant="outlined">
         <CardContent>
           <Typography gutterBottom>Product:</Typography>
           <Button
@@ -97,7 +88,7 @@ const ProductView = ({ product }) => {
           ></Rating>
         </CardContent>
         <CardActions>
-         <AddToCartButton productId={product.id} buttonText={"Add to cart"} />
+          <AddToCartButton productId={product.id} buttonText={"Add to cart"} />
         </CardActions>
       </Card>
     </Grid>

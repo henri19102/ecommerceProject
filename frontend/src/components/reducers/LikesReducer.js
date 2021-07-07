@@ -14,7 +14,7 @@ const likeReducer = (state, action) => {
     case "add":
       return [...state, action.payload];
     case "remove":
-      return [...state.filter(x=>x!== action.payload)];
+      return [...state.filter((x) => x !== action.payload)];
     default:
       return state;
   }
@@ -28,7 +28,6 @@ const LikesReducer = ({ children }) => {
       .getAll()
       .then((x) => dispatchLikes({ type: "getAll", payload: x }));
   }, []);
-
 
   return (
     <>

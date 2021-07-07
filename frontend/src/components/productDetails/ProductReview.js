@@ -45,21 +45,32 @@ const ProductReview = () => {
     }
     const review = await reviewService.addReview(user.id, product.id, text);
     reviews.dispatchReviews({ type: "add", payload: review });
-    const allReviews = await reviewService.getAll()
+    const allReviews = await reviewService.getAll();
     reviews.dispatchReviews({ type: "reviews", payload: allReviews });
     notificationMessage("New review added!", false);
     setText("");
   };
   return (
     <div>
-     <Typography  component={'div'} style={{margin: "1%", textDecoration: "underline"}} >Add review:</Typography>
+      <Typography
+        component={"div"}
+        style={{ margin: "1%", textDecoration: "underline" }}
+      >
+        Add review:
+      </Typography>
       <TextField
-      style={{width: "100%"}}
+        style={{ width: "100%" }}
         onChange={(e) => setText(e.target.value)}
         value={text}
         multiline
       ></TextField>
-       <Button color="primary" style={{marginTop: "2%"}} variant="contained" size="small" onClick={submitReview}>
+      <Button
+        color="primary"
+        style={{ marginTop: "2%" }}
+        variant="contained"
+        size="small"
+        onClick={submitReview}
+      >
         Submit Review
       </Button>
     </div>

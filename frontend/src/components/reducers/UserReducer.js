@@ -23,10 +23,10 @@ const UserReducer = ({ children }) => {
   useEffect(() => {
     const userJSON = window.localStorage.getItem("loggedUser");
     if (userJSON) {
-      const now = new Date()
+      const now = new Date();
       const userObject = JSON.parse(userJSON);
-      if(userObject.expiry < now.getTime()){
-        window.localStorage.removeItem("loggedUser")
+      if (userObject.expiry < now.getTime()) {
+        window.localStorage.removeItem("loggedUser");
         dispatchUser({ type: "logOut" });
       }
 
