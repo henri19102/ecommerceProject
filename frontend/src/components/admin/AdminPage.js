@@ -16,8 +16,11 @@ const AdminPage = () => {
   if (!user) {
     return null
   }
+
+  const url = process.env.NODE_ENV === "development" ? "http://localhost:3001/api" : "/api"
+
   return (
-    <Admin history={history}  dataProvider={restProvider("http://localhost:3001/api")}>
+    <Admin history={history}  dataProvider={restProvider(url)}>
       <Resource
         name="products"
         list={ProductsList}
