@@ -21,5 +21,10 @@ module.exports = {
     "object-curly-spacing": ["error", "always"],
     "arrow-spacing": ["error", { before: true, after: true }],
     "react/prop-types": 0
+  },
+  settings: {
+    "react": {
+      "version": "detect"
+    }
   }
 }

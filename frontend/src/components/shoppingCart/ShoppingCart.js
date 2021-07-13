@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { Box, Typography, Card, CardContent } from "@material-ui/core";
 import CartProductView from "./CartProductView";
