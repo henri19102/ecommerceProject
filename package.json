@@ -1,0 +1,29 @@
+{
+  "name": "ecommerceproject",
+  "version": "1.0.0",
+  "description": "The ultimate e-commerc",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henri19102/ecommerceProject.git"
+  },
+  "keywords": [
+    "ultimate",
+    "hamazon",
+    "ggez"
+  ],
+  "author": "Henri Peciola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/henri19102/ecommerceProject/issues"
+  },
+  "homepage": "https://github.com/henri19102/ecommerceProject#readme",
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-plugin-react": "^7.24.0"
+  }
+}

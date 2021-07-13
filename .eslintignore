@@ -1,0 +1,7 @@
+webpack.config.js
+node_modules/
+dist/
+backend/seeders
+backend/migrations
+frontend/build
+frontend/test
