@@ -1,27 +1,27 @@
-const dotenv = require("dotenv")
-const express = require("express")
-const models = require("../models")
-const bcrypt = require("bcrypt")
-const jwt = require("jsonwebtoken")
+const dotenv = require("dotenv");
+const express = require("express");
+const models = require("../models");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
-dotenv.config()
+dotenv.config();
 
-const User = models.User
+const User = models.User;
 
-const router = express.Router()
+const router = express.Router();
 
 ///  GET   ///
 
 router.get("/", async (req, res) => {
-  const users = await User.findAll()
-  res.setHeader("Content-Range", "1")
-  return res.json(users)
-})
+  const users = await User.findAll();
+  res.setHeader("Content-Range", "1");
+  return res.json(users);
+});
 
 router.get("/:id", async (req, res) => {
-  const user = await User.findOne({ where: { id: req.params.id } })
-  return res.json(user)
-})
+  const user = await User.findOne({ where: { id: req.params.id } });
+  return res.json(user);
+});
 
 ///  GET   ///
 /////////////
@@ -29,46 +29,44 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const salt = await bcrypt.genSalt()
-    const hashedPassword = await bcrypt.hash(req.body.password, salt)
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const user = {
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword,
       isAdmin: req.body.isAdmin
-    }
-    const newUser = await User.create(user)
-    res.status(201).send(newUser)
+    };
+    const newUser = await User.create(user);
+    res.status(201).send(newUser);
   } catch (e) {
-    res.status(500).send()
+    res.status(500).send();
   }
-})
+});
 
 router.post("/login", async (req, res) => {
-  const user = await User.findOne({ where: { name: req.body.name } })
+  const user = await User.findOne({ where: { name: req.body.name } });
   if (user === null) {
-    return res.status(400).send("no user found")
+    return res.status(400).send("no user found");
   }
   try {
     if (await bcrypt.compare(req.body.password, user.password)) {
       const accessToken = jwt.sign(
         { name: user.name },
         process.env.TOKEN_SECRET
-      )
-      return res
-        .status(200)
-        .send({
-          accessToken,
-          name: user.name,
-          id: user.id,
-          isAdmin: user.isAdmin
-        })
+      );
+      return res.status(200).send({
+        accessToken,
+        name: user.name,
+        id: user.id,
+        isAdmin: user.isAdmin
+      });
     }
-    return res.status(400).send("wrong password")
-  } catch (e){
-    res.status(500).send()
+    return res.status(400).send("wrong password");
+  } catch (e) {
+    res.status(500).send();
   }
-})
+});
 
 ///  POST ///
 /////////////
@@ -76,20 +74,20 @@ router.post("/login", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const { name, email, password, isAdmin } = req.body
-    const salt = await bcrypt.genSalt()
-    const hashedPassword = await bcrypt.hash(password, salt)
-    const user = await User.findOne({ where: { id: req.params.id } })
-    user.name = name
-    user.email = email
-    user.password = hashedPassword
-    user.isAdmin = isAdmin
-    await user.save()
-    return res.json(user)
-  } catch (e){
-    res.status(500).send()
+    const { name, email, password, isAdmin } = req.body;
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const user = await User.findOne({ where: { id: req.params.id } });
+    user.name = name;
+    user.email = email;
+    user.password = hashedPassword;
+    user.isAdmin = isAdmin;
+    await user.save();
+    return res.json(user);
+  } catch (e) {
+    res.status(500).send();
   }
-})
+});
 
 ///  PUT ///
 /////////////
@@ -97,26 +95,26 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    const user = await User.findOne({ where: { id: req.params.id } })
-    await user.destroy()
-    res.status(204).end()
-  } catch (e){
-    res.status(500).send()
+    const user = await User.findOne({ where: { id: req.params.id } });
+    await user.destroy();
+    res.status(204).end();
+  } catch (e) {
+    res.status(500).send();
   }
-})
+});
 
 ///  DELETE ///
 
 // eslint-disable-next-line no-unused-vars
 const checkToken = (req, res, next) => {
-  const token = req.headers["authorization"].split(" ")[1]
-  if (token === null) return res.sendStatus(401)
+  const token = req.headers["authorization"].split(" ")[1];
+  if (token === null) return res.sendStatus(401);
 
   jwt.verify(token, process.env.TOKEN_SECRET, (error, user) => {
-    if (error) return res.sendStatus(403)
-    req.user = user
-    next()
-  })
-}
+    if (error) return res.sendStatus(403);
+    req.user = user;
+    next();
+  });
+};
 
-module.exports = router
+module.exports = router;

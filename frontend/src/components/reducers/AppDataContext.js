@@ -2,16 +2,13 @@ import React from "react";
 import NotificationReducer from "./NotificationReducer";
 import ProductsReducer from "./ProductsReducer";
 import UserReducer from "./UserReducer";
-import OrdersReducer from './OrdersReducer'
-import CartReducer from './CartReducer'
-import ReviewsReducer from './ReviewsReducer'
-import RatingReducer from './RatingsReducer'
-import LikesReducer from './LikesReducer'
-
+import OrdersReducer from "./OrdersReducer";
+import CartReducer from "./CartReducer";
+import ReviewsReducer from "./ReviewsReducer";
+import RatingReducer from "./RatingsReducer";
+import LikesReducer from "./LikesReducer";
 
 const AppDataContext = ({ children }) => {
-
-
   return (
     <>
       <UserReducer>
@@ -21,9 +18,7 @@ const AppDataContext = ({ children }) => {
               <CartReducer>
                 <ReviewsReducer>
                   <RatingReducer>
-                    <LikesReducer>
-                      {children}
-                    </LikesReducer>
+                    <LikesReducer>{children}</LikesReducer>
                   </RatingReducer>
                 </ReviewsReducer>
               </CartReducer>

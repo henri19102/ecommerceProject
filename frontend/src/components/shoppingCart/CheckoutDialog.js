@@ -37,7 +37,7 @@ const CheckoutDialog = () => {
   const notificationMessage = (msg, isError) => {
     message.dispatchNotification({
       type: "message",
-      message: { message: msg, isError: isError },
+      message: { message: msg, isError: isError }
     });
     setTimeout(() => {
       message.dispatchNotification({ type: "clear" });
@@ -54,21 +54,21 @@ const CheckoutDialog = () => {
     const allOrders = await orderService.getAll();
     order.dispatchOrders({ type: "getAll", payload: allOrders });
     userCart.dispatchCart({ type: "removeAll" });
-    notificationMessage(`Items purchased succesfully!`, false);
+    notificationMessage("Items purchased succesfully!", false);
   };
 
   return (
     <div style={{ textAlign: "center" }}>
-      <Button variant="contained" onClick={handleClickOpen}>
+      <Button variant='contained' onClick={handleClickOpen}>
         Checkout
       </Button>
       <Dialog
         fullScreen={fullScreen}
         open={open}
         onClose={handleClose}
-        aria-labelledby="responsive-dialog-title"
+        aria-labelledby='responsive-dialog-title'
       >
-        <DialogTitle id="responsive-dialog-title">{"Continue?"}</DialogTitle>
+        <DialogTitle id='responsive-dialog-title'>{"Continue?"}</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Purchase all items from shopping cart or cancel and continue
@@ -76,10 +76,10 @@ const CheckoutDialog = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleClose} color="primary">
+          <Button autoFocus onClick={handleClose} color='primary'>
             Cancel
           </Button>
-          <Button onClick={deleteAll} color="primary" autoFocus>
+          <Button onClick={deleteAll} color='primary' autoFocus>
             Purchase
           </Button>
         </DialogActions>

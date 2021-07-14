@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-const fs = require("fs")
-require("dotenv").config()
+const fs = require("fs");
+require("dotenv").config();
 
 module.exports = {
   development: {
@@ -21,4 +21,4 @@ module.exports = {
       }
     }
   }
-}
+};

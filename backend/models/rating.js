@@ -1,5 +1,5 @@
-"use strict"
-const { Model } = require("sequelize")
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Rating extends Model {
     /**
@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
       Rating.belongsTo(models.User, {
         foreignKey: "userId",
         onDelete: "CASCADE"
-      })
+      });
       Rating.belongsTo(models.Product, {
         foreignKey: "productId",
         onDelete: "CASCADE"
-      })
+      });
     }
   }
   Rating.init(
@@ -29,6 +29,6 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "Rating"
     }
-  )
-  return Rating
-}
+  );
+  return Rating;
+};

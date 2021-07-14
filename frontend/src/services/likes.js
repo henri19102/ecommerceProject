@@ -1,8 +1,11 @@
 import axios from "axios";
 
-const url = process.env.NODE_ENV === "development" ? "http://localhost:3001/api/likes" : "/api/likes"
+const url =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3001/api/likes"
+    : "/api/likes";
 
-console.log(process.env.NODE_ENV)
+console.log(process.env.NODE_ENV);
 
 const getAll = async () => {
   const res = await axios.get(url);

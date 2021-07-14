@@ -1,7 +1,6 @@
-'use strict';
+"use strict";
 const bcrypt = require("bcrypt");
-const dotenv = require("dotenv").config()
-
+const dotenv = require("dotenv").config();
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -11,13 +10,13 @@ module.exports = {
       "Users",
       [
         {
-          name: 'henri',
-          email: 'timi@mail.fi',
+          name: "henri",
+          email: "timi@mail.fi",
           password: hashedPassword,
           isAdmin: true,
           createdAt: new Date(),
-          updatedAt: new Date(),
-        },
+          updatedAt: new Date()
+        }
       ],
       {}
     );

@@ -9,7 +9,7 @@ module.exports = {
         count: 88,
         category: "Clothes",
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: "Shirt",
@@ -17,7 +17,7 @@ module.exports = {
         count: 88,
         category: "Clothes",
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: "Cap",
@@ -25,7 +25,7 @@ module.exports = {
         count: 88,
         category: "Clothes",
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: "Gameboy",
@@ -33,7 +33,7 @@ module.exports = {
         count: 88,
         category: "Gaming",
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: "Xbox",
@@ -41,7 +41,7 @@ module.exports = {
         count: 88,
         category: "Gaming",
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: "Playstation 5",
@@ -49,7 +49,7 @@ module.exports = {
         count: 88,
         category: "Gaming",
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: "Bread",
@@ -57,7 +57,7 @@ module.exports = {
         count: 88,
         category: "Food",
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: "Milk",
@@ -65,7 +65,7 @@ module.exports = {
         count: 88,
         category: "Food",
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: "Meat",
@@ -73,7 +73,7 @@ module.exports = {
         count: 88,
         category: "Food",
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: "Cheese",
@@ -81,7 +81,7 @@ module.exports = {
         count: 88,
         category: "Food",
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: "Bicycle",
@@ -89,7 +89,7 @@ module.exports = {
         count: 88,
         category: "Sport",
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: "Basketball",
@@ -97,7 +97,7 @@ module.exports = {
         count: 88,
         category: "Sport",
         createdAt: new Date(),
-        updatedAt: new Date(),
+        updatedAt: new Date()
       },
       {
         name: "Football",
@@ -105,12 +105,12 @@ module.exports = {
         count: 88,
         category: "Sport",
         createdAt: new Date(),
-        updatedAt: new Date(),
-      },
+        updatedAt: new Date()
+      }
     ]);
   },
 
   down: async (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete("Products", null, {});
-  },
+  }
 };

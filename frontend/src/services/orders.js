@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const url = process.env.NODE_ENV === "development" ? "http://localhost:3001/api/orders" : "/api/orders"
+const url =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3001/api/orders"
+    : "/api/orders";
 
 const getAll = async () => {
   const res = await axios.get(url);
@@ -36,7 +39,7 @@ const orderService = {
   removeProductFromCart,
   getUsersOrders,
   getProductCount,
-  removeAllFromCart,
+  removeAllFromCart
 };
 
 export default orderService;

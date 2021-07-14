@@ -15,7 +15,7 @@ module.exports = {
   rules: {
     indent: ["error", 2],
     quotes: ["error", "double"],
-    semi: ["error", "never"],
+    semi: ["error", "always"],
     eqeqeq: "error",
     "no-trailing-spaces": "error",
     "object-curly-spacing": ["error", "always"],
@@ -27,4 +27,4 @@ module.exports = {
       "version": "detect"
     }
   }
-}
+};

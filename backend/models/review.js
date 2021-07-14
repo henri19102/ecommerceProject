@@ -1,5 +1,5 @@
-"use strict"
-const { Model } = require("sequelize")
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Review extends Model {
     /**
@@ -12,14 +12,14 @@ module.exports = (sequelize, DataTypes) => {
       Review.belongsTo(models.User, {
         foreignKey: "userId",
         onDelete: "CASCADE"
-      })
+      });
       Review.belongsTo(models.Product, {
         foreignKey: "productId",
         onDelete: "CASCADE"
-      })
+      });
       Review.hasMany(models.Like, {
         foreignKey: "reviewId"
-      })
+      });
     }
   }
   Review.init(
@@ -32,6 +32,6 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: "Review"
     }
-  )
-  return Review
-}
+  );
+  return Review;
+};
