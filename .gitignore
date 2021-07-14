@@ -3,4 +3,5 @@
 /frontend/styles
 /backend/node_modules
 node_modules
+/frontend/cypress
 .env

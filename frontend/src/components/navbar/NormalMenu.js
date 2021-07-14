@@ -6,7 +6,7 @@ const NormalMenu = ({ admin, user }) => {
   return (
     <>
       <NavbarTab name={"Frontpage"} pathTo={"/"} />
-      <NavbarTab name={"Products"} pathTo={"/products"} />
+      <NavbarTab id={"productsTab"} name={"Products"} pathTo={"/products"} />
 
       {admin && <AdminTab pathTo={"/admin"} />}
       {!user && <NavbarTab name={"Sign up"} pathTo={"/signup"} />}

@@ -9,6 +9,7 @@ const ProductSearch = ({ setName }) => {
       <Typography component={"div"}>
         Search:
         <TextField
+          id={"searchProduct"}
           className={classes.productSearch}
           variant="outlined"
           onChange={(e) => setName(e.target.value)}

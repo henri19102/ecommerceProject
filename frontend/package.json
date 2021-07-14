@@ -31,7 +31,8 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "test:e2e": "cypress run"
+    "test:e2e": "cypress run",
+    "cypress:open": "cypress open"
   },
   "browserslist": {
     "production": [
