@@ -31,12 +31,6 @@
     "eject": "react-scripts eject",
     "test:e2e": "cypress run"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
