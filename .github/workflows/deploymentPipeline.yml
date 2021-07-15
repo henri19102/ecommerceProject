@@ -39,13 +39,14 @@ jobs:
     - name: e2e tests
       uses: cypress-io/github-action@v2
       with:
-        working-directory: ./frontend
-        spec: cypress/integration/main-test.js
-        build: npm run build
+        working-directory: frontend
         command: npm run test:e2e
         start: npm start, npm run server
         wait-on: http://localhost:3000
   # deploy_to_heroku:
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - uses: actions/setup-node@v1
   #   - name: heroku deploy
   #     if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
   #     uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
@@ -58,6 +59,8 @@ jobs:
   #       rollbackonhealthcheckfailed: true
   # discord_pipeline:
   #   steps:
+  #   - uses: actions/checkout@v2
+  #   - uses: actions/setup-node@v1
   #   - name: Discord success notification
   #     env:
   #       DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
