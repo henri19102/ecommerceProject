@@ -32,7 +32,7 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "test:e2e": "cypress run --spec cypress/integration/main-test.spec.js",
+    "test:e2e": "cypress run --spec ./frontend/cypress/integration/*.js",
     "cypress:open": "cypress open"
   },
   "browserslist": {
