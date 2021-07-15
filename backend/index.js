@@ -36,6 +36,10 @@ app.use("/api/reviews", reviewsRouter);
 app.use("/api/ratings", ratingsRouter);
 app.use("/api/likes", likesRouter);
 
+app.get("/health", (req, res) => {
+  res.send("ok");
+});
+
 app.get("/*", function (req, res) {
   res.sendFile(path.join(__dirname + "/build/index.html"), function (err) {
     if (err) {
