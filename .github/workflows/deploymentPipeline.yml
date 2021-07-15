@@ -56,23 +56,23 @@ jobs:
   #       healthcheck: https://ecommerceapp-project.herokuapp.com/health
   #       checkstring: ok
   #       rollbackonhealthcheckfailed: true
-  discord_pipeline:
-    steps:
-    - name: Discord success notification
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-      uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
-      with:
-        args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed succesfully.'
-      # if:  ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') && success() }}
-      if: ${{ success() }}
-    - name: Discord failure notification
-    env:
-      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-    uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
-    with:
-      args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has failed succesfully.'
-    # if:  ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') && failure() }}
-    if: ${{ failure() }}
+  # discord_pipeline:
+  #   steps:
+  #   - name: Discord success notification
+  #     env:
+  #       DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+  #     uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
+  #     with:
+  #       args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed succesfully.'
+  #     # if:  ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') && success() }}
+  #     if: ${{ success() }}
+  #   - name: Discord failure notification
+  #   env:
+  #     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+  #   uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
+  #   with:
+  #     args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has failed succesfully.'
+  #   # if:  ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') && failure() }}
+  #   if: ${{ failure() }}
 
 
