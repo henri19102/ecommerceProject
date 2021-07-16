@@ -45,7 +45,8 @@ jobs:
         wait-on: http://localhost:3000
   deploy_to_heroku:
     runs-on: ubuntu-18.04
-    run:
+    defaults:
+      run:
         working-directory: ./backend
     steps:
     - uses: actions/checkout@v2
