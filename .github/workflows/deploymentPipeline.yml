@@ -44,6 +44,7 @@ jobs:
         start: npm start, npm run server
         wait-on: http://localhost:3000
   deploy_to_heroku:
+    runs-on: ubuntu-18.04
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
