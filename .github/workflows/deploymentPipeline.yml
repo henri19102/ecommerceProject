@@ -43,25 +43,20 @@ jobs:
         command: npm run test:e2e
         start: npm start, npm run server
         wait-on: http://localhost:3000
-  # deploy_to_heroku:
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #   - uses: actions/setup-node@v1
-  #   - name: heroku deploy
-  #     if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
-  #     uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-  #     with:
-  #       heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-  #       heroku_app_name: ecommerceapp-project #Must be unique in Heroku
-  #       heroku_email: macez@hotmail.com
-  #       healthcheck: https://ecommerceapp-project.herokuapp.com/health
-  #       checkstring: ok
-  #       rollbackonhealthcheckfailed: true
-  discord_pipeline:
-    runs-on: ubuntu-18.04
+  deploy_to_heroku:
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
+    - name: heroku deploy
+      if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
+      uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: ecommerceapp-project #Must be unique in Heroku
+        heroku_email: macez@hotmail.com
+        healthcheck: https://ecommerceapp-project.herokuapp.com/health
+        checkstring: ok
+        rollbackonhealthcheckfailed: true
     - name: Discord success notification
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
@@ -78,5 +73,6 @@ jobs:
         args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has failed succesfully.'
       # if:  ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') && failure() }}
       if: ${{ failure() }}
+
 
 
