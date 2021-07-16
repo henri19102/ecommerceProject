@@ -36,7 +36,7 @@ app.use("/api/reviews", reviewsRouter);
 app.use("/api/ratings", ratingsRouter);
 app.use("/api/likes", likesRouter);
 
-app.get("/health", (req, res) => {
+app.use("/health", (req, res) => {
   res.send("ok");
 });
 
