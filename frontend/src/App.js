@@ -11,6 +11,7 @@ import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import ProductDetailView from "./components/productDetails/ProductDetailView";
 import AdminPage from "./components/admin/AdminPage";
 import { Container } from "@material-ui/core";
+import HealthCheck from "./components/admin/HealthCheck";
 
 const App = () => {
   const stylings = {
@@ -33,6 +34,9 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <Frontpage />
+            </Route>
+            <Route exact path="/health">
+              <HealthCheck />
             </Route>
             <Route exact path="/products">
               <Products />
