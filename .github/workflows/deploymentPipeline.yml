@@ -55,9 +55,16 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: ecommerceapp-project #Must be unique in Heroku
         heroku_email: macez@hotmail.com
-        healthcheck: https://ecommerceapp-project.herokuapp.com/health
-        checkstring: ok
+        healthcheck: https://ecommerceapp-project.herokuapp.com
+        checkstring: Welcome to my ecommerce test shop!
         rollbackonhealthcheckfailed: true
+    - uses: actions/checkout@v2
+    - name: Bump version and push tag
+      if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
+      uses: anothrNick/github-tag-action@eca2b69f9e2c24be7decccd0f15fdb1ea5906598
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DEFAULT_BUMP: patch
     - name: Discord success notification
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
