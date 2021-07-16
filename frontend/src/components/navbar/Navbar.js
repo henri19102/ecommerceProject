@@ -4,14 +4,14 @@ import {
   AppBar,
   Toolbar,
   useMediaQuery,
-  useTheme,
+  useTheme
 } from "@material-ui/core";
 import LogInTab from "./LogInTab";
 import ShoppingCartTab from "./ShoppingCartTab";
 import { useUsers } from "../reducers/UserReducer";
 import TogglableMenu from "./TogglableMenu";
 import NormalMenu from "./NormalMenu";
-import {useStyles} from "../../styles/styles"
+import { useStyles } from "../../styles/styles";
 
 const Navbar = () => {
   const { user } = useUsers();
@@ -27,15 +27,17 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar className={classes.appBar} position="sticky">
-        <Toolbar className={classes.toolbar} >
+      <AppBar className={classes.appBar} position='sticky'>
+        <Toolbar className={classes.toolbar}>
           {isMatch ? (
-            <TogglableMenu admin={admin} user={user}/>
+            <TogglableMenu admin={admin} user={user} />
           ) : (
             <NormalMenu admin={admin} user={user} />
           )}
 
-          <Typography className={classes.header} variant="h4">SHOP</Typography>
+          <Typography className={classes.header} variant='h4'>
+            SHOP
+          </Typography>
           <ShoppingCartTab />
           <LogInTab />
         </Toolbar>

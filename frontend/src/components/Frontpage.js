@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import { Card, CardContent } from "@material-ui/core";
 import { useStyles } from "../styles/styles";

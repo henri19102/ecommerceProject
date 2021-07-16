@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useContext, useReducer } from "react";
 
 export const CartContext = React.createContext();
@@ -11,7 +12,7 @@ const cartReducer = (state, action) => {
     case "getAll":
       return action.payload;
     case "removeAll":
-      return []
+      return [];
     default:
       return state;
   }

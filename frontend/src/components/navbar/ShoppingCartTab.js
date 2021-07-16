@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { useUsers } from "../reducers/UserReducer";
 import { useOrders } from "../reducers/OrdersReducer";
 import Badge from "@material-ui/core/Badge";
-import { useStyles } from "../../styles/styles"
+import { useStyles } from "../../styles/styles";
 
 const ShoppingCartTab = () => {
   const classes = useStyles();
@@ -22,12 +22,12 @@ const ShoppingCartTab = () => {
   return (
     <>
       <IconButton
-      className={classes.white}
+        className={classes.white}
         onClick={() => history.push("/shoppingcart")}
-        aria-label="add to shopping cart"
+        aria-label='add to shopping cart'
       >
-        <Badge color="secondary" badgeContent={countContent()}>
-          <ShoppingCart fontSize="large" />
+        <Badge color='secondary' badgeContent={countContent()}>
+          <ShoppingCart fontSize='large' />
         </Badge>
       </IconButton>
     </>

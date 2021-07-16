@@ -33,7 +33,7 @@ const ShoppingCart = () => {
   const sumAllItemsText = () => {
     return sumAllFromCart > 0
       ? `Total price: ${sumAllFromCart}`
-      : `Shopping cart is empty`;
+      : "Shopping cart is empty";
   };
 
   return (
@@ -43,9 +43,9 @@ const ShoppingCart = () => {
           <CartProductView key={x.productId} product={x} />
         ))}
       </Box>
-      <Card className={classes.cardContent} variant="outlined">
+      <Card className={classes.cardContent} variant='outlined'>
         <CardContent className={classes.cardContent2}>
-          <Typography variant="h6">{sumAllItemsText()}</Typography>
+          <Typography variant='h6'>{sumAllItemsText()}</Typography>
         </CardContent>
       </Card>
       {sumAllFromCart > 0 && <CheckoutDialog />}

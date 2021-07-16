@@ -10,8 +10,8 @@ router.get("/", async (req, res) => {
   const orders = await Order.findAll({
     include: {
       model: Product,
-      attributes: ["name"],
-    },
+      attributes: ["name"]
+    }
   });
   res.setHeader("Content-Range", "1");
   return res.json(orders);
@@ -21,17 +21,17 @@ router.get("/user/:id", async (req, res) => {
   const orders = await Order.findAll({
     include: {
       model: Product,
-      attributes: ["name", "price"],
+      attributes: ["name", "price"]
     },
     attributes: [
       "Product.name",
       "Product.price",
       "userId",
       "productId",
-      [sequelize.fn("COUNT", sequelize.col("*")), "productCount"],
+      [sequelize.fn("COUNT", sequelize.col("*")), "productCount"]
     ],
     where: { userId: req.params.id },
-    group: ["Product.id", "Product.name", "productId", "userId"],
+    group: ["Product.id", "Product.name", "productId", "userId"]
   });
   return res.json(orders);
 });
@@ -39,8 +39,8 @@ router.get("/user/:id", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const orders = await Order.findAll({
     where: {
-      userId: req.params.id,
-    },
+      userId: req.params.id
+    }
   });
   return res.json(orders);
 });
@@ -49,17 +49,17 @@ router.post("/add", async (req, res) => {
   try {
     const order = {
       userId: req.body.userId,
-      productId: req.body.productId,
+      productId: req.body.productId
     };
     const newOrder = await Order.create(order);
     res.status(201).send(newOrder);
-  } catch {
+  } catch (e) {
     res.status(500).send();
   }
 });
 
 router.delete("/", async (req, res) => {
-console.log(req.body.all)
+  console.log(req.body.all);
   try {
     await Order.destroy({ where: { id: [...req.body.all] } });
     res.status(204).end();
@@ -77,7 +77,5 @@ router.delete("/:id", async (req, res) => {
     console.log("error");
   }
 });
-
-
 
 module.exports = router;

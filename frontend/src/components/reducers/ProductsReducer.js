@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useContext, useEffect, useReducer } from "react";
 import productService from "../../services/products";
 

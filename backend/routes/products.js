@@ -27,11 +27,11 @@ router.post("/", async (req, res) => {
       name: req.body.name,
       price: req.body.price,
       count: req.body.count,
-      category: req.body.category,
+      category: req.body.category
     };
     const newProduct = await Product.create(product);
     res.status(201).send(newProduct);
-  } catch {
+  } catch (e) {
     res.status(500).send();
   }
 });

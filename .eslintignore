@@ -1,0 +1,5 @@
+node_modules/
+/backend/migrations
+/backend/seeders
+/frontend/test
+/frontend/public

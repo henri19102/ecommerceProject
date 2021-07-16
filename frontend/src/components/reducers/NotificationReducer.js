@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import React, { useContext, useReducer } from "react";
 
 export const NotificationContext = React.createContext();

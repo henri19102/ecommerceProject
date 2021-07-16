@@ -1,5 +1,6 @@
-const fs = require('fs');
-require('dotenv').config()
+// eslint-disable-next-line no-unused-vars
+const fs = require("fs");
+require("dotenv").config();
 
 module.exports = {
   development: {
@@ -7,16 +8,16 @@ module.exports = {
     password: process.env.DB_PASSWORD,
     database: process.env.DBATABASE,
     host: process.env.DB_HOST,
-    dialect: 'postgresql',
+    dialect: "postgresql",
     port: 5432
   },
   production: {
     use_env_variable: "DATABASE_URL",
-    dialect: 'postgres',
+    dialect: "postgres",
     dialectOptions: {
       ssl: {
         require: true,
-        rejectUnauthorized:false
+        rejectUnauthorized: false
       }
     }
   }
