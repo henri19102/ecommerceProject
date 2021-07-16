@@ -55,8 +55,8 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: ecommerceapp-project #Must be unique in Heroku
         heroku_email: macez@hotmail.com
-        healthcheck: https://ecommerceapp-project.herokuapp.com
-        checkstring: Welcome to my ecommerce test shop!
+        # healthcheck: https://ecommerceapp-project.herokuapp.com/health
+        # checkstring: ok
         rollbackonhealthcheckfailed: true
     - uses: actions/checkout@v2
     - name: Bump version and push tag
