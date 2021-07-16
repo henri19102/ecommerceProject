@@ -55,31 +55,33 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: ecommerceapp-project #Must be unique in Heroku
         heroku_email: macez@hotmail.com
-        healthcheck: https://ecommerceapp-project.herokuapp.com/health
-        rollbackonhealthcheckfailed: true
-    - uses: actions/checkout@v2
-    - name: Bump version and push tag
-      if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
-      uses: anothrNick/github-tag-action@eca2b69f9e2c24be7decccd0f15fdb1ea5906598
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DEFAULT_BUMP: patch
-    - name: Discord success notification
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-      uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
-      with:
-        args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed succesfully.'
-      # if:  ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') && success() }}
-      if: ${{ success() }}
-    - name: Discord failure notification
-      env:
-        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-      uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
-      with:
-        args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has failed succesfully.'
-      # if:  ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') && failure() }}
-      if: ${{ failure() }}
+        # healthcheck: https://ecommerceapp-project.herokuapp.com/health
+        # checkstring: "ok"
+        # delay: 5
+        # rollbackonhealthcheckfailed: true
+    # - uses: actions/checkout@v2
+    # - name: Bump version and push tag
+    #   if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
+    #   uses: anothrNick/github-tag-action@eca2b69f9e2c24be7decccd0f15fdb1ea5906598
+    #   env:
+    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    #     DEFAULT_BUMP: patch
+    # - name: Discord success notification
+    #   env:
+    #     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+    #   uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
+    #   with:
+    #     args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has been deployed succesfully.'
+    #   # if:  ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') && success() }}
+    #   if: ${{ success() }}
+    # - name: Discord failure notification
+    #   env:
+    #     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+    #   uses: Ilshidur/action-discord@0c4b27844ba47cb1c7bee539c8eead5284ce9fa9
+    #   with:
+    #     args: 'The project {{ EVENT_PAYLOAD.repository.full_name }} has failed succesfully.'
+    #   # if:  ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') && failure() }}
+    #   if: ${{ failure() }}
 
 
 
