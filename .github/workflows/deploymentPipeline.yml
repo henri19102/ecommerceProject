@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-18.04
     defaults:
       run:
-        working-directory: frontend
+        working-directory: ./frontend
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
@@ -44,7 +44,12 @@ jobs:
         wait-on: http://localhost:3000
   deploy_to_heroku:
     runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: frontend
     steps:
+    - name: build
+      run: npm run build
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
     - name: heroku deploy

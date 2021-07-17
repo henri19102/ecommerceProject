@@ -29,7 +29,7 @@
     "start": "react-scripts start",
     "both": "concurrently \"react-scripts start\" \"cd ../backend && node index.js\"",
     "server": "cd ../backend && npm install && node index.js",
-    "build": "react-scripts build",
+    "build": "react-scripts build && mv ./frontend/build ../backend",
     "test": "jest",
     "eject": "react-scripts eject",
     "test:e2e": "cypress run",
