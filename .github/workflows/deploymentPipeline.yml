@@ -3,10 +3,10 @@ name: Deployment pipeline
 on:
   push:
     branches:
-      - Maca-Branch
-    # pull_request:    
-    #   branches: [main]    
-    #   types: [opened, synchronize]
+      - main
+    pull_request:    
+      branches: [main]    
+      types: [opened, synchronize]
 
 jobs:
   linting_pipeline:
