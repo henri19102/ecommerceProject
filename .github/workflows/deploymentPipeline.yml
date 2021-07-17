@@ -32,14 +32,12 @@ jobs:
         node-version: "15.x"
     - name: npm install
       run: npm install
-    - name: build
-      run: npm run build
     - name: test
       run: npm run test
     - name: e2e tests
       uses: cypress-io/github-action@v2
       with:
-        working-directory: frontend
+        working-directory: "/home/runner/work/ecommerceProject/frontend"
         command: npm run test:e2e
         start: npm start, npm run server
         wait-on: http://localhost:3000

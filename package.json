@@ -4,7 +4,6 @@
   "description": "The ultimate e-commerc",
   "main": "index.js",
   "scripts": {
-    "start": "cd ./backend",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint ."
   },
