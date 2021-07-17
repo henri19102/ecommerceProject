@@ -4,6 +4,7 @@
   "description": "The ultimate e-commerc",
   "main": "index.js",
   "scripts": {
+    "start": "cd /home/runner/work/ecommerceProject/backend && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint ."
   },
