@@ -55,7 +55,8 @@ jobs:
       run: npm run build
     - name: move folder and move to backend
       run: |
-        mv build ../backend
+        pwd
+        mv build /home/runner/work/ecommerceProject/ecommerceProject/backend
         cd ./backend
     - name: heroku deploy
       if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
