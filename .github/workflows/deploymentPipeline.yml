@@ -53,6 +53,9 @@ jobs:
       run: npm install
     - name: build
       run: npm run build
+      run: |
+        mv build /home/runner/work/ecommerceProject/backend
+        cd ./backend
     - name: heroku deploy
       if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
       uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
