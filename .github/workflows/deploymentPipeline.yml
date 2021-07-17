@@ -54,10 +54,11 @@ jobs:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: ecommerceapp-project #Must be unique in Heroku
         heroku_email: macez@hotmail.com
-        healthcheck: https://ecommerceapp-project.herokuapp.com/health
-        checkstring: "ok"
-        delay: 5
-        rollbackonhealthcheckfailed: true
+        usedocker: true
+        # healthcheck: https://ecommerceapp-project.herokuapp.com/health
+        # checkstring: "ok"
+        # delay: 5
+        # rollbackonhealthcheckfailed: true
     # - uses: actions/checkout@v2
     # - name: Bump version and push tag
     #   if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
