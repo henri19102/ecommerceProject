@@ -55,13 +55,19 @@ jobs:
         heroku_app_name: ecommerceapp-project #Must be unique in Heroku
         heroku_email: macez@hotmail.com
         usedocker: true
+        justlogin: true
         # healthcheck: https://ecommerceapp-project.herokuapp.com/health
         # checkstring: "ok"
         # delay: 5
         # rollbackonhealthcheckfailed: true
-    - run: |
-        git remote add heroku git@heroku.com:ecommerceapp-project.git
-        git push heroku master
+    - name: "Login to heroku registry"
+      run: heroku container:login
+
+    - name: "Build and push to heroku registry"
+      run: heroku container:push web --app ecommerceapp-project
+
+    - name: "Releases the container"
+      run: heroku container:release web --app ecommerceapp-project
     # - uses: actions/checkout@v2
     # - name: Bump version and push tag
     #   if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
