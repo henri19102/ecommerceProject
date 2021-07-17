@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-18.04
     defaults:
       run:
-        working-directory: frontend
+        working-directory: ./frontend
     steps:
     - name: build
       run: npm run build
