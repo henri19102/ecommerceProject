@@ -19,7 +19,9 @@ describe("product data is got", () => {
   });
 
   test("when list has multiple items,get total price", () => {
-    expect(products.reduce((x,y) => x.price+y.price),0).toBe(258010);
+    const list = products.map(x => x.price)
+    const result = list.reduce(((x,y) => x+y),0)
+    expect(result).toBe(258010);
   });
 });
 
