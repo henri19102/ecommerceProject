@@ -48,10 +48,10 @@ jobs:
       run:
         working-directory: ./frontend
     steps:
-    - name: build
-      run: npm run build
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
+    - name: build
+      run: npm run build
     - name: heroku deploy
       if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
       uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
