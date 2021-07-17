@@ -12,18 +12,19 @@ describe("Note app", function () {
     cy.contains("login").click();
   });
 
-  it("user can log in", function () {
-    cy.contains("login").click();
-    cy.get("#nameInput").type("testi timo");
-    cy.get("#passwordInput").type("testitimo");
-    cy.contains("Log In").click();
-    cy.contains("logout");
-  });
+  //   it("user can log in", function () {
+  //     cy.contains("login").click();
+  //     cy.get("#nameInput").type("testi timo");
+  //     cy.get("#passwordInput").type("testitimo");
+  //     cy.contains("Log In").click();
+  //     cy.contains("logout");
+  //   });
 
-  it("products are loaded from db", function () {
-    cy.contains("Products").click();
-    cy.contains("Add to cart");
-    cy.get("#searchProduct").type("shir");
-    cy.contains("Add to cart");
-  });
+  //   it("products are loaded from db", function () {
+  //     cy.contains("Products").click();
+  //     cy.contains("Add to cart");
+  //     cy.get("#searchProduct").type("shir");
+  //     cy.contains("Add to cart");
+  //   });
+  // })
 });
