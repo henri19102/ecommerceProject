@@ -3,10 +3,10 @@ name: Deployment pipeline
 on:
   push:
     branches:
-      - Maca-Branch
-    # pull_request:    
-    #   branches: [main]    
-    #   types: [opened, synchronize]
+      - main
+    pull_request:    
+      branches: [main]    
+      types: [opened, synchronize]
 
 jobs:
   linting_pipeline:
@@ -32,8 +32,6 @@ jobs:
         node-version: "15.x"
     - name: npm install
       run: npm install
-    - name: build
-      run: npm run build
     - name: test
       run: npm run test
     - name: e2e tests
@@ -45,19 +43,38 @@ jobs:
         wait-on: http://localhost:3000
   deploy_to_heroku:
     runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: ./frontend
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
+    - name: npm install
+      run: npm install
+    - name: build
+      run: npm run build
+    - name: move folder and move to backend
+      run: |
+        mv build /home/runner/work/ecommerceProject/ecommerceProject/backend
+        cd /home/runner/work/ecommerceProject/ecommerceProject/backend
     - name: heroku deploy
       if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
       uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       with:
         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
         heroku_app_name: ecommerceapp-project #Must be unique in Heroku
-        heroku_email: macez@hotmail.com
+        heroku_email: henri19102@student.hamk.fi
         healthcheck: https://ecommerceapp-project.herokuapp.com/health
-        checkstring: ok
+        checkstring: "ok"
+        delay: 5
         rollbackonhealthcheckfailed: true
+    - uses: actions/checkout@v2
+    - name: Bump version and push tag
+      if: ${{ github.event_name == 'push' && !contains(join(github.event.commits.*.message, ' '), '#skip') }}
+      uses: anothrNick/github-tag-action@eca2b69f9e2c24be7decccd0f15fdb1ea5906598
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DEFAULT_BUMP: patch
     - name: Discord success notification
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
