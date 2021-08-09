@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { Box, Typography, Card, CardContent } from "@material-ui/core";
 import CartProductView from "./CartProductView";
+
 import { useUsers } from "../reducers/UserReducer";
 import { useCart } from "../reducers/CartReducer";
 import orderService from "../../services/orders";
 import { useStyles } from "../../styles/styles";
 import CheckoutDialog from "./CheckoutDialog";
+import PaypalCheckout from "./PaypalCheckout";
 
 const ShoppingCart = () => {
   const userCart = useCart();
@@ -32,25 +34,27 @@ const ShoppingCart = () => {
 
   const sumAllItemsText = () => {
     return sumAllFromCart > 0
-      ? `Total price: ${sumAllFromCart}`
+      ? `Total price: ${sumAllFromCart} €`
       : "Shopping cart is empty";
   };
 
-  return (
-    <div className={classes.productsPage}>
-      <Box className={classes.products}>
-        {userCart.cartProducts.map((x) => (
-          <CartProductView key={x.productId} product={x} />
-        ))}
-      </Box>
-      <Card className={classes.cardContent} variant='outlined'>
-        <CardContent className={classes.cardContent2}>
-          <Typography variant='h6'>{sumAllItemsText()}</Typography>
-        </CardContent>
-      </Card>
-      {sumAllFromCart > 0 && <CheckoutDialog />}
-    </div>
-  );
+  if (sumAllFromCart > 0)
+    return (
+      <div className={classes.productsPage}>
+        <Box className={classes.products}>
+          {userCart.cartProducts.map((x) => (
+            <CartProductView key={x.productId} product={x} />
+          ))}
+        </Box>
+        <Card className={classes.cardContent} variant='outlined'>
+          <CardContent className={classes.cardContent2}>
+            <Typography variant='h6'>{sumAllItemsText()}</Typography>
+          </CardContent>
+        </Card>
+        <PaypalCheckout/>
+        <CheckoutDialog />
+      </div>
+    );
 };
 
 export default ShoppingCart;

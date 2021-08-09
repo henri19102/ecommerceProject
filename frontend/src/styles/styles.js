@@ -100,5 +100,8 @@ export const useStyles = makeStyles(() => ({
   cardContent4: {
     width: "90%",
     marginBottom: "2%"
+  },
+  paypalBtn:{
+
   }
 }));
