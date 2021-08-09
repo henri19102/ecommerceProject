@@ -26,5 +26,9 @@
   "devDependencies": {
     "eslint": "^7.30.0",
     "eslint-plugin-react": "^7.24.0"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "react-paypal-button-v2": "^2.6.3"
   }
 }
