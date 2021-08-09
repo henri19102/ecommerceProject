@@ -51,10 +51,11 @@ const ShoppingCart = () => {
             <Typography variant='h6'>{sumAllItemsText()}</Typography>
           </CardContent>
         </Card>
-        <PaypalCheckout/>
+        <PaypalCheckout totalPrice={sumAllFromCart} />
         <CheckoutDialog />
       </div>
     );
+  return <div>Shopping cart is empty</div>;
 };
 
 export default ShoppingCart;
