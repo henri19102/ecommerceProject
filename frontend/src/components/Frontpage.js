@@ -2,12 +2,14 @@
 import React from "react";
 import { Card, CardContent } from "@material-ui/core";
 import { useStyles } from "../styles/styles";
+import Highlighted from "./Highlighted";
 
 const Frontpage = () => {
   const classes = useStyles();
 
   return (
     <div>
+      <Highlighted/>
       <Card className={classes.card1}>
         <CardContent>
           <p style={{ fontWeight: "bold" }}>

@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
   container: {
     display: "flex",
     flexDirection: "column",
@@ -101,7 +101,19 @@ export const useStyles = makeStyles(() => ({
     width: "90%",
     marginBottom: "2%"
   },
-  paypalBtn:{
-
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    backgroundColor: "#D3D3D3",
+    color: theme.palette.text.primary,
+    "&:hover":{
+      transform: "translate(0%,-5%)",
+      backgroundColor: "#99f"
+    }
+  },
+  highlightHeader: {
+    fontSize: "1.5vw",
+    padding: theme.spacing(1),
+    textAlign: "center"
   }
 }));
