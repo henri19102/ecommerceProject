@@ -37,19 +37,19 @@ const Footer = () => {
           <List component="nav" aria-label="main mailbox folders">
             <ListItem button>
               <ListItemIcon>
-                <DraftsIcon />
+                <DraftsIcon className={classes.white} />
               </ListItemIcon>
               <ListItemText className={classes.white} primary="Contact" />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <DraftsIcon />
+                <DraftsIcon className={classes.white} />
               </ListItemIcon>
               <ListItemText className={classes.white} primary="About us" />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <DraftsIcon />
+                <DraftsIcon className={classes.white} />
               </ListItemIcon>
               <ListItemText className={classes.white} primary="Registry descriptions" />
             </ListItem>
