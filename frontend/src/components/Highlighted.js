@@ -13,6 +13,8 @@ const shuffleArray = (array) => {
   }
 };
 
+
+
 const Highlighted = () => {
   const { products } = useProducts();
   const history = useHistory();
@@ -26,7 +28,7 @@ const Highlighted = () => {
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Paper variant='outlined' className={classes.paper}>
+          <Paper variant='outlined' className={classes.highlightHeader}>
             Myydyimmät tuotteet
           </Paper>
         </Grid>
