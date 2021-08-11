@@ -14,7 +14,7 @@ import { useStyles } from "../styles/styles";
 const Footer = () => {
   const classes = useStyles();
   return (
-    <Box m={1} className={classes.footer}>
+    <Box  className={classes.footer}>
       <Grid
         container
         direction="row"
@@ -22,8 +22,8 @@ const Footer = () => {
         alignItems="center"
       >
         <Grid item xs={8}>
-          <h4>About</h4>
-          <p>
+          <h4 className={classes.white} >About</h4>
+          <p className={classes.white} >
             Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to
             help the upcoming programmers with the code. Scanfcode focuses on
             providing the most efficient code or snippets as the code wants to
@@ -33,31 +33,31 @@ const Footer = () => {
           </p>
         </Grid>
         <Grid item xs={4}>
-          <h4>Linkit</h4>
+          <h4 className={classes.white} >Links</h4>
           <List component="nav" aria-label="main mailbox folders">
             <ListItem button>
               <ListItemIcon>
                 <DraftsIcon />
               </ListItemIcon>
-              <ListItemText primary="Ota yhteyttä" />
+              <ListItemText className={classes.white} primary="Contact" />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
                 <DraftsIcon />
               </ListItemIcon>
-              <ListItemText primary="Meistä" />
+              <ListItemText className={classes.white} primary="About us" />
             </ListItem>
             <ListItem button>
               <ListItemIcon>
                 <DraftsIcon />
               </ListItemIcon>
-              <ListItemText primary="Re­kis­te­ri­se­los­teet" />
+              <ListItemText className={classes.white} primary="Registry descriptions" />
             </ListItem>
           </List>
         </Grid>
       </Grid>
       <Divider className={classes.divider} />
-      <p>Copyright &copy; 2017 All Rights Reserved by Tegridy Inc.</p>
+      <p className={classes.white} >Copyright &copy; 2017 All Rights Reserved by Tegridy Inc.</p>
     </Box>
   );
 };
