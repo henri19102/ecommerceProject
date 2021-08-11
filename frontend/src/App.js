@@ -4,6 +4,7 @@ import Products from "./components/products/Products";
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
 import Frontpage from "./components/Frontpage";
+import Layout from "./components/Layout";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AppDataContext from "./components/reducers/AppDataContext";
 import Notification from "./components/Notification";
@@ -26,39 +27,40 @@ const App = () => {
 
   return (
     <AppDataContext>
-      <Router>
-        <Navbar />
-        <Container style={stylings} maxWidth="md">
-          <Notification />
-
-          <Switch>
-            <Route exact path="/">
-              <Frontpage />
-            </Route>
-            <Route exact path="/health">
-              <HealthCheck />
-            </Route>
-            <Route exact path="/products">
-              <Products />
-            </Route>
-            <Route exact path="/products/:id">
-              <ProductDetailView />
-            </Route>
-            <Route exact path="/signup">
-              <SignUp />
-            </Route>
-            <Route exact path="/login">
-              <LogIn />
-            </Route>
-            <Route exact path="/shoppingcart">
-              <ShoppingCart />
-            </Route>
-            <Route exact path="/admin">
-              <AdminPage />
-            </Route>
-          </Switch>
-        </Container>
-      </Router>
+      <Layout>
+        <Router>
+          <Navbar />
+          <Container style={stylings} maxWidth="md">
+            <Notification />
+            <Switch>
+              <Route exact path="/">
+                <Frontpage />
+              </Route>
+              <Route exact path="/health">
+                <HealthCheck />
+              </Route>
+              <Route exact path="/products">
+                <Products />
+              </Route>
+              <Route exact path="/products/:id">
+                <ProductDetailView />
+              </Route>
+              <Route exact path="/signup">
+                <SignUp />
+              </Route>
+              <Route exact path="/login">
+                <LogIn />
+              </Route>
+              <Route exact path="/shoppingcart">
+                <ShoppingCart />
+              </Route>
+              <Route exact path="/admin">
+                <AdminPage />
+              </Route>
+            </Switch>
+          </Container>
+        </Router>
+      </Layout>
     </AppDataContext>
   );
 };

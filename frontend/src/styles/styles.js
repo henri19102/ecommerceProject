@@ -8,7 +8,15 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     backgroundColor: "wheat",
     paddingTop: "1%",
-    paddingBottom: "2%"
+    paddingBottom: "2%",
+  },
+  footer: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#3f51b5",
+    paddingTop: "1%"
   },
   productSearch: {
     backgroundColor: "white"
