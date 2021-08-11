@@ -1,14 +1,28 @@
 import React from "react";
-import { Box, Grid, Paper } from "@material-ui/core";
+import {
+  Box,
+  Grid,
+  List,
+  Divider,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@material-ui/core";
+import DraftsIcon from "@material-ui/icons/Drafts";
 import { useStyles } from "../styles/styles";
 
 const Footer = () => {
   const classes = useStyles();
   return (
     <Box m={1} className={classes.footer}>
-      <h6>About</h6>
-      <Grid container spacing={3}>
-        <Grid item xs={6}>
+      <Grid
+        container
+        direction="row"
+        justifyContent="space-around"
+        alignItems="center"
+      >
+        <Grid item xs={8}>
+          <h4>About</h4>
           <p>
             Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to
             help the upcoming programmers with the code. Scanfcode focuses on
@@ -18,13 +32,32 @@ const Footer = () => {
             Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.
           </p>
         </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
-        </Grid>
-        <Grid item xs={3}>
-          <Paper className={classes.paper}>xs=3</Paper>
+        <Grid item xs={4}>
+          <h4>Linkit</h4>
+          <List component="nav" aria-label="main mailbox folders">
+            <ListItem button>
+              <ListItemIcon>
+                <DraftsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Ota yhteyttä" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <DraftsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Meistä" />
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <DraftsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Re­kis­te­ri­se­los­teet" />
+            </ListItem>
+          </List>
         </Grid>
       </Grid>
+      <Divider className={classes.divider} />
+      <p>Copyright &copy; 2017 All Rights Reserved by Tegridy Inc.</p>
     </Box>
   );
 };

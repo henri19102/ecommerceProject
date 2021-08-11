@@ -11,6 +11,7 @@ export const useStyles = makeStyles((theme) => ({
     paddingBottom: "2%",
   },
   footer: {
+    padding: "2%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
