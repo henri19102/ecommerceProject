@@ -9,11 +9,30 @@ const Frontpage = () => {
 
   return (
     <div>
-      <Highlighted/>
+      <Highlighted />
       <Card className={classes.card1}>
         <CardContent>
-          <p style={{ fontWeight: "bold" }}>
+          <h2 style={{ fontWeight: "bold" }}>
             Welcome to my ecommerce test shop!
+          </h2>
+          <p>
+            Thanks for taking the time to consider our proposal. We propose
+            building an immersive installation in the Lorem Ipsum Store Front.
+            As a Boston-based artist collective we’ve worked to invigorate
+            spaces throughout the east coast and want to offer a permanent store
+            front installation in our own community.
+          </p>
+          <p>
+            Lorem Ipsum is a community oriented book store in Inman Square
+            (Cambridge, MA) that hosts a variety of events from evening in-store
+            concerts, free classes and workshops, gallery exhibits, and they
+            also offer the largest Zine Libary in the New England. Lorem Ipsum
+            asked us for help with their store front display and we would love
+            to donate our installation prowess. As a collective we see the
+            importance and power of collaboration to make amazing artistic
+            endeavors come together. A one-of-a-kind store front installation
+            would help bring attention to such a positive community center in
+            Inman Square.
           </p>
           <p>
             Contrary to popular belief, Lorem Ipsum is not simply random text.

@@ -13,8 +13,8 @@ import ProductDetailView from "./components/productDetails/ProductDetailView";
 import AdminPage from "./components/admin/AdminPage";
 import { Container } from "@material-ui/core";
 import HealthCheck from "./components/admin/HealthCheck";
-import AboutUs from "./components/HamazonInfo/AboutUs";
-import Registry from "./components/HamazonInfo/Registry";
+import AboutUs from "./components/hamazonInfo/AboutUs";
+import Registry from "./components/hamazonInfo/Registry";
 
 const App = () => {
   const stylings = {
