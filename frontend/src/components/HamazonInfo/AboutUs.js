@@ -26,22 +26,24 @@ const AboutUs = () => {
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
+            <h3>Can you make it stand out more?</h3>
             <p>
-              Can you make it stand out more? i think this should be fairly easy
-              so if you just want to have a look, the website doesnt have the
-              theme i was going for and we need more images of groups of people
-              having non-specific types of fun. There is too much white space
-              can you make the blue bluer? or will royalties in the company do
-              instead of cash, what is a hamburger menu. In an ideal world im
-              not sure, try something else, nor this was not according to brief,
-              and thanks for taking the time to make the website, but i already
-              made it in wix. Can you make the logo bigger yes bigger bigger
-              still the logo is too big make it original, for theres all this
-              spanish text on my site. Why is a 15mb gif on the startpage a bad
-              idea?! can my website be in english? can it be more retro, so
-              thanks for taking the time to make the website, but i already made
-              it in wix jazz it up a little.
+              i think this should be fairly easy so if you just want to have a
+              look, the website doesnt have the theme i was going for and we
+              need more images of groups of people having non-specific types of
+              fun. There is too much white space can you make the blue bluer? or
+              will royalties in the company do instead of cash, what is a
+              hamburger menu. In an ideal world im not sure, try something else,
+              nor this was not according to brief, and thanks for taking the
+              time to make the website, but i already made it in wix. Can you
+              make the logo bigger yes bigger bigger still the logo is too big
+              make it original, for theres all this spanish text on my site. Why
+              is a 15mb gif on the startpage a bad idea?! can my website be in
+              english? can it be more retro, so thanks for taking the time to
+              make the website, but i already made it in wix jazz it up a
+              little.
             </p>
+            <h4>i think we need to start from scratch.</h4>
             <p>
               We are your relatives im not sure, try something else we try your
               eye, but can you change everything?. It&apos;s great, can you add
@@ -52,27 +54,26 @@ const AboutUs = () => {
               make the purple more well, purple-er it looks so empty add some
               more hearts can you add a bit of pastel pink and baby blue because
               the purple alone looks too fancy okay can you put a cute quote on
-              the right side of the site? oh no it looks messed up! i think we
-              need to start from scratch. Can you make it pop can you put
-              &quot;find us on facebook&quot; by the facebook logo? Jazz it up a
-              little. That&apos;s great, but we need to add this 2000 line
-              essay. Can you make it stand out more?.
+              the right side of the site? oh no it looks messed up! Can you make
+              it pop can you put &quot;find us on facebook&quot; by the facebook
+              logo? Jazz it up a little. That&apos;s great, but we need to add
+              this 2000 line essay. Can you make it stand out more?.
             </p>
+            <h4>Can you lower the price for the website?</h4>
             <p>
-              Can you lower the price for the website? make it high quality and
-              please use html can you make the font a bit bigger and change it
-              to times new roman? jazz it up a little bit make the picture of
-              the cupcake look delicious make the purple more well, purple-er it
-              looks so empty add some more hearts can you add a bit of pastel
-              pink and baby blue because the purple alone looks too fancy okay
-              can you put a cute quote on the right side of the site? oh no it
-              looks messed up! i think we need to start from scratch can the
-              black be darker could you move it a tad to the left can you please
-              change the color theme of the website to pink and purple? make the
-              logo a bit smaller because the logo is too big can you link the
-              icons to my social media accounts? oh and please put pictures of
-              cats everywhere. Make it pop can you make it stand out more? we
-              exceed the client&apos;s expectations.
+              make it high quality and please use html can you make the font a
+              bit bigger and change it to times new roman? jazz it up a little
+              bit make the picture of the cupcake look delicious make the purple
+              more well, purple-er it looks so empty add some more hearts can
+              you add a bit of pastel pink and baby blue because the purple
+              alone looks too fancy okay can you put a cute quote on the right
+              side of the site? oh no it looks messed up! i think we need to
+              start from scratch can the black be darker could you move it a tad
+              to the left can you please change the color theme of the website
+              to pink and purple? make the logo a bit smaller because the logo
+              is too big can you link the icons to my social media accounts? oh
+              and please put pictures of cats everywhere. Make it pop can you
+              make it stand out more? we exceed the client&apos;s expectations.
             </p>
           </Paper>
         </Grid>

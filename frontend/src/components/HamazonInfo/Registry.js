@@ -26,6 +26,7 @@ const Registry = () => {
               as well as for the mar­ke­ting car­ried out by the cont­rol­ler
               and com­pa­nies be­lon­ging to the sa­me group.
             </p>
+            <h4>Stakeholder register</h4>
             <p>
               Per­so­nal da­ta is col­lec­ted from per­sons who comp­le­te a
               te­nan­cy ag­ree­ment with Tegridy­ Inc or who li­ve in an
