@@ -20,9 +20,9 @@ const Subscribe = () => {
 
   return (
     <Box className={classes.subscribe}>
-      <h2>Älä missaa aleja! Tilaa uutiskirjeemme.</h2>
+      <h2>Dont miss out! Join our mailing list.</h2>
 
-      <FormControl className={classes.subscribe}>
+      <FormControl className={classes.subscribeForm}>
         <Input
           inputRef={textInput}
           className={classes.white}

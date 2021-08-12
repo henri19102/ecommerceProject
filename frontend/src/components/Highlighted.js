@@ -26,7 +26,7 @@ const Highlighted = () => {
     <div className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12} className={classes.container}>
-          <h2>Myydyimmät tuotteet</h2>
+          <h2>Best-selling products</h2>
         </Grid>
         {unique.slice(0, 4).map((x) => (
           <Grid key={x.id} item xs={3}>

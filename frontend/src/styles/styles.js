@@ -51,10 +51,20 @@ export const useStyles = makeStyles((theme) => ({
     marginTop: "0",
   },
   subscribe: {
+    padding: "2%",
+    color: "white",
+    flexWrap: "wrap",
+    background: "linear-gradient(180deg, rgba(5,5,5,1) 88%, rgba(63,81,181,1) 100%)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignItems: "center"
+  },
+  subscribeForm: {
     padding: "1%",
     color: "white",
     flexWrap: "wrap",
-    backgroundColor: "black",
+    background: "black",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
