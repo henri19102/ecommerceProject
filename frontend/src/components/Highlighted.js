@@ -13,8 +13,6 @@ const shuffleArray = (array) => {
   }
 };
 
-
-
 const Highlighted = () => {
   const { products } = useProducts();
   const history = useHistory();
@@ -27,19 +25,17 @@ const Highlighted = () => {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Paper variant='outlined' className={classes.highlightHeader}>
-            Myydyimmät tuotteet
-          </Paper>
+        <Grid item xs={12} className={classes.container}>
+          <h2>Myydyimmät tuotteet</h2>
         </Grid>
         {unique.slice(0, 4).map((x) => (
           <Grid key={x.id} item xs={3}>
             <Tooltip title={`Only ${x.price}€ Click to view in detail!`}>
               <Paper
-                id="higlight-paper"
+                id='higlight-paper'
                 onClick={() => history.push(`products/${x.id}`)}
                 elevation={10}
-                className={classes.paper}
+                className={classes.mostSelled}
               >
                 {x.name}
               </Paper>
