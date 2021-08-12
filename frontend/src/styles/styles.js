@@ -113,6 +113,12 @@ export const useStyles = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(2),
     textAlign: "center",
+    backgroundColor: "#white",
+    color: theme.palette.text.primary,
+  },
+  mostSelled: {
+    padding: theme.spacing(2),
+    textAlign: "center",
     backgroundColor: "#D3D3D3",
     color: theme.palette.text.primary,
     "&:hover":{
