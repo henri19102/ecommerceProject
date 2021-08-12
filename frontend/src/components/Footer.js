@@ -6,7 +6,7 @@ import {
   Divider,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
 } from "@material-ui/core";
 import EmailRoundedIcon from "@material-ui/icons/EmailRounded";
 import InfoRoundedIcon from "@material-ui/icons/InfoRounded";
@@ -14,9 +14,6 @@ import HowToRegRoundedIcon from "@material-ui/icons/HowToRegRounded";
 import { useStyles } from "../styles/styles";
 import { useHistory } from "react-router-dom";
 
-const handleContactUs = () => {
-  console.log("KIITOS VIESTISTÄ");
-};
 
 const Footer = () => {
   const classes = useStyles();
@@ -26,9 +23,9 @@ const Footer = () => {
     <Box className={classes.footer}>
       <Grid
         container
-        direction='row'
-        justifyContent='space-around'
-        alignItems='center'
+        direction="row"
+        justifyContent="space-around"
+        alignItems="center"
       >
         <Grid item xs={8}>
           <h4 className={classes.white}>About</h4>
@@ -46,18 +43,18 @@ const Footer = () => {
         </Grid>
         <Grid item xs={4}>
           <h4 className={classes.white}>Links</h4>
-          <List component='nav' aria-label='main mailbox folders'>
-            <ListItem button onClick={() => handleContactUs()}>
+          <List component="nav" aria-label="main mailbox folders">
+            <ListItem button component="a" href="mailto:havesome@tegridy.org">
               <ListItemIcon>
                 <EmailRoundedIcon className={classes.white} />
               </ListItemIcon>
-              <ListItemText className={classes.white} primary='Contact' />
+              <ListItemText className={classes.white} primary="Contact Us" />
             </ListItem>
-            <ListItem button onClick={() => history.push("/aboutus")}>
+            <ListItem button onClick={() => history.push("/about_us")}>
               <ListItemIcon>
                 <InfoRoundedIcon className={classes.white} />
               </ListItemIcon>
-              <ListItemText className={classes.white} primary='About us' />
+              <ListItemText className={classes.white} primary="About us" />
             </ListItem>
             <ListItem button onClick={() => history.push("/registry")}>
               <ListItemIcon>
@@ -65,7 +62,7 @@ const Footer = () => {
               </ListItemIcon>
               <ListItemText
                 className={classes.white}
-                primary='Registry descriptions'
+                primary="Registry descriptions"
               />
             </ListItem>
           </List>

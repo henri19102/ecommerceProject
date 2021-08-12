@@ -89,7 +89,7 @@ const AboutUs = () => {
                 </ListItemIcon>
                 <ListItemText primary='TegridyRoad 160 SF CA' />
               </ListItem>
-              <ListItem>
+              <ListItem button component="a" href="mailto:havesome@tegridy.org">
                 <ListItemIcon>
                   <EmailRoundedIcon />
                 </ListItemIcon>

@@ -58,7 +58,7 @@ const App = () => {
             <Route exact path="/admin">
               <AdminPage />
             </Route>
-            <Route exact path="/aboutus">
+            <Route exact path="/about_us">
               <AboutUs />
             </Route>
             <Route exact path="/registry">
