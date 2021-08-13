@@ -73,7 +73,7 @@ const Footer = () => {
         </Grid>
         <Divider className={classes.divider} />
         <p className={classes.white}>
-          Copyright &copy; 2017 All Rights Reserved by Tegridy Inc.
+          Copyright &copy; 2021 All Rights Reserved by Tegridy Inc.
         </p>
       </Box>
     </Box>
