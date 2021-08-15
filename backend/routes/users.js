@@ -59,7 +59,11 @@ router.post("/login", async (req, res) => {
         accessToken,
         name: user.name,
         id: user.id,
-        isAdmin: user.isAdmin
+        isAdmin: user.isAdmin,
+        phonenumber: user.phonenumber,
+        address: user.address,
+        email: user.email,
+        lastname: user.lastname
       });
     }
     return res.status(400).send("wrong password");
