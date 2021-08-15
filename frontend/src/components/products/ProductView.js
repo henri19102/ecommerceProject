@@ -63,6 +63,8 @@ const ProductView = ({ product }) => {
     notificationMessage("Product rated succesfully!", false);
   };
 
+  console.log(user);
+
   return (
     <Grid className={classes.productCard}>
       <Card variant="outlined">

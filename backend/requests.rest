@@ -2,9 +2,13 @@ POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-    "name": "teemu",
-    "email": "teemu@mail.com",
-    "password": "kissa"
+    "name": "risto",
+    "email": "risto@mail.com",
+    "password": "12345",
+    "lastname": "kattila",
+    "address": "kivikatu",
+    "phonenumber": 123456,
+    "isAdmin": true
 }
 
 ###
