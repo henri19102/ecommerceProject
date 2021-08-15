@@ -3,6 +3,7 @@ import { Box, Grid, Paper } from "@material-ui/core";
 import { useStyles } from "../../../../styles/styles";
 import { useUsers } from "../../../reducers/UserReducer";
 import ShippingDetails from "./ShippingDetails";
+import LatestReviews from "./LatestReviews";
 
 const MyAccount = () => {
   const { user } = useUsers();
@@ -21,15 +22,15 @@ const MyAccount = () => {
           </Grid>
           <Grid item xs={6}>
             <Paper className={classes.paper}>
-              <h4>Profile Picture</h4>
-              TÄHÄN DEFAULT IMAGE TAI KÄYTTJÄN KAUNIIT KASVOT
-              <input type='file' accept='image/*' multiple='false' />
+              <h4>Shipping details</h4>
+              <ShippingDetails user={user} />
             </Paper>
           </Grid>
           <Grid item xs={6}>
             <Paper className={classes.paper}>
-              <h4>Shipping details</h4>
-              <ShippingDetails user={user} />
+              <h4>Profile Picture</h4>
+              TÄHÄN DEFAULT IMAGE TAI KÄYTTJÄN KAUNIIT KASVOT
+              <input type='file' accept='image/*' multiple={false} />
             </Paper>
           </Grid>
           <Grid item xs={6} sm={3}>
@@ -51,9 +52,7 @@ const MyAccount = () => {
               Latest Reviews
             </h2>
             <Paper className={classes.paper}>
-              You better eat a reality sandwich before you walk back in that
-              boardroom ramp up. We need a paradigm shift can you champion this
-              but radical candor but this is our north star design.
+              <LatestReviews user={user} />
             </Paper>
           </Grid>
         </Grid>

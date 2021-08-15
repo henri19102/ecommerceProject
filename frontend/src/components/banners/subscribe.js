@@ -26,7 +26,7 @@ const Subscribe = () => {
         <Input
           inputRef={textInput}
           className={classes.white}
-          autocomplete="off"
+          autoComplete="off"
           startAdornment={
             <InputAdornment className={classes.white} position="start">
               <EmailRoundedIcon />

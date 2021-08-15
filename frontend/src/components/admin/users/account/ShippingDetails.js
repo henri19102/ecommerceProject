@@ -12,25 +12,25 @@ const ShippingDetails = ({ user }) => {
         <ListItemIcon>
           <BusinessRoundedIcon />
         </ListItemIcon>
-        <ListItemText primary={user.name? user.name : "Missing"} />
+        <ListItemText primary={user.name? user.name : "Missing"} secondary={"Full Name"}  />
       </ListItem>
       <ListItem>
         <ListItemIcon>
           <LocationOnRoundedIcon />
         </ListItemIcon>
-        <ListItemText primary={user.address? user.address : "Missing"} />
+        <ListItemText primary={user.address? user.address : "Missing"} secondary={"Shipping Address"} />
       </ListItem>
       <ListItem button component='a' href={user.email? `mailto:${user.email}` : "#"}>
         <ListItemIcon>
           <EmailRoundedIcon />
         </ListItemIcon>
-        <ListItemText primary={user.email? user.email: "Missing"} />
+        <ListItemText primary={user.email? user.email: "Missing"} secondary={"E-mail"}/>
       </ListItem>
       <ListItem>
         <ListItemIcon>
           <PhoneRoundedIcon />
         </ListItemIcon>
-        <ListItemText primary={user.number? user.number: "Missing"} />
+        <ListItemText primary={user.number? user.number: "Missing"} secondary={"Phone Number"} />
       </ListItem>
     </List>
   );
