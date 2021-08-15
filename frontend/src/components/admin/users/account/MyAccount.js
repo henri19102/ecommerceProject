@@ -11,6 +11,7 @@ const MyAccount = () => {
   const classes = useStyles();
 
   if (user === null) return <Box>Loading.</Box>;
+  console.log(user);
   return (
     <Box>
       <div className={classes.root}>

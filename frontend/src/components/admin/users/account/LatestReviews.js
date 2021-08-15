@@ -15,13 +15,13 @@ import { useHistory } from "react-router-dom";
 import { useStyles } from "../../../../styles/styles";
 
 const ReviewItem = ({ review, product, handleDetails }) => {
-  console.log(review, product);
   const classes = useStyles();
 
   return (
     <div>
-      <Tooltip title='View Details' placement="left">
+      <Tooltip title='View Details' placement='left'>
         <ListItem
+          key={review.id}
           className={classes.reviewItem}
           onClick={() => handleDetails(product.id)}
         >

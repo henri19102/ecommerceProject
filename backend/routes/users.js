@@ -33,6 +33,9 @@ router.post("/", async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     const user = {
       name: req.body.name,
+      lastname: req.body.lastname,
+      address: req.body.address,
+      phonenumber: req.body.phonenumber,
       email: req.body.email,
       password: hashedPassword,
       isAdmin: req.body.isAdmin
@@ -78,11 +81,14 @@ router.post("/login", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const { name, email, password, isAdmin } = req.body;
+    const { name, lastname, address, phonenumber, email, password, isAdmin } = req.body;
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(password, salt);
     const user = await User.findOne({ where: { id: req.params.id } });
     user.name = name;
+    user.lastname = lastname,
+    user.address = address,
+    user.phonenumber = phonenumber,
     user.email = email;
     user.password = hashedPassword;
     user.isAdmin = isAdmin;
