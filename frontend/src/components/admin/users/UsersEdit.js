@@ -14,7 +14,10 @@ const UsersEdit = (props) => {
       <SimpleForm>
         <TextInput disabled source="id" />
         <TextInput source="name" />
+        <TextInput source="lastname" />
+        <TextInput source="address" />
         <TextInput source="email" />
+        <TextInput source="phonenumber" />
         <BooleanInput source="isAdmin" />
       </SimpleForm>
     </Edit>
