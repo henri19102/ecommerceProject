@@ -4,6 +4,7 @@ import { useStyles } from "../../../../styles/styles";
 import { useUsers } from "../../../reducers/UserReducer";
 import ShippingDetails from "./ShippingDetails";
 import LatestReviews from "./LatestReviews";
+import ProfilePicture from "./ProfilePicture";
 
 const MyAccount = () => {
   const { user } = useUsers();
@@ -29,8 +30,7 @@ const MyAccount = () => {
           <Grid item xs={6}>
             <Paper className={classes.paper}>
               <h4>Profile Picture</h4>
-              TÄHÄN DEFAULT IMAGE TAI KÄYTTJÄN KAUNIIT KASVOT
-              <input type='file' accept='image/*' multiple={false} />
+              <ProfilePicture user={user}/>
             </Paper>
           </Grid>
           <Grid item xs={6} sm={3}>

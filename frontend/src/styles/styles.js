@@ -156,5 +156,14 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "1.5vw",
     padding: theme.spacing(1),
     textAlign: "center"
-  }
+  },
+  reviewItem: {
+    "&:hover": {
+      transform: "translate(0%,-5%)",
+    }
+  },
+  large: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
 }));

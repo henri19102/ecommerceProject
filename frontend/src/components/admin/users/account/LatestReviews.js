@@ -8,24 +8,33 @@ import {
   ListItemAvatar,
   Avatar,
   Divider,
-  Typography
+  Typography,
+  Tooltip
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import { useStyles } from "../../../../styles/styles";
 
 const ReviewItem = ({ review, product, handleDetails }) => {
   console.log(review, product);
+  const classes = useStyles();
+
   return (
     <div>
-      <ListItem onClick={() => handleDetails(product.id)}>
-        <ListItemAvatar>
-          <Avatar alt='Remy Sharp' />
-        </ListItemAvatar>
-        <ListItemText
-          primary={<Box fontWeight='fontWeightBold'>Item {product.name}</Box>}
-          secondary={`Date of review ${review.createdAt.split("T")[0]}`}
-        />
-        <Typography>{review.reviewText}</Typography>
-      </ListItem>
+      <Tooltip title='View Details' placement="left">
+        <ListItem
+          className={classes.reviewItem}
+          onClick={() => handleDetails(product.id)}
+        >
+          <ListItemAvatar>
+            <Avatar alt='Remy Sharp' />
+          </ListItemAvatar>
+          <ListItemText
+            primary={<Box fontWeight='fontWeightBold'>{product.name}</Box>}
+            secondary={`Date of review ${review.createdAt.split("T")[0]}`}
+          />
+          <Typography>{review.reviewText}</Typography>
+        </ListItem>
+      </Tooltip>
       <Divider variant='inset' />
     </div>
   );
@@ -38,7 +47,9 @@ const LatestReviews = ({ user }) => {
 
   if (!reviews.reviews) return null;
 
-  const userReviews = reviews.reviews.filter((x) => x.userId === user.id);
+  const userReviews = reviews.reviews
+    .filter((x) => x.userId === user.id)
+    .sort((x, y) => y.createdAt > x.createdAt);
   if (userReviews.length < 0) {
     return <div>You haven&apos;t submitted any reviews yet.</div>;
   }
