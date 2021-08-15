@@ -12,7 +12,10 @@ const UsersCreate = (props) => {
     <Create title='Add user' {...props}>
       <SimpleForm>
         <TextInput source='name' />
+        <TextInput source='lastname' />
+        <TextInput source='address' />
         <TextInput source='email' />
+        <TextInput source='phonenumber' />
         <PasswordInput source='password' />
         <BooleanInput source='isAdmin' />
       </SimpleForm>
