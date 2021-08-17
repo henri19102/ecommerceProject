@@ -4,7 +4,7 @@ import { Grid, Paper, Tooltip } from "@material-ui/core";
 import { useStyles } from "../styles/styles";
 import { useHistory } from "react-router-dom";
 
-const shuffleArray = (array) => {
+export const shuffleArray = (array) => {
   for (var i = array.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
     var temp = array[i];
