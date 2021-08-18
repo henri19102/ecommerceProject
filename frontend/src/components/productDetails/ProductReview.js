@@ -25,7 +25,7 @@ const ProductReview = () => {
   const notificationMessage = (msg, isError) => {
     message.dispatchNotification({
       type: "message",
-      message: { message: msg, isError: isError },
+      message: { message: msg, isError: isError }
     });
     setTimeout(() => {
       message.dispatchNotification({ type: "clear" });
@@ -33,6 +33,10 @@ const ProductReview = () => {
   };
 
   const submitReview = async () => {
+    if (text.length <= 3) {
+      return notificationMessage("Try to write a more meaningful review", true);
+    }
+
     if (
       reviews.reviews.find(
         (x) => x.userId === user.id && x.productId === product.id
@@ -65,10 +69,10 @@ const ProductReview = () => {
         multiline
       ></TextField>
       <Button
-        color="primary"
+        color='primary'
         style={{ marginTop: "2%" }}
-        variant="contained"
-        size="small"
+        variant='contained'
+        size='small'
         onClick={submitReview}
       >
         Submit Review
