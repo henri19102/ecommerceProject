@@ -12,7 +12,7 @@ const ShippingDetails = ({ user }) => {
         <ListItemIcon>
           <BusinessRoundedIcon />
         </ListItemIcon>
-        <ListItemText primary={user.name? user.name : "Missing"} secondary={"Full Name"}  />
+        <ListItemText primary={user.name? `${user.name} ${user.lastname}` : "Missing"} secondary={"Full Name"}  />
       </ListItem>
       <ListItem>
         <ListItemIcon>
