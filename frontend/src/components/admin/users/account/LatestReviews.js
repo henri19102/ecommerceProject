@@ -50,7 +50,8 @@ const LatestReviews = ({ user }) => {
   const userReviews = reviews.reviews
     .filter((x) => x.userId === user.id)
     .sort((x, y) => y.createdAt > x.createdAt);
-  if (userReviews.length < 0) {
+
+  if (userReviews.length <= 0) {
     return <div>You haven&apos;t submitted any reviews yet.</div>;
   }
 

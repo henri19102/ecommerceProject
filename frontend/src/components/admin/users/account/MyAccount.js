@@ -29,7 +29,6 @@ const MyAccount = () => {
   }, [user]);
 
   if (user === null || !userCart.cartProducts) return <Box>Loading.</Box>;
-  console.log(userCart);
   return (
     <Box>
       <div className={classes.root}>
@@ -57,9 +56,13 @@ const MyAccount = () => {
               <h3>Your Cart</h3>
               <Grid container spacing={3}>
                 <Grid item xs={6}>
-                  {userCart.cartProducts.map((x) => (
-                    <AccountCart key={x.productId} product={x} />
-                  ))}
+                  {userCart.cartProducts.length > 0 ? (
+                    userCart.cartProducts.map((x) => (
+                      <AccountCart key={x.productId} product={x} />
+                    ))
+                  ) : (
+                    <Box>You shopping cart is empty :(</Box>
+                  )}
                 </Grid>
                 <Grid item xs={6}>
                   Grand total of:
@@ -73,7 +76,15 @@ const MyAccount = () => {
                   </strong>
                 </Grid>
                 <Grid item xs={12}>
-                  <Button variant="contained" color="primary" onClick={() => { history.push("/shoppingcart"); }}>Proceed to Cart</Button>
+                  <Button
+                    variant='contained'
+                    color='primary'
+                    onClick={() => {
+                      history.push("/shoppingcart");
+                    }}
+                  >
+                    Proceed to Cart
+                  </Button>
                 </Grid>
               </Grid>
             </Paper>

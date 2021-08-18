@@ -30,7 +30,7 @@ const ShippingDetails = ({ user }) => {
         <ListItemIcon>
           <PhoneRoundedIcon />
         </ListItemIcon>
-        <ListItemText primary={user.number? user.number: "Missing"} secondary={"Phone Number"} />
+        <ListItemText primary={user.phonenumber? user.phonenumber: "Missing"} secondary={"Phone Number"} />
       </ListItem>
     </List>
   );
