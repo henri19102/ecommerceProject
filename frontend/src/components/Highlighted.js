@@ -23,7 +23,7 @@ const Highlighted = () => {
   const unique = [...new Set(products)];
 
   return (
-    <div className={classes.root}>
+    <div>
       <Grid container spacing={3}>
         <Grid item xs={12} className={classes.container}>
           <h2>Best-selling products</h2>
@@ -37,7 +37,7 @@ const Highlighted = () => {
                 elevation={10}
                 className={classes.mostSelled}
               >
-                {x.name}
+                <i>{x.name}</i>
               </Paper>
             </Tooltip>
           </Grid>

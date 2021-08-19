@@ -35,7 +35,7 @@ const MyAccount = () => {
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <h2 className={classes.container} style={{ fontWeight: "bold" }}>
-              Profile of {user.name}
+              Profile of {user.name} {user.lastname}
             </h2>
             {user.createdAt && <h3>Member since {user.createdAt}</h3>}
           </Grid>

@@ -6,8 +6,9 @@ import { useUsers } from "../reducers/UserReducer";
 import { useCart } from "../reducers/CartReducer";
 import orderService from "../../services/orders";
 import { useStyles } from "../../styles/styles";
-import CheckoutDialog from "./CheckoutDialog";
+// import CheckoutDialog from "./CheckoutDialog";
 import PaypalCheckout from "./PaypalCheckout";
+import Highlighted from "../Highlighted";
 
 const ShoppingCart = () => {
   const userCart = useCart();
@@ -41,6 +42,8 @@ const ShoppingCart = () => {
   if (sumAllFromCart > 0)
     return (
       <div className={classes.productsPage}>
+        <h2 className={classes.container}>Shopping Cart</h2>
+
         <Box className={classes.products}>
           {userCart.cartProducts.map((x) => (
             <CartProductView key={x.productId} product={x} />
@@ -51,11 +54,24 @@ const ShoppingCart = () => {
             <Typography variant='h6'>{sumAllItemsText()}</Typography>
           </CardContent>
         </Card>
-        <PaypalCheckout totalPrice={sumAllFromCart} />
-        <CheckoutDialog />
+        <Box className={classes.container}>
+          <PaypalCheckout totalPrice={sumAllFromCart} />
+        </Box>
+        {/* <CheckoutDialog /> */}
       </div>
     );
-  return <div>Shopping cart is empty</div>;
+  return (
+    <div className={classes.productsPage}>
+      <Box className={classes.container}>
+        <h2>Shopping Cart</h2>
+        <Typography>Shopping cart is empty :(</Typography>
+        <p>
+          We know our catalog may owerwhelm you, so for starters check out our
+        </p>
+        <Highlighted/>
+      </Box>
+    </div>
+  );
 };
 
 export default ShoppingCart;

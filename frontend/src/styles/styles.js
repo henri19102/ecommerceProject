@@ -143,13 +143,19 @@ export const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary
   },
   mostSelled: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
     textAlign: "center",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
+    fontWeight: "bold",
     backgroundColor: "#D3D3D3",
     color: theme.palette.text.primary,
+    transition: "0.2s",
     "&:hover": {
-      transform: "translate(0%,-5%)",
-      backgroundColor: "#99f"
+      backgroundColor: "#989CFF",
+      transform: "scale(1.1)",
+      boxShadow: "0 10px 30px 0 #B5B7FF"
     }
   },
   highlightHeader: {
