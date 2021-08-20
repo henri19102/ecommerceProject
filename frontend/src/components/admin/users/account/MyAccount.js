@@ -91,7 +91,7 @@ const MyAccount = () => {
           </Grid>
           <Grid item xs={6}>
             <Paper className={classes.paper}>
-              <h3>Recommended</h3>
+              <h3>Recommended for you</h3>
               <Recommended classes={classes} />
             </Paper>
           </Grid>

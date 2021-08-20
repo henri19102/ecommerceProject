@@ -14,7 +14,7 @@ export const shuffleArray = (array) => {
   }
 };
 
-const addPhotos = (array) => {
+export const addPhotos = (array) => {
   const imageArr = [];
   for (let x of array) {
     let img = x;
@@ -34,9 +34,15 @@ const Highlighted = () => {
   const classes = useStyles();
   if (!products) return null;
 
-  //Shuffle , eliminate duplicates<-- doesn't work atm and add images
+  //Shuffle , eliminate duplicates and add images
   shuffleArray(products);
-  const unique = [...new Set(products)];
+  console.log(products);
+
+  const unique = [
+    ...new Map(products.map((item) => [item.name, item])).values()
+  ];
+  console.log(unique);
+
   const branded = addPhotos(unique.slice(0, 4));
 
   return (
@@ -47,7 +53,7 @@ const Highlighted = () => {
         </Grid>
         {branded.map((x) => (
           <Grid key={x.id} item xs={3}>
-            <img className={classes.container} src={x.img}/>
+            <img className={classes.container} src={x.img} />
             <Tooltip title={`Only ${x.price}€ Click to view in detail!`}>
               <Paper
                 id='higlight-paper'

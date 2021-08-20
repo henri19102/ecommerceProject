@@ -111,6 +111,13 @@ export const useStyles = makeStyles((theme) => ({
   text1: {
     textAlign: "center"
   },
+  link:{
+    fontWeight: "bold",
+    color: "gray",
+    "&:hover": {
+      color: "#989CFF"
+    }
+  },
   sum: {
     border: "solid",
     borderWidth: "thin",

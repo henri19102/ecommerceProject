@@ -9,9 +9,11 @@ import { useStyles } from "../../styles/styles";
 // import CheckoutDialog from "./CheckoutDialog";
 import PaypalCheckout from "./PaypalCheckout";
 import Highlighted from "../Highlighted";
+import { useHistory } from "react-router-dom";
 
 const ShoppingCart = () => {
   const userCart = useCart();
+  const history = useHistory();
   const { user } = useUsers();
   const classes = useStyles();
 
@@ -26,7 +28,7 @@ const ShoppingCart = () => {
     }
   }, [user]);
 
-  if (!userCart.cartProducts) return null;
+  if (!userCart.cartProducts) return <Box>You need to <a className={classes.link} onClick={() => history.push("login")}>login</a>, to view your cart.</Box>;
 
   const sumAllFromCart = userCart.cartProducts.reduce(
     (a, b) => a + Number(b.productCount) * b.Product.price,
