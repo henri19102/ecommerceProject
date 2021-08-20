@@ -3,6 +3,7 @@ import { useProducts } from "./reducers/ProductsReducer";
 import { Grid, Paper, Tooltip } from "@material-ui/core";
 import { useStyles } from "../styles/styles";
 import { useHistory } from "react-router-dom";
+const images = require.context("../images/products", true);
 
 export const shuffleArray = (array) => {
   for (var i = array.length - 1; i > 0; i--) {
@@ -13,14 +14,30 @@ export const shuffleArray = (array) => {
   }
 };
 
+const addPhotos = (array) => {
+  const imageArr = [];
+  for (let x of array) {
+    let img = x;
+    try {
+      img.img = images(`./${x.name}.png`).default;
+    } catch (error) {
+      img.img = images("./default.png").default;
+    }
+    imageArr.push(img);
+  }
+  return imageArr;
+};
+
 const Highlighted = () => {
   const { products } = useProducts();
   const history = useHistory();
   const classes = useStyles();
   if (!products) return null;
 
+  //Shuffle , eliminate duplicates<-- doesn't work atm and add images
   shuffleArray(products);
   const unique = [...new Set(products)];
+  const branded = addPhotos(unique.slice(0, 4));
 
   return (
     <div>
@@ -28,8 +45,9 @@ const Highlighted = () => {
         <Grid item xs={12} className={classes.container}>
           <h2>Best-selling products</h2>
         </Grid>
-        {unique.slice(0, 4).map((x) => (
+        {branded.map((x) => (
           <Grid key={x.id} item xs={3}>
+            <img className={classes.container} src={x.img}/>
             <Tooltip title={`Only ${x.price}€ Click to view in detail!`}>
               <Paper
                 id='higlight-paper'
