@@ -8,6 +8,7 @@ import ProfilePicture from "./ProfilePicture";
 import { useCart } from "../../../reducers/CartReducer";
 import orderService from "../../../../services/orders";
 import AccountCart from "./AccountCart";
+import MyAccountEdit from "./MyAccountEdit";
 import Recommended from "./Recommended";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -27,6 +28,8 @@ const MyAccount = () => {
       fetchCart();
     }
   }, [user]);
+
+  console.log(user);
 
   if (user === null || !userCart.cartProducts) return <Box>Loading.</Box>;
   return (
@@ -95,6 +98,12 @@ const MyAccount = () => {
               <Recommended classes={classes} />
             </Paper>
           </Grid>
+          <Grid item xs={6}>
+            <Paper className={classes.paper}>
+              <h3>Edit profile</h3>
+              <MyAccountEdit/>
+            </Paper>
+          </Grid>
           <Grid item xs={12}>
             <h2 className={classes.container} style={{ fontWeight: "bold" }}>
               Latest Reviews
@@ -105,6 +114,7 @@ const MyAccount = () => {
           </Grid>
         </Grid>
       </div>
+
     </Box>
   );
 };

@@ -96,6 +96,22 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+router.put("/edit/:id", async (req, res) => {
+  try {
+    const { name, lastname, address, phonenumber, email } = req.body;
+    const user = await User.findOne({ where: { id: req.params.id } });
+    user.name = name;
+    user.lastname = lastname,
+    user.address = address,
+    user.phonenumber = phonenumber,
+    user.email = email;
+    await user.save();
+    return res.json(user);
+  } catch (e) {
+    res.status(500).send();
+  }
+});
+
 ///  PUT ///
 /////////////
 ///  DELETE ///

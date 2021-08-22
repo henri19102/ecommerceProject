@@ -15,6 +15,11 @@ const logIn = async (user) => {
   return res.data;
 };
 
-const userService = { signUp, logIn };
+const editUser = async (id, user) => {
+  const res = await axios.put(`${url}/edit/${id}`, user);
+  return res.data;
+};
+
+const userService = { signUp, logIn, editUser };
 
 export default userService;
