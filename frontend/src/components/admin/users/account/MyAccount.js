@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Button, Grid, Paper } from "@material-ui/core";
 import { useStyles } from "../../../../styles/styles";
 import { useUsers } from "../../../reducers/UserReducer";
@@ -14,6 +14,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const MyAccount = () => {
   const { user } = useUsers();
+  const [edit, setEdit] = useState(false);
   const history = useHistory();
   const userCart = useCart();
   const classes = useStyles();
@@ -45,7 +46,10 @@ const MyAccount = () => {
           <Grid item xs={6}>
             <Paper className={classes.paper}>
               <h4>Shipping details</h4>
-              <ShippingDetails user={user} />
+              <Button onClick={() => setEdit(!edit)} variant='contained' color='primary'>
+                Edit Details
+              </Button>
+              {!edit && <ShippingDetails user={user} />}
             </Paper>
           </Grid>
           <Grid item xs={6}>
@@ -101,7 +105,7 @@ const MyAccount = () => {
           <Grid item xs={6}>
             <Paper className={classes.paper}>
               <h3>Edit profile</h3>
-              <MyAccountEdit/>
+              <MyAccountEdit />
             </Paper>
           </Grid>
           <Grid item xs={12}>
@@ -114,7 +118,6 @@ const MyAccount = () => {
           </Grid>
         </Grid>
       </div>
-
     </Box>
   );
 };
