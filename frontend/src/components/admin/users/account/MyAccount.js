@@ -19,6 +19,10 @@ const MyAccount = () => {
   const userCart = useCart();
   const classes = useStyles();
 
+  const changeEdit = () => {
+    setEdit(!edit);
+  };
+
   useEffect(() => {
     const fetchCart = async () => {
       const joku = await orderService.getProductCount(user.id);
@@ -46,10 +50,20 @@ const MyAccount = () => {
           <Grid item xs={6}>
             <Paper className={classes.paper}>
               <h4>Shipping details</h4>
-              <Button onClick={() => setEdit(!edit)} variant='contained' color='primary'>
-                Edit Details
-              </Button>
-              {!edit ? <ShippingDetails user={user}/> : <MyAccountEdit />}
+              {!edit && (
+                <Button
+                  onClick={() => changeEdit()}
+                  variant='contained'
+                  color='primary'
+                >
+                  Edit Details
+                </Button>
+              )}
+              {!edit ? (
+                <ShippingDetails user={user} />
+              ) : (
+                <MyAccountEdit changeEdit={changeEdit} />
+              )}
             </Paper>
           </Grid>
           <Grid item xs={6}>
