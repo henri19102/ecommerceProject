@@ -49,7 +49,7 @@ const MyAccount = () => {
               <Button onClick={() => setEdit(!edit)} variant='contained' color='primary'>
                 Edit Details
               </Button>
-              {!edit && <ShippingDetails user={user} />}
+              {!edit ? <ShippingDetails user={user}/> : <MyAccountEdit />}
             </Paper>
           </Grid>
           <Grid item xs={6}>
@@ -102,12 +102,12 @@ const MyAccount = () => {
               <Recommended classes={classes} />
             </Paper>
           </Grid>
-          <Grid item xs={6}>
+          {/* <Grid item xs={6}>
             <Paper className={classes.paper}>
               <h3>Edit profile</h3>
               <MyAccountEdit />
             </Paper>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12}>
             <h2 className={classes.container} style={{ fontWeight: "bold" }}>
               Latest Reviews
