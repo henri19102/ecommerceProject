@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^12.8.1",
     "axios": "^0.21.1",
     "concurrently": "^6.2.0",
+    "firebase": "^8.3.1",
     "formik": "^2.2.6",
     "history": "^4.10.1",
     "ra-data-simple-rest": "^3.13.4",

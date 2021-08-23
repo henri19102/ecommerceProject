@@ -11,7 +11,6 @@ import { useStyles } from "../../../../styles/styles";
 const MyAccountEdit = ({ changeEdit }) => {
   const user = useUsers();
   const classes = useStyles();
-  console.log(user.user);
 
   const initialValues = {
     name: user.user.name,
