@@ -63,7 +63,7 @@ const LatestReviews = ({ user }) => {
     <div>
       {userReviews.map((x) => (
         <ReviewItem
-          key={x.User.id}
+          key={x.productId}
           handleDetails={viewDetails}
           review={x}
           product={products.filter((y) => y.id === x.productId)[0]}

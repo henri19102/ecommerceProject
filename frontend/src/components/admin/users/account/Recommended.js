@@ -23,7 +23,7 @@ const Recommended = (classes) => {
           .slice(0, 2)
           .filter((z) => z.name.toLowerCase().includes(name.toLowerCase()))
           .map((x) => (
-            <Grid key={x.id} item xs={14} sm={6}>
+            <Grid key={x.id} item xs={12} sm={6}>
               <ProductView product={x} />
             </Grid>
           ))}

@@ -30,7 +30,6 @@ const MyAccountEdit = ({ changeEdit }) => {
         isAdmin: user.user.isAdmin,
         ...values
       };
-      console.log(editedUser);
       user.dispatchUser({ type: "logIn", payload: editedUser });
       changeEdit();
     } catch (e) {

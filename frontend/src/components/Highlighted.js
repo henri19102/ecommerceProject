@@ -36,12 +36,10 @@ const Highlighted = () => {
 
   //Shuffle , eliminate duplicates and add images
   shuffleArray(products);
-  console.log(products);
 
   const unique = [
     ...new Map(products.map((item) => [item.name, item])).values()
   ];
-  console.log(unique);
 
   const branded = addPhotos(unique.slice(0, 4));
 

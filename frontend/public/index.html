@@ -10,9 +10,9 @@
       content="Web site created using create-react-app"
     />
     <meta
-  name="viewport"
-  content="minimum-scale=1, initial-scale=1, width=device-width"
-/>
+      name="viewport"
+      content="minimum-scale=1, initial-scale=1, width=device-width"
+    />
 
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <!--
@@ -30,16 +30,19 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&display=swap" rel="stylesheet">
-<script src="https://www.paypal.com/sdk/js?client-id=AYuDdktFQzwYuen2d1hzMhzmhanBighmdCkKvgr7apF3dtI4QEEOJOxjy62JKLB8Lzbg6P4leW1sUlDw&currency=EUR"></script>    
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.paypal.com/sdk/js?client-id=AYuDdktFQzwYuen2d1hzMhzmhanBighmdCkKvgr7apF3dtI4QEEOJOxjy62JKLB8Lzbg6P4leW1sUlDw&currency=EUR"></script>
 
     <title>Hamazon</title>
-<style>
-  h2{
-    font-family: 'Antonio', sans-serif;
-  }
-</style>
+    <style>
+      h2 {
+        font-family: "Antonio", sans-serif;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -53,6 +56,25 @@
 
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
+      
     -->
+
+    <!-- Always required. -->
+    <script src="https://www.gstatic.com/firebasejs/$8.3.1/firebase-app.js"></script>
+    <!-- Include only the services you use, for example auth and database below. -->
+    <script src="https://www.gstatic.com/firebasejs/$8.3.1/firebase-storage.js"></script>
+    <!-- See above list for names of the other services. -->
+
+    <script>
+      const app = firebase.initializeApp({
+        apiKey: "AIzaSyCChEXLLB12_Ua3S--clt5JcWdhzgQPiug",
+        authDomain: "ecommerce-react-edb89.firebaseapp.com",
+        projectId: "ecommerce-react-edb89",
+        storageBucket: "ecommerce-react-edb89.appspot.com",
+        messagingSenderId: "776416473017",
+        appId: "1:776416473017:web:5bf6ea37be7c9b2c031068",
+        measurementId: "G-Q47B1D0PFC"
+      });
+    </script>
   </body>
 </html>

@@ -34,7 +34,6 @@ const MyAccount = () => {
     }
   }, [user]);
 
-  console.log(user);
 
   if (user === null || !userCart.cartProducts) return <Box>Loading.</Box>;
   return (
@@ -127,7 +126,7 @@ const MyAccount = () => {
               Latest Reviews
             </h2>
             <Paper className={classes.paper}>
-              <LatestReviews user={user} />
+              <LatestReviews key={user.id} user={user} />
             </Paper>
           </Grid>
         </Grid>
