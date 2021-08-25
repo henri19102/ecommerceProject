@@ -176,7 +176,8 @@ export const useStyles = makeStyles((theme) => ({
     }
   },
   large: {
-    width: theme.spacing(7),
-    height: theme.spacing(7),
+    width: theme.spacing(25),
+    height: theme.spacing(25),
+    margin: "5%"
   },
 }));
