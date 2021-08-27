@@ -115,12 +115,6 @@ const MyAccount = () => {
               <Recommended classes={classes} />
             </Paper>
           </Grid>
-          {/* <Grid item xs={6}>
-            <Paper className={classes.paper}>
-              <h3>Edit profile</h3>
-              <MyAccountEdit />
-            </Paper>
-          </Grid> */}
           <Grid item xs={12}>
             <h2 className={classes.container} style={{ fontWeight: "bold" }}>
               Latest Reviews

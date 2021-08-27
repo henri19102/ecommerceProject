@@ -21,7 +21,6 @@ const ProfilePicture = ({ user }) => {
 
   const handlePhotoChange = (e) => {
     if (e.target.files[0]) {
-      //TODO Tähän voisi tehdä paremman tarkistuksen?
       setFile(e.target.files[0]);
     }
   };
@@ -36,6 +35,9 @@ const ProfilePicture = ({ user }) => {
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
         setProgress(progress);
+        setTimeout(() => {
+          setProgress(0);
+        }, 2000);
       },
       (error) => {
         console.log(error);
@@ -49,6 +51,7 @@ const ProfilePicture = ({ user }) => {
           });
       }
     );
+    console.log(progress);
   };
 
   return (
@@ -62,7 +65,7 @@ const ProfilePicture = ({ user }) => {
           multiple={false}
           onChange={handlePhotoChange}
         />
-        <progress value={progress} max='100' />
+        {progress > 0 && <progress value={progress} max='100' />}
       </Box>
       <Box>
         <Button
