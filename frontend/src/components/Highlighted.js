@@ -51,7 +51,7 @@ const Highlighted = () => {
         </Grid>
         {branded.map((x) => (
           <Grid key={x.id} item xs={3}>
-            <img className={classes.container} src={x.img} />
+            <img className={classes.higlightedImages} src={x.img} />
             <Tooltip title={`Only ${x.price}€ Click to view in detail!`}>
               <Paper
                 id='higlight-paper'

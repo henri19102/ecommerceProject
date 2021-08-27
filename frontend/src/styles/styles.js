@@ -180,4 +180,15 @@ export const useStyles = makeStyles((theme) => ({
     height: theme.spacing(25),
     margin: "5%"
   },
+  higlightedImages: {
+    zIndex: "-2",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    transition: "0.8s",
+    "&:hover": {
+      transform: "scale(1.3)",
+
+    }
+  }
 }));
