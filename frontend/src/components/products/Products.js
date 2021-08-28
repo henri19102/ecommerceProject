@@ -1,17 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductView from "./ProductView";
 import { useProducts } from "../reducers/ProductsReducer";
 import { useStyles } from "../../styles/styles";
 import ProductFilter from "./ProductFilter";
 import ProductSearch from "./ProductSearch";
+import { useHistory } from "react-router-dom";
 
 const Products = () => {
   const [category, setCategory] = useState("All");
   const [name, setName] = useState("");
   const classes = useStyles();
   const { products } = useProducts();
+  const history = useHistory();
+
+  console.log(history.location);
 
   if (!products) return null;
+
+  useEffect(() => {
+    //Check if got to products page by redirection and add gategory
+    history.location.state.category &&
+      setCategory(history.location.state.category);
+    history.replace();
+  }, []);
 
   const categoryArray = products.map(
     (x) => (x = { value: x.category, label: x.category })

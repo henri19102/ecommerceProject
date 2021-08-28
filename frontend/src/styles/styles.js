@@ -23,9 +23,17 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: "white"
   },
   appBar: {
+    padding: "0.5%",
     display: "flex",
-    justifyContent: "center",
-    backgroundColor: "#3f51b5",
+    alignItems: "center",
+    backgroundColor: "#2e3b84",
+  },
+  appBarItem:{
+    color: "white",
+    "&:hover": {
+      backgroundColor: "#a1aade",
+      transform: "scale(1.1)",
+    }
   },
   toolbar: {
     display: "flex",

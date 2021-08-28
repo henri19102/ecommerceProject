@@ -1,17 +1,12 @@
 import React from "react";
-import {
-  Typography,
-  AppBar,
-  Toolbar,
-  useMediaQuery,
-  useTheme
-} from "@material-ui/core";
+import { AppBar, Toolbar, useMediaQuery, useTheme } from "@material-ui/core";
 import LogInTab from "./LogInTab";
 import ShoppingCartTab from "./ShoppingCartTab";
 import { useUsers } from "../reducers/UserReducer";
 import TogglableMenu from "./TogglableMenu";
 import NormalMenu from "./NormalMenu";
 import { useStyles } from "../../styles/styles";
+import InnerUpperBar from "./InnerUpperBar";
 
 const Navbar = () => {
   const { user } = useUsers();
@@ -27,10 +22,8 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar className={classes.appBar} position='sticky'>
-        <Typography className={classes.header} variant='h4'>
-          SHOP
-        </Typography>
+      <AppBar position='sticky'>
+        <InnerUpperBar />
         <Toolbar className={classes.toolbar}>
           {isMatch ? (
             <TogglableMenu admin={admin} user={user} />
