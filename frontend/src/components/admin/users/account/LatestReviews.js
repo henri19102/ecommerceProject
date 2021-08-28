@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useReviews } from "../../../reducers/ReviewsReducer";
 import { useProducts } from "../../../reducers/ProductsReducer";
 import {
@@ -13,8 +13,9 @@ import {
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { useStyles } from "../../../../styles/styles";
+import { storage } from "./firebase";
 
-const ReviewItem = ({ review, product, handleDetails }) => {
+const ReviewItem = ({ review, product, handleDetails, imageUrl }) => {
   const classes = useStyles();
 
   if (!product) return <div>Loadin reviews..</div>;
@@ -28,7 +29,7 @@ const ReviewItem = ({ review, product, handleDetails }) => {
           onClick={() => handleDetails(product.id)}
         >
           <ListItemAvatar>
-            <Avatar alt='Remy Sharp' />
+            <Avatar src={imageUrl} alt='Remy Sharp' />
           </ListItemAvatar>
           <ListItemText
             primary={<Box fontWeight='fontWeightBold'>{product.name}</Box>}
@@ -46,6 +47,16 @@ const LatestReviews = ({ user }) => {
   const reviews = useReviews();
   const { products } = useProducts();
   const history = useHistory();
+  const [imageUrl, setUrl] = useState("");
+
+  const getProfilePic = () => {
+    storage
+      .ref(`images/users/${user.id}`)
+      .getDownloadURL()
+      .then((url) => setUrl(url));
+  };
+
+  getProfilePic();
 
   if (!reviews.reviews) return null;
 
@@ -68,6 +79,7 @@ const LatestReviews = ({ user }) => {
           key={x.productId}
           handleDetails={viewDetails}
           review={x}
+          imageUrl={imageUrl}
           product={products.filter((y) => y.id === x.productId)[0]}
         />
       ))}

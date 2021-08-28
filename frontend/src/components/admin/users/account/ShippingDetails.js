@@ -24,13 +24,13 @@ const ShippingDetails = ({ user }) => {
             <LocationOnRoundedIcon />
           </ListItemIcon>
           <ListItemText
-            style={{ wordBreak: "true" }}
+            style={{ wordBreak: "true", textOverflow: "ellipsis" }}
             primary={user.address ? user.address : "Missing"}
             secondary={"Shipping Address"}
           />
         </ListItem>
         <ListItem
-          style={{ wordBreak: "true" }}
+          style={{ wordBreak: "true", textOverflow: "ellipsis" }}
           button
           component='a'
           href={user.email ? `mailto:${user.email}` : "#"}
@@ -39,6 +39,7 @@ const ShippingDetails = ({ user }) => {
             <EmailRoundedIcon />
           </ListItemIcon>
           <ListItemText
+            style={{ wordBreak: "true", textOverflow: "ellipsis" }}
             primary={user.email ? user.email : "Missing"}
             secondary={"E-mail"}
           />
