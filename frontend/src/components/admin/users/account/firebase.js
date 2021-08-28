@@ -1,8 +1,9 @@
 import firebase from "firebase/app";
 import "firebase/storage";
 
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCChEXLLB12_Ua3S--clt5JcWdhzgQPiug",
+  apiKey: process.env.FIREBASEAPIKEY,
   authDomain: "ecommerce-react-edb89.firebaseapp.com",
   projectId: "ecommerce-react-edb89",
   storageBucket: "ecommerce-react-edb89.appspot.com",

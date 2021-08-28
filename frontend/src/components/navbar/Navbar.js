@@ -28,16 +28,15 @@ const Navbar = () => {
   return (
     <>
       <AppBar className={classes.appBar} position='sticky'>
+        <Typography className={classes.header} variant='h4'>
+          SHOP
+        </Typography>
         <Toolbar className={classes.toolbar}>
           {isMatch ? (
             <TogglableMenu admin={admin} user={user} />
           ) : (
             <NormalMenu admin={admin} user={user} />
           )}
-
-          <Typography className={classes.header} variant='h4'>
-            SHOP
-          </Typography>
           <ShoppingCartTab />
           <LogInTab />
         </Toolbar>

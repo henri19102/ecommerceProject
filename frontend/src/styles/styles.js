@@ -22,9 +22,15 @@ export const useStyles = makeStyles((theme) => ({
   productSearch: {
     backgroundColor: "white"
   },
+  appBar: {
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: "#3f51b5",
+  },
   toolbar: {
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
+    backgroundColor: "#3f51b5",
   },
   logIn: {
     display: "flex",
@@ -111,7 +117,7 @@ export const useStyles = makeStyles((theme) => ({
   text1: {
     textAlign: "center"
   },
-  link:{
+  link: {
     fontWeight: "bold",
     color: "gray",
     "&:hover": {
@@ -172,7 +178,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   reviewItem: {
     "&:hover": {
-      transform: "translate(0%,-5%)",
+      transform: "translate(0%,-5%)"
     }
   },
   large: {
@@ -187,8 +193,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     transition: "0.8s",
     "&:hover": {
-      transform: "scale(1.3)",
-
+      transform: "scale(1.3)"
     }
   }
 }));
