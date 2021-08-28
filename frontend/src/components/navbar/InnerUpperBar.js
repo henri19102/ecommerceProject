@@ -50,18 +50,20 @@ const InnerUpperBar = () => {
   return (
     <Box>
       <Grid container className={classes.appBar} spacing={2}>
-        <Grid item xs={2}>
-          <img src={imageUrl} height='50vw' />
+        <Grid item xs={12} sm={4}>
+          <img onClick={() => history.push("/")} src={imageUrl} height='50vw' />
         </Grid>
-        <Typography className={classes.header} variant='h6'>
-          Shop By Gategory
-        </Typography>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={1}>
+          <Typography className={classes.header} variant='h6'>
+            Shop By Gategory
+          </Typography>
+        </Grid>
+        <Grid item xs={12} sm={4}>
           {options.map((x) => (
             <CategoryNavItem key={x.label} category={x} />
           ))}
         </Grid>
-        <Grid item xs={2} className={classes.legal}>
+        <Grid item xs={12} sm={2} className={classes.legal}>
           <Typography variant='caption'>
             Tegridy Inc. All Rights Reserved.
           </Typography>

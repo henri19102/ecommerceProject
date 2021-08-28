@@ -17,6 +17,8 @@ import { useStyles } from "../../../../styles/styles";
 const ReviewItem = ({ review, product, handleDetails }) => {
   const classes = useStyles();
 
+  if (!product) return <div>Loadin reviews..</div>;
+
   return (
     <div>
       <Tooltip title='View Details' placement='left'>

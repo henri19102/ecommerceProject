@@ -13,15 +13,16 @@ const Products = () => {
   const { products } = useProducts();
   const history = useHistory();
 
-  console.log(history.location);
 
   if (!products) return null;
 
   useEffect(() => {
     //Check if got to products page by redirection and add gategory
-    history.location.state.category &&
-      setCategory(history.location.state.category);
-    history.replace();
+    // Tähän sais kai history replacella jotenki että toimii myös products sivulla uudelleen klikkaaminen
+    if (history.location.state) {
+      history.location.state.category &&
+        setCategory(history.location.state.category);
+    }
   }, []);
 
   const categoryArray = products.map(

@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-} from "@material-ui/core";
+import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 import EmailRoundedIcon from "@material-ui/icons/EmailRounded";
 import PhoneRoundedIcon from "@material-ui/icons/PhoneRounded";
 import BusinessRoundedIcon from "@material-ui/icons/BusinessRounded";
@@ -19,6 +14,7 @@ const ShippingDetails = ({ user }) => {
             <BusinessRoundedIcon />
           </ListItemIcon>
           <ListItemText
+            style={{ wordBreak: "true" }}
             primary={user.name ? `${user.name} ${user.lastname}` : "Missing"}
             secondary={"Full Name"}
           />
@@ -28,11 +24,13 @@ const ShippingDetails = ({ user }) => {
             <LocationOnRoundedIcon />
           </ListItemIcon>
           <ListItemText
+            style={{ wordBreak: "true" }}
             primary={user.address ? user.address : "Missing"}
             secondary={"Shipping Address"}
           />
         </ListItem>
         <ListItem
+          style={{ wordBreak: "true" }}
           button
           component='a'
           href={user.email ? `mailto:${user.email}` : "#"}
@@ -50,6 +48,7 @@ const ShippingDetails = ({ user }) => {
             <PhoneRoundedIcon />
           </ListItemIcon>
           <ListItemText
+            style={{ wordBreak: "true" }}
             primary={user.phonenumber ? user.phonenumber : "Missing"}
             secondary={"Phone Number"}
           />

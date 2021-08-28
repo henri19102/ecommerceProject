@@ -46,7 +46,7 @@ const MyAccount = () => {
             </h2>
             {user.createdAt && <h3>Member since {user.createdAt}</h3>}
           </Grid>
-          <Grid item xs={6}>
+          <Grid xs={6}>
             <Paper className={classes.paper}>
               <h4>Shipping details</h4>
               {!edit && (
@@ -71,11 +71,11 @@ const MyAccount = () => {
               <ProfilePicture user={user} />
             </Paper>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} ms={6}>
             <Paper className={classes.paper}>
               <h3>Your Cart</h3>
               <Grid container spacing={3}>
-                <Grid item xs={6}>
+                <Grid item xs={12} ms={6}>
                   {userCart.cartProducts.length > 0 ? (
                     userCart.cartProducts.map((x) => (
                       <AccountCart key={x.productId} product={x} />
@@ -84,7 +84,7 @@ const MyAccount = () => {
                     <Box>You shopping cart is empty :(</Box>
                   )}
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} ms={6}>
                   Grand total of:
                   <br />
                   <strong>
@@ -109,7 +109,7 @@ const MyAccount = () => {
               </Grid>
             </Paper>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} ms={6}>
             <Paper className={classes.paper}>
               <h3>Recommended for you</h3>
               <Recommended classes={classes} />
