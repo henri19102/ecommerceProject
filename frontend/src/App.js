@@ -15,7 +15,7 @@ import { Container } from "@material-ui/core";
 import HealthCheck from "./components/admin/HealthCheck";
 import AboutUs from "./components/hamazonInfo/AboutUs";
 import Registry from "./components/hamazonInfo/Registry";
-import MyAccount from "./components/admin/users/account/MyAccount";
+import MyAccount from "./components/account/MyAccount";
 
 const App = () => {
   const stylings = {

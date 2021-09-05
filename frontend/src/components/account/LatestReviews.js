@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useReviews } from "../../../reducers/ReviewsReducer";
-import { useProducts } from "../../../reducers/ProductsReducer";
+import { useReviews } from "../reducers/ReviewsReducer";
+import { useProducts } from "../reducers/ProductsReducer";
 import {
   ListItem,
   ListItemText,
@@ -12,7 +12,7 @@ import {
   Tooltip
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import { useStyles } from "../../../../styles/styles";
+import { useStyles } from "../../styles/styles";
 import { storage } from "./firebase";
 
 const ReviewItem = ({ review, product, handleDetails, imageUrl }) => {

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Box, Button, Grid, Paper } from "@material-ui/core";
-import { useStyles } from "../../../../styles/styles";
-import { useUsers } from "../../../reducers/UserReducer";
+import { useStyles } from "../../styles/styles";
+import { useUsers } from "../reducers/UserReducer";
 import ShippingDetails from "./ShippingDetails";
 import LatestReviews from "./LatestReviews";
 import ProfilePicture from "./ProfilePicture";
-import { useCart } from "../../../reducers/CartReducer";
-import orderService from "../../../../services/orders";
+import { useCart } from "../reducers/CartReducer";
+import orderService from "../../services/orders";
 import AccountCart from "./AccountCart";
 import MyAccountEdit from "./MyAccountEdit";
 import Recommended from "./Recommended";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Typography, Box, Grid, Button } from "@material-ui/core";
 import { useStyles } from "../../styles/styles";
-import { storage } from "../admin/users/account/firebase";
+import { storage } from "../account/firebase";
 import { useProducts } from "../reducers/ProductsReducer";
 import { useHistory } from "react-router-dom";
 

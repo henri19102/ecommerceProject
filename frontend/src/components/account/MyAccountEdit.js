@@ -1,12 +1,12 @@
 import React from "react";
 import { Button, Card, CardContent } from "@material-ui/core";
 
-import userService from "../../../../services/users";
+import userService from "../../services/users";
 
 import { Formik, Form } from "formik";
-import MyTextInput from "../../../MyTextInput";
-import { useUsers } from "../../../reducers/UserReducer";
-import { useStyles } from "../../../../styles/styles";
+import MyTextInput from "../MyTextInput";
+import { useUsers } from "../reducers/UserReducer";
+import { useStyles } from "../../styles/styles";
 
 const MyAccountEdit = ({ changeEdit }) => {
   const user = useUsers();

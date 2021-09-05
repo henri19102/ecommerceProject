@@ -13,7 +13,7 @@ const ProductSearch = ({ setName }) => {
           className={classes.productSearch}
           variant="outlined"
           onChange={(e) => setName(e.target.value)}
-          label="Search product by name"
+          label="Search product"
         />
       </Typography>
     </div>

@@ -7,7 +7,7 @@ const ProductFilter = ({ options, handleChange, findValue, category }) => {
   return (
     <div style={{ width: "30%" }}>
       <Typography component={"div"}>
-        Filter by product category:
+        Filter products:
         <Select options={options} onChange={handleChange} value={findValue} />
       </Typography>
     </div>

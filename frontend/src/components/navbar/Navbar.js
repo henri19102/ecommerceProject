@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <>
       <AppBar position='sticky'>
-        <InnerUpperBar />
+        {isMatch === false && (<InnerUpperBar />)}
         <Toolbar className={classes.toolbar}>
           {isMatch ? (
             <TogglableMenu admin={admin} user={user} />

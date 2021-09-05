@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, Box, IconButton } from "@material-ui/core";
 import { useUsers } from "../reducers/UserReducer";
 import ListItem from "@material-ui/core/ListItem";
@@ -11,11 +11,14 @@ import ThumbUpAltOutlinedIcon from "@material-ui/icons/ThumbUpAltOutlined";
 import { useLikes } from "../reducers/LikesReducer";
 import likeService from "../../services/likes";
 import { useNotification } from "../reducers/NotificationReducer";
+import { storage } from "../account/firebase";
+
 
 const ProductListItem = ({ review }) => {
   const likes = useLikes();
   const { user } = useUsers();
   const message = useNotification();
+  const [imageUrl, setUrl] = useState("");
 
   if (!review.User) return null;
   if (!likes.likes) return null;
@@ -26,6 +29,16 @@ const ProductListItem = ({ review }) => {
       (x) => x.userId === user.id && x.reviewId === review.id
     );
   const countLikes = likes.likes.filter((x) => x.reviewId === review.id).length;
+
+  const getProfilePic = () => {
+    storage
+      .ref(`images/users/${review.userId}`)
+      .getDownloadURL()
+      .then((url) => setUrl(url));
+  };
+
+  getProfilePic();
+
 
   const notificationMessage = (msg, isError) => {
     message.dispatchNotification({
@@ -58,11 +71,13 @@ const ProductListItem = ({ review }) => {
     likes.dispatchLikes({ type: "remove", payload: like2 });
   };
 
+  console.log(review.userId);
+
   return (
     <>
       <ListItem key={review.id}>
         <ListItemAvatar>
-          <Avatar alt="Remy Sharp" />
+          <Avatar src={imageUrl} alt="Remy Sharp" />
         </ListItemAvatar>
         <ListItemText
           primary={<Box fontWeight="fontWeightBold">{review.User.name}</Box>}

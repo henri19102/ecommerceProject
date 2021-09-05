@@ -1,8 +1,8 @@
 import React from "react";
 import { Grid } from "@material-ui/core";
-import { shuffleArray } from "../../../Highlighted";
-import ProductView from "../../../products/ProductView";
-import { useProducts } from "../../../reducers/ProductsReducer";
+import { shuffleArray } from "../Highlighted";
+import ProductView from "../products/ProductView";
+import { useProducts } from "../reducers/ProductsReducer";
 
 const Recommended = (classes) => {
   const { products } = useProducts();

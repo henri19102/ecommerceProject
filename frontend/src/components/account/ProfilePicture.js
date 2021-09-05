@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@material-ui/core";
 import { Box, Avatar } from "@material-ui/core";
-import { useStyles } from "../../../../styles/styles";
+import { useStyles } from "../../styles/styles";
 import { storage } from "./firebase";
 
 const ProfilePicture = ({ user }) => {
