@@ -35,6 +35,9 @@ const SignUp = () => {
 
   const initialValues = {
     name: "",
+    lastname: "",
+    address: "",
+    phonenumber: "",
     email: "",
     password: "",
   };
@@ -42,6 +45,16 @@ const SignUp = () => {
   const validationSchema = Yup.object({
     name: Yup.string()
       .max(15, "Must be 15 characters or less")
+      .required("Required"),
+    lastname: Yup.string()
+      .max(15, "Must be 15 characters or less")
+      .required("Required"),
+    address: Yup.string()
+      .max(15, "Must be 15 characters or less")
+      .required("Required"),
+    phonenumber: Yup.string()
+      .min(7, "Must have 7 to 12 numbers")
+      .max(12, "Must have 7 to 12 numbers")
       .required("Required"),
     email: Yup.string().email("Invalid email addresss`").required("Required"),
     password: Yup.string()
@@ -84,7 +97,34 @@ const SignUp = () => {
               label="Name"
               name="name"
               type="text"
-              placeholder="Jane"
+              placeholder="Firstname..."
+            />
+
+            <MyTextInput
+              style={{ margin: "5%" }}
+              id="lastnameInput"
+              label="Lastname"
+              name="lastname"
+              type="text"
+              placeholder="Lastname..."
+            />
+
+            <MyTextInput
+              style={{ margin: "5%" }}
+              id="addressInput"
+              label="Address"
+              name="address"
+              type="text"
+              placeholder="Street..."
+            />
+
+            <MyTextInput
+              style={{ margin: "5%" }}
+              id="phonenumberInput"
+              label="Phonenumber"
+              name="phonenumber"
+              type="number"
+              placeholder="Phonenumber..."
             />
 
             <MyTextInput
@@ -93,7 +133,7 @@ const SignUp = () => {
               label="Email"
               name="email"
               type="email"
-              placeholder="jane@formik.com"
+              placeholder="Email..."
             />
 
             <MyTextInput

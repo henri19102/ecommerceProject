@@ -1,6 +1,6 @@
 import React from "react";
 import { useProducts } from "./reducers/ProductsReducer";
-import { Grid, Paper, Tooltip } from "@material-ui/core";
+import { Grid, Paper, Tooltip, useMediaQuery, useTheme } from "@material-ui/core";
 import { useStyles } from "../styles/styles";
 import { useHistory } from "react-router-dom";
 const images = require.context("../images/products", true);
@@ -32,6 +32,8 @@ const Highlighted = () => {
   const { products } = useProducts();
   const history = useHistory();
   const classes = useStyles();
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down("sm"));
   if (!products) return null;
 
   //Shuffle , eliminate duplicates and add images
@@ -50,8 +52,8 @@ const Highlighted = () => {
           <h2>Best-selling products</h2>
         </Grid>
         {branded.map((x) => (
-          <Grid key={x.id} item xs={3}>
-            <img className={classes.higlightedImages} src={x.img} />
+          <Grid key={x.id} item xs={ isMatch ? 6 : 3 }>
+            <img className={classes.higlightedImages} src={x.img} width="100" height="100" />
             <Tooltip title={`Only ${x.price}€ Click to view in detail!`}>
               <Paper
                 id='higlight-paper'

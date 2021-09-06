@@ -164,7 +164,7 @@ export const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.primary
   },
   mostSelled: {
-    padding: theme.spacing(3),
+    padding: theme.spacing(1),
     textAlign: "center",
     overflow: "hidden",
     whiteSpace: "nowrap",
@@ -196,9 +196,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   higlightedImages: {
     zIndex: "-2",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
     transition: "0.8s",
     "&:hover": {
       transform: "scale(1.3)"
