@@ -71,7 +71,6 @@ const ProductListItem = ({ review }) => {
     likes.dispatchLikes({ type: "remove", payload: like2 });
   };
 
-  console.log(review.userId);
 
   return (
     <>

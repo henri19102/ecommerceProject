@@ -40,7 +40,7 @@ const MyAccount = () => {
     <Box>
       <div className={classes.root}>
         <Grid container spacing={3}>
-          <Grid item xs={12}>
+          <Grid item={true} xs={12}>
             <h2 className={classes.container} style={{ fontWeight: "bold" }}>
               Profile of {user.name} {user.lastname}
             </h2>
