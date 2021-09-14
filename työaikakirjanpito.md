@@ -1,6 +1,6 @@
 | päivä     | aika | mitä tein                                                                                                             |
 | --------- | ---- | --------------------------------------------------------------------------------------------------------------------- |
-| yht:      |      |                                                                                                                       |
+|           |      |                                                                                                                       |
 | 3.3.2021  | 3    | Frontendin ja backendin alkuun laittaminen. Tutustuminen sequelize kirjastoon                                         |
 |           |      |                                                                                                                       |
 | 13.3.2021 | 5    | Sequelizen tutustuminen jatkui ja Backend kasausta. React sovelluksen alkuun laittaminen. Kaksi komponenttia lisätty. |
