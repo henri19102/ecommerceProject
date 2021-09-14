@@ -1,4 +1,4 @@
-| päivä     | aika | mitä tein                                                                                                             |
+| päivä     | aika | mitä teimme                                                                                                           |
 | --------- | ---- | --------------------------------------------------------------------------------------------------------------------- |
 |           |      |                                                                                                                       |
 | 3.3.2021  | 3    | Frontendin ja backendin alkuun laittaminen. Tutustuminen sequelize kirjastoon                                         |
