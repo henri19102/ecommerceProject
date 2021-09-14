@@ -21,3 +21,9 @@
     1. Ostoskorissa voi poistaa ja lisätä tuotteita.
     2. Maksutavaksi on lisätty ostoskoriin Paypal.
 4. Navigointipalkin kohdasta "My account", voi muokata omia tietoja ja lisätä profiilikuvan.
+
+- - - -
+
+ ### Sovelluksessa käytetyt tekniikat: ###
+
+ React, Express.js, PostgreSQL, Sequelize ORM, Heroku, Firebase, Docker, Github actions
