@@ -28,7 +28,7 @@ const Footer = () => {
           direction="row"
           alignItems="center"
         >
-          <Grid item xs={8}>
+          <Grid item xs={12} sm={6}>
             <h4 className={classes.white}>About</h4>
             <p className={classes.white}>
               Make sure to include in your wheelhouse player-coach or nail it

@@ -24,7 +24,7 @@ const AboutUs = () => {
         <Grid item xs={12} className={classes.container}>
           <h2>About Us</h2>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <h3>Can you make it stand out more?</h3>
             <p>
@@ -77,7 +77,7 @@ const AboutUs = () => {
             </p>
           </Paper>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6} >
           <Paper className={classes.paper}>
             <List component="nav" aria-label="main mailbox folders">
               <ListItem>
