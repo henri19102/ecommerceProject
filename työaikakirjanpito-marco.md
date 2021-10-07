@@ -1,6 +1,3 @@
-         |    |Marco                                                                                                                                  
----------|----|---------------------------------------------------------------------------------------------------------------------------------------
-         |    |                                                                                                                                       
 päivä    |aika|scope                                                                                                                                  
          |    |                                                                                                                                       
 3.3.2021 |3   |Saavuin Henkalle, jossa aloitimme projektin arkkitehtuurin tutkimisen, sekä projektin yleistä ideointia.                               
@@ -84,6 +81,4 @@ päivä    |aika|scope
          |    |                                                                                                                                       
          |    |                                                                                                                                       
          |    |                                                                                                                                       
-14.8.2021|2   |Sovelluksen viimeistely ja projektin päätös  
-
-    yht: 190 tuntia                                                                                          
+14.8.2021|2   |Sovelluksen viimeistely ja projektin päätös                                                                                    
