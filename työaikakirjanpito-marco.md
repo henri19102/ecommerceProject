@@ -1,6 +1,6 @@
 | päivä     | aika | mitä teimme                                                                                                       |
 | --------- | ---- | ----------------------------------------------------------------------------------------------------------------- |
-| yht:      |      |                                                                                                                   |
+|           |      |                                                                                                                   |
 | 3.3.2021  | 3    | Saavuin Henkalle, jossa aloitimme projektin arkkitehtuurin tutkimisen, sekä projektin yleistä ideointia.          |
 |           |      |                                                                                                                   |
 | 13.3.2021 | 5    | Henkalle saavuttuani aloimme kävimme ja keskustelimme bäckendin kokonaisuudessaan läpi,                           |
