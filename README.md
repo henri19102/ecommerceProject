@@ -4,7 +4,10 @@
 
  * Sovellus löytyy osoitteesta: https://ecommerceapp-project.herokuapp.com/
 
- * Työaikakirjanpito: https://github.com/henri19102/ecommerceProject/blob/main/ty%C3%B6aikakirjanpito.md
+ * Työaikakirjanpito Marco: https://github.com/henri19102/ecommerceProject/blob/main/ty%C3%B6aikakirjanpito-marco.md
+
+ * Työaikakirjanpito Henri: https://github.com/henri19102/ecommerceProject/blob/main/ty%C3%B6aikakirjanpito-henri.md
+
 
  - - - -
 
